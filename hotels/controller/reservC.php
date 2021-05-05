@@ -180,17 +180,10 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE reserv SET prixreserv = :prix, typereserv = :type, idh1 = :idh1, idc1 = :idc1, nbrjourv = :nbrjourv, accessv = :accessv, nbrexcurv = :nbrexcurv, idhot1 = :idhot1, datereserv = :datereserv WHERE idreserv = :id'
+                    'UPDATE reserv SET  datereserv = :datereserv WHERE idreserv = :id'
                 );
                 $query->execute([
-                    'prix' => $reserv->getprixreserv(),
-                    'type' => $reserv->gettypereserv(),
-                    'idh1' => $reserv->getidreservh1(),
-                    'idc1' => $reserv->getidreservc1(),
-                     'nbrjourv' => $reserv->getnbrjourv(),
-                     'accessv' => $reserv->getaccessv(),
-                     'nbrexcurv' => $reserv->getnbrexcurv(),
-                     'idhot1' => $reserv->getidhot1(),
+                   
                      'datereserv' => $reserv->getdatereserv(),
                     'id' => $id
                 ]);
