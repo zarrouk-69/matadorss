@@ -70,7 +70,7 @@
 		    }
 		}
 		function nbrecBytype(){
-			$sql = "SELECT t.nom as nomCat, count(*) as nb FROM type t, reclamation r WHERE r.type = t.idType GROUP BY t.libelleT ORDER BY count(*)";
+			$sql = "SELECT t.libelleT as nomType, count(*) as nb FROM type t, reclamation r WHERE r.type = t.idType GROUP BY t.libelleT ORDER BY count(*)";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);

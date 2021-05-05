@@ -71,6 +71,21 @@ button:hover {
   }
 }
 </style>
+  <script type="text/javascript"> 
+        function validate() { 
+            var msg; 
+            var str = document.getElementById("psw").value; 
+            if (str.match( /[0-9]/g) && 
+                    str.match( /[A-Z]/g) && 
+                    str.match(/[a-z]/g) && 
+                    str.match( /[^a-zA-Z\d]/g) &&
+                    str.length >= 10) 
+                msg = "<p style='color:green'>Mot de passe fort.</p>"; 
+            else 
+                msg = "<p style='color:red'>Mot de passe faible.</p>"; 
+            document.getElementById("msg").innerHTML= msg; 
+        } 
+    </script> 
 <body>
 
 <form action="/action_page.php" style="border:1px solid #ccc">
@@ -83,7 +98,8 @@ button:hover {
     <input type="text" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+    
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
@@ -95,7 +111,7 @@ button:hover {
     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
+      <button onclick="validate()" type="button" id="msg"class="cancelbtn">Cancel</button>
       <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>

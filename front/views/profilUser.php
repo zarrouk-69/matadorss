@@ -234,7 +234,7 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                
-                  <button onclick="window.location.href='profileuser.php';">
+                  <button onclick="window.location.href='deconnexion.php';">
      se deconnecter
     </button>
                             

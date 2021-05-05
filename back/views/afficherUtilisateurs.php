@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>naturious utlisateurs</title>
+  <title>Naturious utlisateurs</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -47,19 +47,25 @@
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-            </li>
+             </li>
             <li class="nav-item">
-              <a class="nav-link" href="icons.html">
+              <a class="nav-link" href="showrec.php">
                 <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">gestion reclamations et types</span>
+                <span class="nav-link-text">gestion reclamations </span>
               </a>
             </li>
-           
+           </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showtype.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion types de reclamation</span>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="afficherUtilisateurs.php">
                 <i class="ni ni-single-02 text-yellow"></i>
-                <span class="nav-link-text">gestion utlisateurs</span>
-              </a>
+                <span class="nav-link-text">gestion utilisateurs</span>
+            
            
           </ul>
           <!-- Divider -->
@@ -154,7 +160,7 @@
               &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
             </div>
           </div>
-          	<button><a href="AjouterUtilisateur.php">Ajouter un Utilisateur</a> </button> <br>
+          	<button><a href="pdf.php">pdf</a> </button> <br>
           <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
               <li class="nav-item">
