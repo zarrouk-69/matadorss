@@ -157,8 +157,8 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO pack (nompack, prixpack, imagepack, typepack, descpack, idh1, nbrjour, access, nbrexcur) 
-                VALUES (:nomh, :prix, :image,  :type, :desch, :idh1, :nbrjour, :access, :nbrexcur)'
+                    'INSERT INTO pack (nompack, prixpack, imagepack, typepack, descpack, idh1, nbrjour, access, nbrexcur, hotel1) 
+                VALUES (:nomh, :prix, :image,  :type, :desch, :idh1, :nbrjour, :access, :nbrexcur, :hotel1)'
                 );
                 $query->execute([
                     'nomh' => $pack->getnompack(),
@@ -169,7 +169,8 @@
                      'idh1' => $pack->getidpackh1(),
                      'nbrjour' => $pack->getnbrjour(),
                      'access' => $pack->getaccess(),
-                     'nbrexcur' => $pack->getnbrexcur()
+                     'nbrexcur' => $pack->getnbrexcur(),
+                     'hotel1' => $pack->gethotelnom1()
                 ]);
             } catch (PDOException $e) {
                 $e->getMessage();
@@ -180,7 +181,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE pack SET nompack = :nomh, prixpack = :prix, imagepack = :image,  typepack = :type, descpack = :desch, idh1 = :idh1, nbrjour = :nbrjour, access = :access, nbrexcur = :nbrexcur WHERE idpack = :id'
+                    'UPDATE pack SET nompack = :nomh, prixpack = :prix, imagepack = :image,  typepack = :type, descpack = :desch, idh1 = :idh1, nbrjour = :nbrjour, access = :access, nbrexcur = :nbrexcur, hotel1 = :hotel1 WHERE idpack = :id'
                 );
                 $query->execute([
                     'nomh' => $pack->getnompack(),
@@ -192,6 +193,7 @@
                      'nbrjour' => $pack->getnbrjour(),
                      'access' => $pack->getaccess(),
                      'nbrexcur' => $pack->getnbrexcur(),
+                     'hotel1' => $pack->gethotelnom1(),
                     'id' => $id
                 ]);
                 echo $query->rowCount() . " records UPDATED successfully";

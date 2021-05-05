@@ -1,16 +1,19 @@
 <?php
     require_once 'C:/xampp/htdocs/hotels/controller/packC.php';
     require_once 'C:/xampp/htdocs/hotels/entities/pack.php';
-
+require_once 'C:/xampp/htdocs/hotels/controller/hotelC.php';
+    require_once 'C:/xampp/htdocs/hotels/entities/hotel.php';
     $packC =  new packC();
-
+  $hotelC =  new hotelC();
     if (isset($_POST['nompack']) && isset($_POST['prixpack'])  && isset($_POST['typepack']) && isset($_POST['descpack']) && isset($_POST['imagepack']) && isset($_POST['idh1']) && isset($_POST['nbrjour']) && isset($_POST['access']) && isset($_POST['nbrexcur'])) {
-        $pack = new pack($_POST['nompack'], (int)$_POST['prixpack'], $_POST['typepack'], $_POST['descpack'], $_POST['imagepack'], (int)$_POST['idh1'], (int)$_POST['nbrjour'], $_POST['access'], (int)$_POST['nbrexcur']);
+ $result11 = $hotelC->getHotelById($_POST['idh1']);
+            if ($result11 !== false) {
+        $pack = new pack($_POST['nompack'], (int)$_POST['prixpack'], $_POST['typepack'], $_POST['descpack'], $_POST['imagepack'], (int)$_POST['idh1'], (int)$_POST['nbrjour'], $_POST['access'], (int)$_POST['nbrexcur'],$result11['nomhotel']);
         
         $packC->addpack($pack);
 
         header('Location:showpack.php');
-    }
+    }}
 ?>
 
 <!DOCTYPE html>
@@ -198,22 +201,24 @@ while ($array[] = $query->fetch_object());
                              <label>hotel</label>
                     </div>
                      <div class="col-75">
-<select name="idh1">
+<select id="mySelect"  name="idh1">
      <?php foreach ( $array as $option ) :?>
           <option value="<?php echo $option->idhotel; ?>"><?php echo $option->nomhotel; ?> </option>
-     <?php endforeach; ?>       
+      <?php endforeach; ?>  
 </select>
+  
     </div>
                 </div>
-                </div>
+             
                 <br>
                 <div class="row">
+                
                     <input  type="submit" value="Submit" name = "submit">
-                    
-                 </div>
+                
+                    </div>
             </form>
 		</div>
- 
+        </div>
       <!--  <script>
     function myFunction() {
           var test=document.getElementById('nom55').value

@@ -188,6 +188,9 @@ function magnify(imgID, zoom) {
                    <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $result['typepack'] ?> </strong>
                   </div>
+                     <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $result['hotel1'] ?>   </strong>
+                  </div>
           <div> <?= $result['descpack'] ?></div>
           <div>
 				  

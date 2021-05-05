@@ -166,7 +166,7 @@ https://templatemo.com/tm-561-purple-buzz
 </script>
 	<?php
 		if (isset($_POST['pack']) && isset($_POST['search'])){
-			$result = $packC->getpackByTitle($_POST['pack']);
+			$result = $packC->afficherpacknom($_POST['pack']);
 			$results = $packC->afficherpacknom($_POST['pack']);
 			if ($result !== false) {
 	?>
@@ -182,6 +182,9 @@ https://templatemo.com/tm-561-purple-buzz
                   </div>
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?>  </strong>
+                  </div>
+                     <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
                   </div>
                   <div>
 <div class="dropdown2">
@@ -233,7 +236,7 @@ https://templatemo.com/tm-561-purple-buzz
 		
 	
 		elseif (isset($_POST['type']) && isset($_POST['search'])){
-			$result = $packC->getpackBytype($_POST['type']);
+			$result = $packC->afficherpacktype($_POST['type']);
 			$results = $packC->afficherpacktype($_POST['type']);
 			if ($result !== false) {
 	?>
@@ -250,6 +253,9 @@ https://templatemo.com/tm-561-purple-buzz
                   </div>
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?>  </strong>
+                  </div>
+                     <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
                   </div>
                   <div>
 <div class="dropdown2">

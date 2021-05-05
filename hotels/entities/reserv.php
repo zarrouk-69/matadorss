@@ -9,7 +9,9 @@
         private int $nbrjourv ; 
         private string $accessv;   
         private int $nbrexcurv ;   
-		public function __construct($prixreserv,$typereserv,$idh1,$idc1,$nbrjourv,$accessv,$nbrexcurv)
+        private string $idhot1;  
+        private string $datereserv;
+		public function __construct($prixreserv,$typereserv,$idh1,$idc1,$nbrjourv,$accessv,$nbrexcurv,$idhot1,$datereserv)
 		{
 
 			$this->prixreserv = $prixreserv;
@@ -19,9 +21,17 @@
             $this->nbrjourv =$nbrjourv;
             $this->accessv =$accessv;
             $this->nbrexcurv =$nbrexcurv;
+            $this->idhot1 =$idhot1;
+            $this->datereserv =$datereserv;
 		}
 		 public function getidreserv () {
             return $this->idreserv;
+        }
+         public function getidhot1 () {
+            return $this->idhot1;
+        }
+           public function getdatereserv () {
+            return $this->datereserv;
         }
          public function getidreservh1 () {
             return $this->idh1;
@@ -68,6 +78,12 @@
         }
               public function setnbrexcur ($nbrexcurv){
             $this->nbrexcurv = $nbrexcurv;
+        }
+               public function setidhot1 ($idhot1){
+            $this->idhot1 = $idhot1;
+        }
+               public function setdatereserv ($datereserv){
+            $this->datereserv = $datereserv;
         }
 	}
 ?>

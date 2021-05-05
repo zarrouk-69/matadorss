@@ -173,6 +173,7 @@ function magnify(imgID, zoom) {
    
 <a type="button" class="btn btn-primary shop-item-button" href = "showhotel.php?>">retour</a>
 </form>
+<div class="container">
 			<div class="shop-items">
 				 <?php
         if (isset($_GET['idhotel'])) {
@@ -201,10 +202,11 @@ function magnify(imgID, zoom) {
 				
 					</div>
 					<div class="shop-item-details">
-						<span class="shop-item-price"><?= $result['prixhotel'] ?> dt.</span>
+						<strong class="shop-item-price"><?= $result['prixhotel'] ?> dt.</strong>
 						
 					</div>
 				</div>
+			</div>
 			  <?php
         }
     }

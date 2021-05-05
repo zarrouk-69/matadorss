@@ -13,18 +13,18 @@
                 $e->getMessage();
             }
         }
-        /* public function afficherreservtri() {
+         public function afficherreservtri() {
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM reserv ORDER BY nomreserv '
+                    'SELECT * FROM reserv ORDER BY idreserv '
                 );
                 $query->execute();
                 return $query->fetchAll();
             } catch (PDOException $e) {
                 $e->getMessage();
             }
-        }*/
+        }
         public function afficherreservtritype() {
             try {
                 $pdo = getConnexion();
@@ -37,18 +37,18 @@
                 $e->getMessage();
             }
         }
-      /*  public function afficherreservtridesc() {
+       public function afficherreservtridesc() {
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM reserv ORDER BY nomreserv DESC'
+                    'SELECT * FROM reserv ORDER BY idreserv DESC'
                 );
                 $query->execute();
                 return $query->fetchAll();
             } catch (PDOException $e) {
                 $e->getMessage();
             }
-        }*/
+        }
         public function afficherreservtridesctype() {
             try {
                 $pdo = getConnexion();
@@ -157,8 +157,8 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO reserv (prixreserv, typereserv, idh1, idc1, nbrjourv, accessv, nbrexcurv) 
-                VALUES (:prix, :type, :idh1, :idc1, :nbrjourv, :accessv, :nbrexcurv)'
+                    'INSERT INTO reserv (prixreserv, typereserv, idh1, idc1, nbrjourv, accessv, nbrexcurv, idhot1, datereserv) 
+                VALUES (:prix, :type, :idh1, :idc1, :nbrjourv, :accessv, :nbrexcurv, :idhot1, :datereserv)'
                 );
                 $query->execute([
                     'prix' => $reserv->getprixreserv(),
@@ -167,7 +167,9 @@
                      'idc1' => $reserv->getidreservc1(),
                      'nbrjourv' => $reserv->getnbrjourv(),
                      'accessv' => $reserv->getaccessv(),
-                     'nbrexcurv' => $reserv->getnbrexcurv()
+                     'nbrexcurv' => $reserv->getnbrexcurv(),
+                     'idhot1' => $reserv->getidhot1(),
+                     'datereserv' => $reserv->getdatereserv()
                 ]);
             } catch (PDOException $e) {
                 $e->getMessage();
@@ -178,7 +180,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE reserv SET prixreserv = :prix, typereserv = :type, idh1 = :idh1, idc1 = :idc1, nbrjourv = :nbrjourv, accessv = :accessv, nbrexcurv = :nbrexcurv WHERE idreserv = :id'
+                    'UPDATE reserv SET prixreserv = :prix, typereserv = :type, idh1 = :idh1, idc1 = :idc1, nbrjourv = :nbrjourv, accessv = :accessv, nbrexcurv = :nbrexcurv, idhot1 = :idhot1, datereserv = :datereserv WHERE idreserv = :id'
                 );
                 $query->execute([
                     'prix' => $reserv->getprixreserv(),
@@ -188,6 +190,8 @@
                      'nbrjourv' => $reserv->getnbrjourv(),
                      'accessv' => $reserv->getaccessv(),
                      'nbrexcurv' => $reserv->getnbrexcurv(),
+                     'idhot1' => $reserv->getidhot1(),
+                     'datereserv' => $reserv->getdatereserv(),
                     'id' => $id
                 ]);
                 echo $query->rowCount() . " records UPDATED successfully";

@@ -11,7 +11,8 @@
         private int $nbrjour ; 
         private string $access;   
         private int $nbrexcur ;   
-		public function __construct($nompack,$prixpack,$typepack,$descpack,$imagepack,$idh1,$nbrjour,$access,$nbrexcur)
+        private string $hotel1; 
+		public function __construct($nompack,$prixpack,$typepack,$descpack,$imagepack,$idh1,$nbrjour,$access,$nbrexcur,$hotel1)
 		{
 			$this->nompack =$nompack;
 			$this->prixpack = $prixpack;
@@ -22,6 +23,7 @@
              $this->nbrjour =$nbrjour;
               $this->access =$access;
                $this->nbrexcur =$nbrexcur;
+                $this->hotel1 =$hotel1;
 		}
 		 public function getidpack () {
             return $this->idpack;
@@ -41,7 +43,9 @@
     public function getnbrexcur (){
             return $this->nbrexcur ;
         }
-
+  public function gethotelnom1 (){
+            return $this->hotel1 ;
+        }
 
         public function getimagepack (){
             return $this->imagepack ;}
@@ -80,6 +84,9 @@
         }
               public function setnbrexcur ($nbrexcur){
             $this->nbrexcur = $nbrexcur;
+        }
+         public function sethotelnom1 ($hotel1){
+            $this->hotel1 = $hotel1;
         }
 	}
 ?>

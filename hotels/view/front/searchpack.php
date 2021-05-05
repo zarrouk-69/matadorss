@@ -139,7 +139,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <label>Search nom: </label>
                     </div>
                     <div class="col-75">
-                        <input  type = "text" id="nomh5" name = 'pack'>
+                        <input  type = "text" id="nomh5" onkeyup="onck()" name = 'pack'>
                     </div>
                 </div>
                 <div class="row">
@@ -152,7 +152,7 @@ https://templatemo.com/tm-561-purple-buzz
                 </div>
                 <br>
                 <div class="row">
-                    <input type = "submit" value = "Search" name ="search">
+                    <input type = "submit"  value = "Search" name ="search">
                 </div>
             </form>
 		</div>
@@ -163,10 +163,13 @@ https://templatemo.com/tm-561-purple-buzz
           var test2=document.getElementById('type5').value
  if (test===""&&test2==="") {alert("les deux champs ne doivent pas etre vide")}
     }
+ /* function onck(){
+   document.getElementById('myForm').submit();
+  }*/
 </script>
 	<?php
 		if (isset($_POST['pack']) && isset($_POST['search'])){
-			$result = $packC->getpackByTitle($_POST['pack']);
+			$result = $packC->afficherpacknom($_POST['pack']);
 			$results = $packC->afficherpacknom($_POST['pack']);
 			if ($result !== false) {
 	?>
@@ -182,6 +185,9 @@ https://templatemo.com/tm-561-purple-buzz
                   </div>
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?>  </strong>
+                  </div>
+                   <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
                   </div>
                   <div>
 <div class="dropdown2">
@@ -232,7 +238,7 @@ https://templatemo.com/tm-561-purple-buzz
 		
 	
 		elseif (isset($_POST['type']) && isset($_POST['search'])){
-			$result = $packC->getpackBytype($_POST['type']);
+			$result = $packC->afficherpacktype($_POST['type']);
 			$results = $packC->afficherpacktype($_POST['type']);
 			if ($result !== false) {
 	?>
@@ -249,6 +255,9 @@ https://templatemo.com/tm-561-purple-buzz
                   </div>
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?>  </strong>
+                  </div>
+                   <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
                   </div>
                   <div>
 <div class="dropdown2">

@@ -175,12 +175,16 @@
         <section class="container">
             <h2>pack</h2>
             <a href = "addpack.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
+            <a href = "showreserv.php" class="btn btn-primary shop-item-button" href = "#">Reservation</a>
             <div class="shop-items">
                 <?php
                     foreach ($packs as $pack) {
                 ?>
                 <div class="shop-item">
                     <strong class="shop-item-title"> <?= $pack['nompack'] ?>   </strong>
+                  </div>
+                  <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
                   </div>
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?> </strong>
@@ -223,6 +227,8 @@
                         <span class="shop-item-price"><?= $pack['prixpack'] ?> dt.</span>
                         <a type="button" class="btn btn-primary shop-item-button" href = "updatepack.php?idpack=<?= $pack['idpack'] ?>">Modifier</a>
                         <a type="button" class="btn btn-primary shop-item-button" href = "showpack.php?idpack=<?= $pack['idpack'] ?>">Supprimer</a>
+                        
+
                     </div>
                 </div>
                 <div><hr></div>

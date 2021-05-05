@@ -1,19 +1,55 @@
 <?php
-    require_once 'C:/xampp/htdocs/hotels/controller/reservC.php';
+      require_once 'C:/xampp/htdocs/hotels/controller/reservC.php';
     require_once 'C:/xampp/htdocs/hotels/entities/reserv.php';
-
+require_once 'C:/xampp/htdocs/hotels/controller/hotelC.php';
+    require_once 'C:/xampp/htdocs/hotels/entities/hotel.php';
 
     $reservC =  new reservC();
+   $hotelC =  new hotelC();
 
-    if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1']) && isset($_POST['idc1']) && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv'])) {
-        $reserv = new reserv((int)$_POST['prixreserv'], $_POST['typereserv'], (int)$_POST['idh1'], (int)$_POST['idc1'], (int)$_POST['nbrjourv'], $_POST['accessv'], (int)$_POST['nbrexcurv']);
+    if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1']) && isset($_POST['idc1']) && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv']) && isset($_POST['datereserv'])) {
+        $result11 = $hotelC->getHotelById($_POST['idh1']);
+            if ($result11 !== false) {
+        $reserv = new reserv((int)$_POST['prixreserv'], $_POST['typereserv'], (int)$_POST['idh1'], (int)$_POST['idc1'], (int)$_POST['nbrjourv'], $_POST['accessv'], (int)$_POST['nbrexcurv'],$result11['nomhotel'],  $_POST['datereserv']);
         
         $reservC->addreserv($reserv);
 
         header('Location:showpack.php');
-    }
+    }}
 ?>
+<?php
+      require_once 'C:/xampp/htdocs/hotels/controller/hotelC.php';
 
+    $hotelC =  new hotelC();
+  
+$dataPoints = array();
+//Best practice is to create a separate file for handling connection to database
+try{
+     // Creating a new connection.
+    // Replace your-hostname, your-db, your-username, your-password according to your database
+    $link = new \PDO(   'mysql:host=localhost;dbname=zarrouk;charset=utf8mb4', //'mysql:host=localhost;dbname=canvasjs_db;charset=utf8mb4',
+                        'root', //'root',
+                        '', //'',
+                        array(
+                            \PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                            \PDO::ATTR_PERSISTENT => false
+                        )
+                    );
+    
+    $handle = $link->prepare('select idhot1 as idc1,count(*) as idh1 from reserv group by idh1;'); 
+    $handle->execute(); 
+    $result = $handle->fetchAll(\PDO::FETCH_OBJ);           
+    foreach($result as $row){
+        
+        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->idh1));
+    }
+    $link = null;
+}
+catch(\PDOException $ex){
+    print($ex->getMessage());
+}
+        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="..//hotels/assets/css/style.css">
@@ -41,7 +77,38 @@ TemplateMo 561 Purple Buzz
 https://templatemo.com/tm-561-purple-buzz
 
 -->
+<script>
+window.onload = function () {
+  CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
 
+                "#f4a460",
+                "#ef7b18",
+                "#f29648",
+                "#de6e10",
+                "#f29649"                
+                ]);
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    exportEnabled: true,
+    //theme: "light1", // "light1", "light2", "dark1", "dark2"
+    title:{
+        text: "Nos hotels les plus populaires"
+    },
+      colorSet: "greenShades",
+
+    data: [{
+        type: "column",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK) ; 
+           ?>
+     ,mouseover: onMouseover }]
+});
+chart.render();
+    function onMouseover(e){
+        //alert(  e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );   
+    }
+}
+</script>
 </head>
 
 <body>
@@ -126,6 +193,14 @@ https://templatemo.com/tm-561-purple-buzz
                     </div>
                     <div class="col-75">
                         <input type="number" id="nhi" name = "nbrjourv" min="0" required=""  onchange="myFunction()">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-25">
+                        <label>date</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="date"  name = "datereserv" min="<?php echo date('Y-m-d'); ?>" required="" >
                     </div>
                 </div>
                  <div class="row">
@@ -255,6 +330,9 @@ function myFunction3() {
  if (test===""||test2===""test3===""||test4===""test5===""||test6===""test7===""||test8===""test9==="") {alert("les deux champs ne doivent pas etre vide")}
     }
 </script>-->
+<div id="chartContainer" style="height: 200px; width: 50%;position: absolute;
+  left: 600px; top: 100px;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	</section>
 	 <footer class="bg-secondary pt-4">
         <div class="container">

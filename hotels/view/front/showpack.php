@@ -172,6 +172,7 @@
         <section class="container">
             <h2>pack</h2>
             <a href = "addreserv.php" class="btn btn-primary shop-item-button" href = "#">personnalisez votre reservation</a>
+            <a type="button" class="btn btn-primary shop-item-button" href = "/pdf1/index.php ?>">imprimer</a>
             <div class="shop-items">
                 <?php
                     foreach ($packs as $pack) {
@@ -182,7 +183,9 @@
                   <div class="shop-item">
                     <strong class="shop-item-title">  type:<?= $pack['typepack'] ?> </strong>
                   </div>
-                
+                <div class="shop-item">
+                    <strong class="shop-item-title"> Hotel <?= $pack['hotel1'] ?>   </strong>
+                  </div>
                   <div>
 <div class="dropdown2">
   <a  href = "showimage1.php?idpack=<?= $pack['idpack'] ?>"><img src="/hotels/assets/img/<?= $pack['imagepack'] ?>" alt="Cinque Terre" width="200" height="200"></a>

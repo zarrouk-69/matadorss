@@ -160,7 +160,7 @@
         <option value="7">random</option>
     </select>
 
-    <input type="submit" name="submit" vlaue="Choose options">*/
+    <input type="submit" name="submit" vlaue="Choose options">
 </form>
 
     <a href = "searchhotel.php" class="btn btn-primary shop-item-button">Search</a>
