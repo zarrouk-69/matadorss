@@ -5,32 +5,8 @@
   $utilisateurC = new utilisateurC();
   $error = "";
 
-  if (
-        isset($_POST["nomU"]) && 
-        isset($_POST["prenomU"]) &&
-        isset($_POST["adresseU"]) && 
-        isset($_POST["mdpU"])  
-      
-    ){
-    if (
-            !empty($_POST["nomU"]) && 
-            !empty($_POST["prenomU"]) && 
-            !empty($_POST["adresseU"]) &&  
-            !empty($_POST["mdpU"])
-        ) {
-            $user = new utilisateur(
-                $_POST['nomU'],
-                $_POST['prenomU'], 
-                $_POST['adresseU'],
-                $_POST['mdpU']
-            );
-            
-            $utilisateurC->modifierUtilisateur($user, $_GET['id']);
-            //header('Location:afficherUtilisateurs.php');
-        }
-        else
-            $error = "Missing information";
-  }
+ 
+  
 
 ?>
 <!DOCTYPE html>

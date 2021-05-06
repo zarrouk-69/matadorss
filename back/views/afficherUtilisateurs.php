@@ -116,29 +116,34 @@
 
 		
      	<hr>
-		<table border=1 align = 'center'>
+      <div class="table-responsive">
+ <table  align = 'center'class=table-dark>
+        <thead class="thead-dark">
 			<tr>
-				<th>Id</th>
-				<th>Nom</th>
-				<th>Prenom</th>
-				<th>Email</th>
-				<th>role</th>
-				<th>supprimer</th>
-				<th>modifier</th>
+				<th scope="col" class="sort" data-sort="name">Id</th>
+				<th scope="col" class="sort" data-sort="name">Nom</th>
+				<th scope="col" class="sort" data-sort="name">Prenom</th>
+				<th scope="col" class="sort" data-sort="name">Email</th>
+				<th scope="col" class="sort" data-sort="name">role</th>
+				<th scope="col" class="sort" data-sort="name">supprimer</th>
+				<th scope="col" class="sort" data-sort="name">modifier</th>
 			</tr>
-
+</thead>
+ <tbody class="list">
+            
+            <tr>
 			<?PHP
 				foreach($listeUsers as $user){
 			?>
 				<tr>
-					<td><?PHP echo $user['idU']; ?></td>
+					<td class="text-right"><?PHP echo $user['idU']; ?></td>
 					<td><?PHP echo $user['nomU']; ?></td>
 					<td><?PHP echo $user['prenomU']; ?></td>
 					<td><?PHP echo $user['adresseU']; ?></td>
 					<td><?PHP echo $user['roleU']; ?></td>
 					<td>
 						<form method="POST" action="supprimerUtilisateur.php">
-						<input type="submit" name="supprimer" value="supprimer">
+						<input  class="btn btn-success" type="submit" name="supprimer" value="supprimer">
 						<input type="hidden" value=<?PHP echo $user['idU']; ?> name="id">
 						</form>
 					</td>
@@ -149,9 +154,12 @@
 			<?PHP
 				}
 			?>
+       </tr>
+            
+        </tbody>
 		</table>
-
-		
+</div>
+		<br>
 		<!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
@@ -160,7 +168,10 @@
               &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
             </div>
           </div>
-          	<button><a href="pdf.php">pdf</a> </button> <br>
+          <br><br><br>
+          	<button type="button" class="btn btn-danger"><a href="pdf.php">pdf</a> </button> <br>
+              <button type="button" class="btn btn-danger"><a href="reclamationst.php">statistiques</a> </button> <br>
+               <button type="button" class="btn btn-danger"><a href="tri.php">tri</a> </button> <br>
           <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
               <li class="nav-item">

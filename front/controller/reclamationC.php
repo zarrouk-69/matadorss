@@ -1,9 +1,9 @@
 <?php
-    require_once '../config.php';
+    require_once '../views/config.php';
     class reclamationC {
         public function afficherreclamation() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reclamation'
                 );
@@ -16,7 +16,7 @@
 
         public function getrecById($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reclamation WHERE idR = :id'
                 );
@@ -31,7 +31,7 @@
 
         public function getrecByType($type) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reclamation WHERE typeR = :typeR'
                 );
@@ -46,7 +46,7 @@
 
         public function addreclamation($reclamation) {
             try {
-                $pdo = getConnexion();
+                $pdo =config::getConnexion();
                 $query = $pdo->prepare(
                     'INSERT INTO reclamation (typeR,dateR,texteR) 
                 VALUES (:typeR,:dateR,:texteR)'
@@ -62,7 +62,7 @@
         }
         public function updaterec($reclamation, $id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'UPDATE reclamation SET typeR = :typeR, dateR = :dateR, texteR = :texteR WHERE idR= :id'
                 );
@@ -80,7 +80,7 @@
 
         public function deleterec($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'DELETE FROM reclamation WHERE idR = :id'
                 );

@@ -5,7 +5,12 @@
 	
 	if (isset($_POST["id"])){
 		$utilisateurC->supprimerUtilisateur($_POST["id"]);
-		header('Location:afficherUtilisateurs.php');
+			echo "<script>
+alert('suppression avec succes');
+window.location.href='afficherUtilisateurs.php';
+</script>";
+		/*header('Location:afficherUtilisateurs.php');*/
+	
 	}
 
 ?>
