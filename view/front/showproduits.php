@@ -1,9 +1,17 @@
 <?php
     require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/projet/controller/panierC.php';
+
 
     $produitC =  new produitC();
 
+
+
 	$produits = $produitC->afficherproduit();
+    $panierC =  new panierC();
+
+	$paniers = $panierC->countpanier();
+
 
 	if (isset($_GET['idpr'])) {
 		$produitC->deleteproduit($_GET['idpr']);
@@ -38,6 +46,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/projet/assets/css/custom.css">
     <link rel="stylesheet" href="/projet/assets/css/drop.css">
+    <link rel="stylesheet" href="/projet/assets/css/style.css">
+    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
+
+
 
 <!--
     
@@ -104,43 +116,53 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
                     <a class="nav-link" href="login.php"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="showpanier.php"><i class="fas fa-shopping-cart"><?php
+ echo(substr(json_encode( $paniers ), -4, 1)) ?> </i></a>
+
                 </div>
             </div>
         </div>
     </nav>
+
     <!-- Close Header -->
-
-	<a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
-    <a href = "showpanier.php" class="btn btn-primary shop-item-button">panier </a>
-
 <form action="" method="post">
     <select name="Fruit">
         <option value="1">tri nom croi</option>
         <option value="2">tri nom desc</option>
     </select>
     <input type="submit" name="submit" vlaue="Choose options">
+    <a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
+
 </form>
+
 		<section class="container">
-			<h2>LES PRODUITS</h2>
+			<div class="row">
+            <h2>LES PRODUITS</h2>
+
 				<?php
 					foreach ($produits as $produit) {
 				?>
-                
-					<p  class="shop-item-title" ><?= $produit['nom'] ?> </p>
+                <div class="col-3">
                     <p>
                     <a href = "updateproduitss.php?idpr=<?= $produit['idpr'] ?>">
-                    <img src="/projet/assets/img/<?= $produit['image'] ?>" width = "200" height = "200" class="shop-item-image"> 
+                    <div class="zoom colonne">
+                    <div>
+                    <img src="/projet/assets/img/<?= $produit['image'] ?>" width = "200" height = "200" class="shop-item-image">
+                    </div>
+                    </div>
                     </a>
+                    <p  class="shop-item-title" ><?= $produit['nom'] ?> </p>
+                    <strong class="shop-item-price"><?= $produit['prix'] ?> DT</strong>
+                   
                     </p>
 
-						<span class="shop-item-price"><?= $produit['prix'] ?> dt.</span>
+                        </div>
 				<?php 
 					}
 				?>
-            
+            </div> 
 		</section>
 
 		 <!-- Start Footer -->

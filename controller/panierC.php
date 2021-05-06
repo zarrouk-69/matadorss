@@ -13,6 +13,20 @@
                 $e->getMessage();
             }
         }
+        public function countpanier() {
+            try {
+                $pdo = getConnexion();
+                $query = $pdo->prepare(
+                    'SELECT COUNT(*) FROM panier
+                    '
+                );
+                $query->execute();
+                return $query->fetchAll();
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
+
 
         public function getpanierById($id) {
             try {

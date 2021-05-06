@@ -1,9 +1,12 @@
 <?php
     require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
     require_once 'C:/xampp/htdocs/projet/entities/produit.php';
+    require_once 'C:/xampp/htdocs/projet/controller/panierC.php';
 
     $produitC =  new produitC();
+    $panierC =  new panierC();
 
+	$paniers = $panierC->countpanier();
    
 ?>
 
@@ -26,6 +29,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/projet/assets/css/custom.css">
     <link rel="stylesheet" href="/projet/assets/css/drop.css">
+    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
+
 
 <!--
     
@@ -92,9 +97,10 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
                     <a class="nav-link" href="login.php"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="showpanier.php"><i class="fas fa-shopping-cart"><?php
+ echo(substr(json_encode( $paniers ), -4, 1)) ?> </i></a>
                 </div>
             </div>
         </div>
@@ -116,9 +122,7 @@ https://templatemo.com/tm-561-purple-buzz
                     </div>
                 </div>
                 <br>
-                <div class="row">
                     <input type = "submit" value = "Search" name ="search">
-                </div>
             </form>
 		</div>
 	</section>
@@ -135,7 +139,7 @@ https://templatemo.com/tm-561-purple-buzz
 				
 				<div class="shop-item">
 					<strong class="shop-item-title"> <?= $result['nom'] ?> </strong>
-					<img src="/projet/assets/img/<?= $result['image'] ?>" class="shop-item-image">
+					<img src="/projet/assets/img/<?= $result['image'] ?>" class="shop-item-image" width = "200" height = "200">
 					<div class="shop-item-details">
 						<span class="shop-item-price"><?= $result['prix'] ?> dt.</span>
 					</div>

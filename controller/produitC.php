@@ -107,7 +107,66 @@
                 $e->getMessage();
             }
         }
-
+           /* public function chercherproduitd() {
+                try {
+                    $pdo = getConnexion();
+                    $query = $pdo->prepare(
+                        "SELECT * FROM tbl_customer 
+	                    WHERE nom LIKE '%".$search."%'
+	                    OR prix LIKE '%".$search."%' 
+	                    OR categorie LIKE '%".$search."%' "
+                    );
+                    $query->execute();
+                    return $query->fetchAll();
+                } catch (PDOException $e) {
+                    $e->getMessage();
+                }
+            }
+            $pdo = getConnexion();
+            $output = '';
+            if(isset($_POST["query"]))
+            {
+                $search = mysqli_real_escape_string($pdo, $_POST["query"]);
+                $query = $pdo->prepare(
+                    "SELECT * FROM tbl_customer 
+                    WHERE nom LIKE '%".$search."%'
+                    OR prix LIKE '%".$search."%' 
+                    OR categorie LIKE '%".$search."%' "
+                );
+            }
+            else
+            {
+                $query = $pdo->prepare(
+                    'SELECT * FROM produit'
+                    
+                );
+            }
+            $result = mysqli_query($pdo, $query);
+            if(mysqli_num_rows($result) > 0)
+            {
+                $output .= '<div class="table-responsive">
+                                <table class="table table bordered">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>Postal Code</th>
+                                        <th>Country</th>
+                                    </tr>';
+                while($row = mysqli_fetch_array($result))
+                {
+                    $output .= '
+                    <p  class="shop-item-title" ><?= $produit['nom'] ?> </p>
+                    <strong class="shop-item-price"><?= $produit['prix'] ?> DT</strong>
+                    '
+                    ;
+                }
+                echo $output;
+            }
+            else
+            {
+                echo 'Data Not Found';
+            } */
         public function rechercherproduit($title) {            
             $sql = "SELECT * from produit where nom=:nom"; 
             $db = config::getConnexion();

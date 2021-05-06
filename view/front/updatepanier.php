@@ -128,7 +128,7 @@ https://templatemo.com/tm-561-purple-buzz
 		<div class="form-container">
             <form action="" method = "POST">
             <div class="col-75">
-                        <input type="number" name = "qtepr" required ="">
+                        <input type="number" name = "qtepr" required ="" min=0>
                     </div>
         
                     <div class="col-75">

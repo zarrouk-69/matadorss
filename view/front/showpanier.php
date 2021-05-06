@@ -1,7 +1,8 @@
 <?php
     require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
     require_once 'C:/xampp/htdocs/projet/controller/panierC.php';
-
+    require_once 'C:/xampp/htdocs/projet/controller/commandeC.php';
+    require_once 'C:/xampp/htdocs/projet/entities/commande.php';
 
     $produitC =  new produitC();
 
@@ -10,14 +11,46 @@
 	
 
     $panierC =  new panierC();
+    $panier =  new panierC();
 
 	$paniers = $panierC->afficherpanier();
+    $panierss = $panierC->countpanier();
+    $commandeC =  new commandeC();
+
 
 	if (isset($_GET['idprec'])) {
 		$panierC->deletepanier($_GET['idprec']);
-		header('Location:showpanier.php');
+	//	header('Location:showpanier.php');
 	}
-    
+    echo "hot2";
+
+    if (isset($_POST['valider']) ) {
+        echo "hot";
+      /* if ($result11 !== false) */{
+              
+       
+       
+              
+         
+                  /*<tr>
+                <td><a class="nav-link" href="showpanier.php?idprec=<?= $panier['idprec'] ?>"><i class="fas fa-trash"></i></a></td>   
+                <td> <img src="/projet/assets/img/<?= $result11['image'] ?>" width = "50" height = "50" class="shop-item-image"> </td>
+                <td><p  class="shop-item-title"><?= $result11['nom'] ?> </p> </td>
+                <td><p class="shop-item-title"><?= $panier['qtepr']*$result11['prix'] ?> DT </p> </td>
+                <td><p class="shop-item-title"><?= $panier['qtepr'] ?> </p> </td>
+                <td> <a type="button" class="btn btn-primary shop-item-button" href = "updatepanier.php?idprec=<?= $panier['idprec'] ?>">Modifier</a></td>
+
+               </tr> */
+              
+
+
+               }
+
+               echo "test";
+               echo(substr(json_encode( $panierss ), -4, 1)) ;
+        $commande = new commande($_POST['prixtot'],(int)$_POST['q2'], $_POST['datePrec']);
+        $commandeC->addcommande($commande);
+            }
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +72,13 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/projet/assets/css/custom.css">
     <link rel="stylesheet" href="/projet/assets/css/drop.css">
+    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
 
+    <style>
+table, th, td {
+  border: 0.5px solid orange;
+}
+</style>
 <!--
     
 TemplateMo 561 Purple Buzz
@@ -105,9 +144,10 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
                     <a class="nav-link" href="login.php"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="showpanier.php"><i class="fas fa-shopping-cart"><?php
+ echo(substr(json_encode( $panierss ), -4, 1)) ?> </i></a>
                 </div>
             </div>
         </div>
@@ -117,41 +157,94 @@ https://templatemo.com/tm-561-purple-buzz
 
 
 	<a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
-    <a href = "showpanier.php" class="btn btn-primary shop-item-button">panier </a>
+    <a href = "showproduits.php" class="btn btn-primary shop-item-button">produit </a>
 
 		<section class="container">
 			<h2>VOTRE PANIER</h2>
+            
+            <table width=700>
+            <tr><th></th>
+            <th>image</th>
+            <th>nom</th>
+            <th>prix</th>
+            <th>quantite</th>
+            <th></th>
+            </tr>
 				<?php
+                            $prixTotal = 0;
+
 					foreach ($paniers as $panier) {
 				?>
-                
-					<p class="shop-item-title">quantite : <?= $panier['qtepr'] ?> </p>
-                
+				
                 <?php
              $hothot = $panier['idpr'];
             $result11 = $produitC->getproduitById($hothot);
+            $prixTotal+=($panier['qtepr']*$result11['prix']) ;
            /* if ($result11 !== false) */{
                    ?>
+            
+            
                    
- 					<p class="shop-item-title"><?= $result11['nom'] ?> </p>
-                     <img src="/projet/assets/img/<?= $result11['image'] ?>" width = "50" height = "50" class="shop-item-image"> 
-                     <a type="button" class="btn btn-primary shop-item-button" href = "showpanier.php?idprec=<?= $panier['idprec'] ?>">Supprimer</a>
-                     <div class="col-75">
+              
+                     <tr>
+                     <td><a class="nav-link" href="showpanier.php?idprec=<?= $panier['idprec'] ?>"><i class="fas fa-trash"></i></a></td>   
+                     <td> <img src="/projet/assets/img/<?= $result11['image'] ?>" width = "50" height = "50" class="shop-item-image"> </td>
+                     <td><p  class="shop-item-title"><?= $result11['nom'] ?> </p> </td>
+                     <td><p class="shop-item-title"><?= $panier['qtepr']*$result11['prix'] ?> DT </p> </td>
+                     <td><p class="shop-item-title"><?= $panier['qtepr'] ?> </p> </td>
+                     <td> <a type="button" class="btn btn-primary shop-item-button" href = "updatepanier.php?idprec=<?= $panier['idprec'] ?>">Modifier</a></td>
 
-
-                     <a type="button" class="btn btn-primary shop-item-button" href = "updatepanier.php?idprec=<?= $panier['idprec'] ?>">Modifier</a>
-
+                     </tr>
+                   
 
 				<?php 
 					}
 				?>
+
                 	<?php 
 					}
 				?>
+  </table>
+  <p class="title"><strong>prix total = </strong><?= $prixTotal ?> DT </p>
+
+  <style>
+  .title{
+   margin-left: 550px;
+}</style>
 
 		</section>
-        <a href = "showpanier.php" class="btn btn-primary shop-item-button">valider </a>
-
+       
+        <form action="" method = "POST" >
+        <div class="row">
+                    <input  type="submit" value="valider" name = "valider">
+                    
+                 </div>        
+        <div class="row">
+                    <div class="col-25">
+                        <label>prixtot</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text"  name = "prixtot" value="<?= $prixTotal ?>" required="" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>quantite</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text"  name = "q2" value="<?php
+ echo(substr(json_encode( $panierss ), -4, 1)) ?>" required="" >
+                    </div>
+                </div>
+        <div class="row">
+                    <div class="col-25">
+                        <label>date</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="date"  name = "datePrec" value="<?php echo date('Y-m-d'); ?>" required="" >
+                    </div>
+                </div>
+</form>
 		 <!-- Start Footer -->
 		 <footer class="bg-secondary pt-4">
         <div class="container">

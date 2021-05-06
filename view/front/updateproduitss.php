@@ -6,14 +6,17 @@
 
     $produitC =  new produitC();
     $panierC =  new panierC();
+	$panierss = $panierC->countpanier();
 
     if (isset($_POST['qtepr']) && isset($_POST['idpr']) ) {
         $panier = new panier((int)$_POST['qtepr'] , (int)$_POST['idpr']);
         
         $panierC->addpanier($panier);
 
-        header('Location:showproduits.php');
+        //header('Location:showproduits.php');
     }
+    
+
    
 ?>
 
@@ -36,6 +39,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/projet/assets/css/custom.css">
     <link rel="stylesheet" href="/projet/assets/css/drop.css">
+    <link rel="stylesheet" href="/projet/assets/css/magnify.css">
+    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
 
 <!--
     
@@ -102,53 +108,91 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
                     <a class="nav-link" href="login.php"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="showpanier.php"><i class="fas fa-shopping-cart"><?php
+ echo(substr(json_encode( $panierss ), -4, 1)) ?> </i></a>
                 </div>
             </div>
         </div>
     </nav>
     <!-- Close Header -->
+    <script>
+$(document).ready(function() {
+  $('.zoom').magnify();
+});
+</script>
 
-
-
-    <a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
-    <a href = "showpanier.php" class="btn btn-primary shop-item-button">panier</a>
 
     <?php
         if (isset($_GET['idpr'])) {
             $result = $produitC->getproduitById($_GET['idpr']);
 			if ($result !== false) {
     ?>
+       
+
 	<section class="container">
-		<h2>Update produit</h2>
+</br>
+		<h2>precomander produit</h2>
+        </br>
+
         <form action="" method = "POST" onsubmit="myFunction()">
-        <a href = "showproduits.php" class="btn btn-primary shop-item-button">All produit</a>
 		<div class="form-container">
             <form action="" method = "POST">
-            <img src="/projet/assets/img/<?= $result['image'] ?>" width = "200" height = "200" class="shop-item-image"> 
+            <img src="/projet/assets/img/<?= $result['image'] ?>"  width = "200" height = "200" id="image" class="zoom" data-magnify-src="/projet/assets/img/<?= $result['image'] ?>" > 
+
             <span class="shop-item-price"><?= $result['description'] ?> </span>
-            <div class="col-75">
-                        <input type="number" name = "qtepr" required ="">
-                    </div>
+            <div class="col-75" onsubmit="myFunction()">
         
+             <form action="post-method.php" method="post">
+                        <input type="number" name = "qtepr" required ="" min="1">
+                        </form>
+                    </div>
+                    <?php
+                    if ( filter_has_var( INPUT_POST, 'submit' ) ) {
+                    $qtepr= 0;
+                    $h="submit";
+                    $qtepr = $_REQUEST['qtepr'];
+                    if ($qtepr>$result['qtestock'])
+                    {
+                    echo '<span style="color:#FF0000;text-align:center;">Desole la quantite de stock est inferieure a votre quantite de precomande</span>';
+                    $qtepr="";
+                    $_GET['idprec'];}
+                    else { echo '<span style="color:#008000;text-align:center;">produit ajoute au panier</span>';
+                        
+
+                    }
+                    }
+                 //if $result['qtestock']>"qtepr"
+
+            ?>
                     <div class="col-75">
-                      <p hidden>  <input type="number" name = "idpr" value="<?= $result['idpr'] ?>"></p>
+                    <div class="col-3">
+                      <p hidden>  <input type="number" name = "idpr" value="<?= $result['idpr']  ?>"></p>
+                      <input type="submit" value="ajouter" name = "submit">
+                      </div>
                     </div>
                   
-                    <input type="submit" value="precomander" name = "submit">
                 
 
     <?php
         }
     }
+        
         else {
             header('Location:showproduits.php');
         }
     
     ?>
-            
+             <?php
+$actual_link = "https://fb.com";
+?>
+
+<br>
+
+<?php
+echo '<iframe src="https://www.facebook.com/plugins/share_button.php?href='.$actual_link.'&layout=button_count&size=large&mobile_iframe=true&width=83&height=28&appId" width="83" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>';
+?>
 		</section>
 
 		 <!-- Start Footer -->
@@ -290,15 +334,19 @@ https://templatemo.com/tm-561-purple-buzz
     <script src="/projet/assets/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="/projet/assets/js/custom.js"></script>
+    <script src="/projet/assets/js/jquery.magnify.js"></script>
+
 
 
 </body>
 <script > function myFunction()
 {
     alert("valide")
-    var test=document.getElementById('datev22').value
+    var test=document.getElementById('qtepr').value
     alert(test)
 }
 
         </script>
+        </script>
+
 </html>
