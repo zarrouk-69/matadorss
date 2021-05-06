@@ -9,7 +9,7 @@
         
         $sponsorC->addSponsor($sponsor);
 
-        header('Location:showAlbums.php');
+        header('Location:/Sendmail/envoyer_des_mails.php');
     }
 ?>
 
