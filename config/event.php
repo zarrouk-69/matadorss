@@ -140,7 +140,7 @@
                 {
                     if($titre != '' )
                     {
-                        $query = "SELECT * from evenement WHERE titre = '$titre'"; 
+                        $query = "SELECT * from evenement WHERE titre like '%$titre%'"; 
                     }
                     else
                     {
@@ -179,6 +179,15 @@
             }
            
            return $query;
+        }
+        public function get_nbp($ide)
+        {
+            global $db;
+            $query = "SELECT *  from evenement Where ide = '$ide'";
+            $result = mysqli_query($db->connection,$query);
+            $data = mysqli_fetch_assoc($result);
+            return $data['nbp'];
+            
         }
         public function Delete_Record($ide)
         {

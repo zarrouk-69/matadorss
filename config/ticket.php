@@ -10,11 +10,17 @@
         public function Store_Record()
         {
             global $db;
+            $db2 = new ticket();
+            $db1= new event();
             if(isset($_POST['btn_save']))
             {
-                $ide = $db->check($_POST['ide']);
+                if(isset($_GET['T_IDE']))
+            {
+
+                $ide = $_GET['T_IDE']; 
                 $idp = $db->check($_POST['idp']);
-                
+                if($db1->get_nbp($ide)- $db2->search_by_event($ide)> 0)
+                {
 
                 if($this->insert_record($ide,$idp))
                 {
@@ -24,17 +30,24 @@
                 {
                     echo '<div class="alert alert-danger"> Failed </div>';
                 }
+                }
+                else
+                {
+                    echo '<div class="alert alert-danger"> FULL </div>';
+                }
+                
+                
             }
+            
+            
+            
         }
+       
+        }
+        
         function search_by_event($ide)
         {
-            //global $db;
-            //$query = "SELECT COUNT(*) as 'c' FROM ticket WHERE ide = '$ide'";
-           // $query = "SELECT *  FROM ticket ";
-            //$result = mysqli_query($db->connection,$query);
-            //$row = mysql_fetch_assoc($result);
-           // echo $row['c']; //Here is your count
-           //echo($row['ide']);
+            
            global $db;
            $sql = "SELECT COUNT(*) c  from ticket WHERE ide='$ide'";
            $result = mysqli_query($db->connection,$sql);

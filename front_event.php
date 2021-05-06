@@ -151,7 +151,7 @@ https://templatemo.com/tm-561-purple-buzz
                                 ?>
                 <!-- Start Recent Work -->
                 <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
+                    <a href="front_ticket.php?T_IDE=<?php echo $data['ide'] ?>" class="recent-work card border-0 shadow-lg overflow-hidden">
                         <img class="recent-work-img card-img" src="./img/<?php echo $data['img'] ?>" alt="Card image">
                         <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="recent-work-content text-start mb-3 ml-3 text-dark">

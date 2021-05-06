@@ -1,6 +1,6 @@
 <?php 
     require_once('./config/dbconfig.php'); 
-    $db = new ticket();
+    $db = new event();
     $db->update();
     $id = $_GET['U_ID'];
     $result = $db->get_record($id);
