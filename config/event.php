@@ -10,8 +10,15 @@
         public function Store_Record()
         {
             global $db;
+            
             if(isset($_POST['btn_save']))
             {
+                
+                
+
+                
+                
+                
                 $titre = $db->check($_POST['titre']);
                 $date_d = $db->check($_POST['date_d']);
                 $date_f = $db->check($_POST['date_f']);
@@ -29,6 +36,9 @@
                 {
                     echo '<div class="alert alert-danger"> Failed </div>';
                 }
+                
+                
+                
             }
         }
         function total_events($x)
@@ -150,16 +160,33 @@
                     echo '<div class="alert alert-success"> Your Records Has Been filtred :) </div>';
                 }
                 else
-                {
-                    
+                {   
+                   
+    
                     echo '<div class="alert alert-danger"> Failed </div>';
                 }
                 
             }
             else
             {
+                if(isset($_POST['ASC']))
+            {
+                    $query = "SELECT * from evenement order by ide ASC";
+                    
+                }
+                else
+                {
+                    if (isset($_POST['DSC']))
+                    {
+                        $query = "SELECT * from evenement order by ide DESC ";
+                        echo('kkkk');
+                    }
+                    else
+                    {
+                        $query = "SELECT * from evenement ";
+                    }
+                }
                 
-                $query = "SELECT * from evenement ";
                 
                 
             }
