@@ -1,22 +1,16 @@
 <?php
-    require_once 'C:/xampp/htdocs/ateleir8/controller/donC.php';
-    require_once 'C:/xampp/htdocs/ateleir8/entities/don.php';
+    require_once 'C:/xampp/htdocs/ateleir8/controller/badgeC.php';
 
-    $donC =  new donC();
+    $badgeC =  new badgeC();
 
-    if (isset($_POST['montantdon']) && isset($_POST['naturedon']) && isset($_POST['dateD']) ) {
-        $don = new don((int)$_POST['montantdon'], $_POST['naturedon'], $_POST['dateD']);
-        
-            $donC->updateDon($don,$_GET['iddon']);
-        
-       
-        header('Location:showdon.php');
-    }
+	$badges = $badgeC->afficherBadge();
+
+	
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="..//ateleir8/assets/css/style.css">
+
 <head>
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
@@ -42,8 +36,9 @@ https://templatemo.com/tm-561-purple-buzz
 
 -->
 </head>
+
 <body>
- <!-- Header -->
+	<!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
@@ -105,7 +100,7 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </nav>
     <!-- Close Header -->
-     <!-- Start Banner Hero -->
+<!-- Start Banner Hero -->
     <div class="banner-wrapper bg-light">
         <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
 
@@ -181,75 +176,49 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </div>
     <!-- End Banner Hero -->
-    
-    <?php
-        if (isset($_GET['iddon'])) {
-            $result = $donC->getDonById($_GET['iddon']);
-			if ($result !== false) {
-    ?>
-	<section class="container">
-		<h2>Update Don</h2>
-        <a href = "showdon.php" class="btn btn-primary shop-item-button">All dons</a>
-		<div class="form-container">
-            <form action="" method = "POST" onsubmit="myFunction()">
-                <div class="row">
-                    <div class="col-25">                
-                        <label>Montant: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" name = "montantdon" value = "<?= $result['montantdon'] ?> ">
-                    </div>
-                </div>
-                
-               
-                <div class="row">
-                    <div class="col-25">                
-                        <label>id client: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text"  name = "dateD" value = "<?= $result['dateD'] ?>">
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="col-25">
-                        <label>Nature de Paiment:</label>
-                    </div>
-                    <div class="col-75">
-                        
-                        <select name="naturedon" id="naturedon" value = "<?= $result['naturedon'] ?> ">
-                            <option value="espece">espece</option>
-                            <option value="check">check</option>
-                            <option value="carte bancaire">carte bancaire</option>
-                            
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <input type="submit" value="Submit" name = "submit">
-                </div>
-            </form>
-            <script > function myFunction()
-{
-    alert("aaaaa")
-    var test=document.getElementById('datev22').value
-    alert(test)
-}
+	
+		<section class="container">
+			<h2>Tables des Dons</h2>
+			<a href = "addbadge.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
+			
+			<div class="shop-items">
+				<?php
+					foreach ($badges as $badge) {
+				?>
+				<div class="shop-item">
+					
+					<table>
+						<tr>
+							<th>montant</th>
+							<th>date</th>
+							
+						</tr>
+						<tr>
 
-        </script>
-		</div>
-	</section>
+					<td><strong class="shop-item-title"> <?= $badge['niveau'] ?> </strong></td>
+					<td><span class="shop-item-title"> <?= $badge['logim'] ?> </span></td>
+					<div class="shop-item">
 
-    <?php
-        }
-    }
-        else {
-            header('Location:showdon.php');
-        }
-    
-    ?>
-	 <!-- Start Footer -->
-    <footer class="bg-secondary pt-4">
+						</div>
+                    </tr>
+						
+						
+					
+					 </table>	
+					
+						
+	
+				    </div>
+				
+			</div>
+				<?php 
+					}
+				?>
+			</div>
+
+		</section>
+
+	<footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
 
@@ -372,7 +341,6 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
 
     </footer>
-    <!-- End Footer -->
 <script src="/ateleir8/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
     <script src="/ateleir8/assets/js/jquery.min.js"></script>

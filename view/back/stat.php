@@ -1,20 +1,39 @@
 <?php
-   require_once 'C:/xampp/htdocs/ateleir8/controller/sponsorC.php';
+       require_once 'C:/xampp/htdocs/ateleir8/controller/donC.php';
 
-    $sponsorC =  new sponsorC();
-
-	$sponsors = $sponsorC->afficherSponsor();
-
-	if (isset($_GET['idS'])) {
-		$sponsorC->deleteSponsor($_GET['idS']);
-		header('Location:showsponsor.php');
-	}
-
+    $donC =  new donC();
+  
+$dataPoints = array();
+//Best practice is to create a separate file for handling connection to database
+try{
+     // Creating a new connection.
+    // Replace your-hostname, your-db, your-username, your-password according to your database
+    $link = new \PDO(   'mysql:host=localhost;dbname=karmandi;charset=utf8mb4', //'mysql:host=localhost;dbname=canvasjs_db;charset=utf8mb4',
+                        'root', //'root',
+                        '', //'',
+                        array(
+                            \PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                            \PDO::ATTR_PERSISTENT => false
+                        )
+                    );
+    
+    $handle = $link->prepare('select naturedon as idc1,count(*) as idh1 from don group by naturedon;'); 
+    $handle->execute(); 
+    $result = $handle->fetchAll(\PDO::FETCH_OBJ);           
+    foreach($result as $row){
+        
+        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->idh1));
+    }
+    $link = null;
+}
+catch(\PDOException $ex){
+    print($ex->getMessage());
+}
+        
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE HTML>
+<html>
+<head> 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
@@ -30,55 +49,60 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="/ateleir8/assets1/css/argon.css?v=1.2.0" type="text/css">
-	<style>
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+<script>
+
+       
+window.onload = function () {
+  CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "#f4a460",
+                "#c8980c",
+                "#c80c9a",
+                "#de6e10",
+                "#f29649"                
+                ]);
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    exportEnabled: true,
+    //theme: "light1", // "light1", "light2", "dark1", "dark2"
+    title:{
+        text: "Statistiques de type du Paiment des dons "
+    },
+      colorSet: "greenShades",
+      legend:{
+        cursor: "pointer",
+        itemclick: explodePie
+    },
+
+    data: [{
+        type: "pie",
+       
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK) ; 
+           ?>
+     ,mouseover: onMouseover }]
+    
+});
+
+chart.render();
+//chart.draw(data,option);
+function explodePie (e) {
+    if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+    } else {
+        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+    }
+    e.chart.render();
+
 }
-
-.dropdown {
-  position: relative;
-  display: inline-block;
+    function onMouseover(e){
+        //alert(  e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );   
+    }
 }
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: inline;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
-</style>	
-
-  
-
-
+</script>
 </head>
-
 <body>
-	 <!-- Sidenav -->
+    <!-- Sidenav -->
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <!-- Brand -->
@@ -105,7 +129,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ateleir8/view/back/stat.php">
+              <a class="nav-link" href="examples/map.html">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Statistiques</span>
               </a>
@@ -186,74 +210,12 @@
   </nav>
   
    <div class="main-content" id="panel">
-	<a href = "searchsponsor.php" class="btn btn-primary shop-item-button">Search</a>
-		<section class="container">
-			<h2>SPONSORS</h2>
-			<a href = "addsponsor.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
-			<a href = "triersponsor.php" class="btn btn-primary shop-item-button" href = "#">Trier</a>
-			<div id="wl" class="shop-items">
-				<?php
-					foreach ($sponsors as $sponsor) {
-				?>
-				
-				<div  class="shop-item">
-					<div class="dropdown">
-					<a  ><img src="/ateleir8/assets/img//<?= $sponsor['logoS'] ?>" width="400" height="200"> </a>
-					<div class="dropdown-content">
-						<strong class="shop-item-title">Nom: <?= $sponsor['nomS'] ?></strong>
-						<span class="shop-item-title">Numero: <?= $sponsor['numtlph'] ?> </span>
-						<span class="shop-item-title">Date Debut: <?= $sponsor['dateD'] ?> </span>
-						<span class="shop-item-title">Date Fin : <?= $sponsor['dateF'] ?> </span>
-						<span class="shop-item-title">Description: <?= $sponsor['descr'] ?> </span>
-					</div>
-				</div>
-				
-						
-                          
-						<a type="button" class="btn btn-primary shop-item-button" href = "updatesponsor.php?idS=<?= $sponsor['idS'] ?>">Modifier</a>
-						<a type="button" class="btn btn-primary shop-item-button" href = "showsponsor.php?idS=<?= $sponsor['idS'] ?>">Supprimer</a>
-
-					
-					</div>
-					
-				<lr>
-
-				<?php 
-					}
-				?>
-			</div>
-			<!--<div id="wl1" class="shop-items">
-				<?php
-					foreach ($sponsors as $sponsor) {
-				?>
-
-                     <div>
-						<a type="button" onclick="myFunction()" ><img src="../images/<?= $sponsor['logoS'] ?>" width="400" height="200"> </a>
-						<button onclick="myFunction()"> test</button>
-						
-					</div>
-					<?php 
-					}
-				?>
-					</div>
-			<script>
-							wl.style.display = "none";
-function myFunction() {
-  var x = document.getElementById("wl");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-</script>-->
-		</section>
- </lr>
+<div id="chartContainer" style="height: 600px; width: 50%; position: absolute;
+  left: 400px;
+  "></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>
-</section>
-</div>
-
-  <!-- Argon Scripts -->
+<!-- Argon Scripts -->
   <!-- Core -->
   <script src="/ateleir8/assets1/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/ateleir8/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -266,7 +228,5 @@ function myFunction() {
   <!-- Argon JS -->
   <script src="/ateleir8/assets1/js/argon.js?v=1.2.0"></script>
 
-
 </body>
-
-</html>
+</html>                              

@@ -100,12 +100,12 @@
         }
 
         public function rechercherSponsor($nom) {            
-            $sql = "SELECT * from sponsor where nomS=:nom"; 
+            $sql = 'SELECT * from sponsor where nomS like ("%":sr"%")' ; 
             $db = getConnexion();
             try {
                 $query = $db->prepare($sql);
                 $query->execute([
-                    'nomS' => $nom->getNomSpon(),
+                    'sr' => $nom
                 ]); 
                 $result=$query->fetchAll(); 
                  //$sponsor->getNomSpon()
@@ -116,7 +116,7 @@
             }
         }
          public function trierSponsor() {            
-            $sql = "SELECT * from sponsor order by  nomS "; 
+            $sql = "SELECT * from sponsor order by  nomS  "; 
             $db = getConnexion();
             try {
                 $query = $db->prepare($sql);

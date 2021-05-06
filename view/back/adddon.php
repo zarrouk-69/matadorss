@@ -1,14 +1,31 @@
 <?php
     require_once 'C:/xampp/htdocs/ateleir8/controller/donC.php';
+     require_once 'C:/xampp/htdocs/ateleir8/controller/badgeC.php';
     require_once 'C:/xampp/htdocs/ateleir8/entities/don.php';
 
-    $donC =  new donC();
 
-    if ( isset($_POST['montantdon']) && isset($_POST['naturedon'])  && isset($_POST['dateD'])) {
-        $don = new don( (int)$_POST['montantdon'], $_POST['naturedon'], $_POST['dateD']);
+    $donC =  new donC();
+     $badgeC =  new badgeC();
+
+    if ( isset($_POST['montantdon']) && isset($_POST['naturedon'])  ) {
+        if($_POST['montantdon']<=1000)
+        { $result11 = $badgeC->getBadgeById('5');
         
+        }
+       elseif($_POST['montantdon']<=3000)
+        {
+             $result11 = $badgeC->getBadgeById('3');
+         
+        }
+        elseif($_POST['montantdon']<=5000)
+        {
+             $result11 = $badgeC->getBadgeById('4');
+          
+        }
+        $don = new don( (int)$_POST['montantdon'], $_POST['naturedon'],$result11['logim']);
+      
         $donC->addDon($don);
- header('Location:/Sendmail/envoyer_des_mails.php');
+ header('Location:showdon.php');
        
     }
 ?>
@@ -198,14 +215,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <input type="int" name = "montantdon"  required="">
                     </div>
                 </div>
-               <div class="row">
-                    <div class="col-25">
-                        <label>date Debut:</label>
-                    </div>
-                    <div class="col-75">
-                        <input type ="date" name ="dateD" >
-                    </div>
-                </div>
+            
                 <div class="row">
                     <div class="col-25">
                         <label>Nature de Paiment:</label>

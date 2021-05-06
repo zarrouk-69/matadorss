@@ -1,22 +1,22 @@
 <?php
-    require_once 'C:/xampp/htdocs/ateleir8/controller/donC.php';
-    require_once 'C:/xampp/htdocs/ateleir8/entities/don.php';
+    require_once 'C:/xampp/htdocs/ateleir8/controller/badgeC.php';
+    require_once 'C:/xampp/htdocs/ateleir8/entities/badge.php';
 
-    $donC =  new donC();
 
-    if (isset($_POST['montantdon']) && isset($_POST['naturedon']) && isset($_POST['dateD']) ) {
-        $don = new don((int)$_POST['montantdon'], $_POST['naturedon'], $_POST['dateD']);
-        
-            $donC->updateDon($don,$_GET['iddon']);
-        
+    $badgeC =  new badgeC();
+
+    if ( isset($_POST['niveau']) && isset($_POST['logim'])  ) {
+        $badge = new badge( $_POST['niveau'], $_POST['logim']);
+      
+        $badgeC->addbadge($badge);
+ //header('Location:/Sendmail/envoyer_des_mails.php');
        
-        header('Location:showdon.php');
     }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="..//ateleir8/assets/css/style.css">
+
 <head>
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
@@ -33,7 +33,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/ateleir8/assets/css/custom.css">
     <link rel="stylesheet" href="/ateleir8/assets/css/drop.css">
-
+<style >
+    #km126{width: 10em};
+</style>
 <!--
     
 TemplateMo 561 Purple Buzz
@@ -42,8 +44,9 @@ https://templatemo.com/tm-561-purple-buzz
 
 -->
 </head>
+
 <body>
- <!-- Header -->
+	 <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
@@ -182,74 +185,48 @@ https://templatemo.com/tm-561-purple-buzz
     </div>
     <!-- End Banner Hero -->
     
-    <?php
-        if (isset($_GET['iddon'])) {
-            $result = $donC->getDonById($_GET['iddon']);
-			if ($result !== false) {
-    ?>
 	<section class="container">
-		<h2>Update Don</h2>
-        <a href = "showdon.php" class="btn btn-primary shop-item-button">All dons</a>
+		<h2>Faire don</h2>
+        <a href = "showbadge.php" class="btn btn-primary shop-item-button">All dons</a>
 		<div class="form-container">
-            <form action="" method = "POST" onsubmit="myFunction()">
+            <form action=""  method = "POST" >
+                 
                 <div class="row">
                     <div class="col-25">                
-                        <label>Montant: </label>
+                        <label>niveau: </label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "montantdon" value = "<?= $result['montantdon'] ?> ">
+                        <input type="text" name = "niveau"  required="">
                     </div>
                 </div>
-                
-               
-                <div class="row">
-                    <div class="col-25">                
-                        <label>id client: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text"  name = "dateD" value = "<?= $result['dateD'] ?>">
-                    </div>
-                </div>
-                 <div class="row">
+               <div class="row">
                     <div class="col-25">
-                        <label>Nature de Paiment:</label>
+                        <label>logo:</label>
                     </div>
                     <div class="col-75">
-                        
-                        <select name="naturedon" id="naturedon" value = "<?= $result['naturedon'] ?> ">
-                            <option value="espece">espece</option>
-                            <option value="check">check</option>
-                            <option value="carte bancaire">carte bancaire</option>
-                            
-                        </select>
+                        <input type ="file"  name ="logim" >
                     </div>
                 </div>
+             
+                
                 <br>
                 <div class="row">
-                    <input type="submit" value="Submit" name = "submit">
+
+                    <input  type="submit"  id="km126" value="Submit"  name = "submit">
+
                 </div>
             </form>
-            <script > function myFunction()
-{
-    alert("aaaaa")
-    var test=document.getElementById('datev22').value
-    alert(test)
-}
+            <script >
+                function mail()
+                {
 
-        </script>
+
+    alert("vous allez recevoir un email !");
+}
+</script>
 		</div>
 	</section>
-
-    <?php
-        }
-    }
-        else {
-            header('Location:showdon.php');
-        }
-    
-    ?>
-	 <!-- Start Footer -->
-    <footer class="bg-secondary pt-4">
+	<footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
 
@@ -373,14 +350,15 @@ https://templatemo.com/tm-561-purple-buzz
 
     </footer>
     <!-- End Footer -->
-<script src="/ateleir8/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/ateleir8//ateleir8/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/ateleir8/assets/js/jquery.min.js"></script>
+    <script src="/ateleir8//ateleir8/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/ateleir8/assets/js/isotope.pkgd.js"></script>
-    <script src="/ateleir8/assets/js/templatemo.js"></script>
+    <script src="/ateleir8//ateleir8/assets/js/isotope.pkgd.js"></script>
+     <script src="/ateleir8//ateleir8/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/ateleir8/assets/js/custom.js"></script>
+    <script src="/ateleir8//ateleir8/assets/js/custom.js"></script>
+
 </body>
 
 </html>

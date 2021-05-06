@@ -192,14 +192,17 @@ https://templatemo.com/tm-561-purple-buzz
 					
 					<table>
 						<tr>
-							<th>montant</th>
-							<th>date</th>
+							<th>montant </th>
+                            <hr>
+							<th>badge</th>
+                            <hr>
 							<th>nature</th>
+
 						</tr>
 						<tr>
 
 					<td><strong class="shop-item-title"> <?= $don['montantdon'] ?> Dt</strong></td>
-					<td><span class="shop-item-title"> <?= $don['dateD'] ?> </span></td>
+					<td><a><img src="/ateleir8/assets/img/<?= $don['dateD'] ?>" alt="Cinque Terre" width="100" height="100"></a></td>
 					<div class="shop-item">
 
 						<td><span class="shop-item-title"><?= $don['naturedon'] ?> </span></td>
