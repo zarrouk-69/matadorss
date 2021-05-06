@@ -31,6 +31,53 @@
                 }
             }
         }
+        function total_events($x)
+        {
+            
+           global $db;
+           $db1 = new ticket();
+
+           if ($x == 0 )
+           {
+           $sql = "SELECT COUNT(*) c  from evenement ";
+           $result = mysqli_query($db->connection,$sql);
+           $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           }
+           if ($x == 1 )
+           {
+            $query = "SELECT * from evenement ";
+            $result1 = mysqli_query($db->connection,$query);
+            $x = 0;
+            while($data = mysqli_fetch_assoc($result1))
+            {
+                if($data['nbp']  ==$db1->search_by_event($data['ide']) )
+                {
+                    $x = $x + 1 ;
+                }
+            }
+            return $x;
+           }
+           if ($x == 2 )
+           {
+           $sql = "SELECT COUNT(*) c  from evenement where state = 0";
+           $result = mysqli_query($db->connection,$sql);
+           $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           }
+           if ($x == 3 )
+           {
+           $sql = "SELECT COUNT(*) c  from evenement where state = 1";
+           $result = mysqli_query($db->connection,$sql);
+           $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           }
+           
+           
+        }
         function increase_nbpt($ide)
         {
             global $db;

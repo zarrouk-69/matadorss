@@ -85,6 +85,42 @@
                 
             }
         }
+        function total_tickets($x)
+        {
+            
+           global $db;
+           //$db1 = new ticket();
+
+           if ($x == 0 )
+           {
+           $sql = "SELECT COUNT(*) c  from ticket ";
+           $result = mysqli_query($db->connection,$sql);
+           $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           }
+           if ($x == 1 )
+           {
+            $query = "SELECT COUNT(*) c  from ticket where state = 1 ";
+            $result = mysqli_query($db->connection,$query);
+            $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           
+           }
+           if ($x == 2 )
+           {
+            $query = "SELECT COUNT(*) c  from ticket where state = 0 ";
+            $result = mysqli_query($db->connection,$query);
+            $data = mysqli_fetch_assoc($result);
+           
+               return $data['c'];
+           
+           }
+           
+           
+           
+        }
       // Insert Record in the Database Using Query    
         function insert_record($ide,$idp)
         {

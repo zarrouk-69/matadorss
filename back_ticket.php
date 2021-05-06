@@ -431,6 +431,74 @@
              $db->display_message(); 
              $db->display_message(); ?>
              <div class="container-fluid">
+             <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">total tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"> <?php echo($db->total_tickets(0))?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                        <i class="ni ni-money-coins"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                   
+                    <span class="text-nowrap"> </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0"> active tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_tickets(1))?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                        <i class="ni ni-active-40"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo((100/$db->total_tickets(0))*($db->total_tickets(1)))?>%</span>
+                    <span class="text-nowrap">of total tickets</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0"> inactive tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_tickets(2))?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                        <i class="ni ni-chart-pie-35"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i><?php echo((100/$db->total_tickets(0))*($db->total_tickets(2)))?>%</span>
+                    <span class="text-nowrap">of total tickets</span>
+                  </p>
+                </div>
+              </div>
+            </div>
                             <form method="POST">
                             <input type="text" name="idt" placeholder="ide" class="form-control mb-2">
                             <input type="date" name="datea" class="form-control mb-2">
