@@ -22,10 +22,8 @@
 		$panierC->deletepanier($_GET['idprec']);
 	//	header('Location:showpanier.php');
 	}
-    echo "hot2";
 
     if (isset($_POST['valider']) ) {
-        echo "hot";
       /* if ($result11 !== false) */{
               
        
@@ -46,8 +44,6 @@
 
                }
 
-               echo "test";
-               echo(substr(json_encode( $panierss ), -4, 1)) ;
         $commande = new commande($_POST['prixtot'],(int)$_POST['q2'], $_POST['datePrec']);
         $commandeC->addcommande($commande);
             }
@@ -156,12 +152,10 @@ https://templatemo.com/tm-561-purple-buzz
 
 
 
-	<a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
-    <a href = "showproduits.php" class="btn btn-primary shop-item-button">produit </a>
-
 		<section class="container">
+        <br>
 			<h2>VOTRE PANIER</h2>
-            
+            <br>
             <table width=700>
             <tr><th></th>
             <th>image</th>
@@ -215,33 +209,28 @@ https://templatemo.com/tm-561-purple-buzz
 		</section>
        
         <form action="" method = "POST" >
-        <div class="row">
                     <input  type="submit" value="valider" name = "valider">
                     
-                 </div>        
         <div class="row">
                     <div class="col-25">
-                        <label>prixtot</label>
                     </div>
                     <div class="col-75">
-                        <input type="text"  name = "prixtot" value="<?= $prixTotal ?>" required="" >
+                    <p hidden> <input type="text"  name = "prixtot" value="<?= $prixTotal ?>" required="" ></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>quantite</label>
                     </div>
                     <div class="col-75">
-                        <input type="text"  name = "q2" value="<?php
- echo(substr(json_encode( $panierss ), -4, 1)) ?>" required="" >
+                    <p hidden><input type="text"  name = "q2" value="<?php
+ echo(substr(json_encode( $panierss ), -4, 1)) ?>" required="" ></p>
                     </div>
                 </div>
         <div class="row">
                     <div class="col-25">
-                        <label>date</label>
                     </div>
                     <div class="col-75">
-                        <input type="date"  name = "datePrec" value="<?php echo date('Y-m-d'); ?>" required="" >
+                    <p hidden> <input type="date"  name = "datePrec" value="<?php echo date('Y-m-d'); ?>" required="" ></p>
                     </div>
                 </div>
 </form>

@@ -1,18 +1,10 @@
-* {
-	box-sizing: border-box;
+.zoom div img {
+	-webkit-transform: scale(1.25);
+	transform: scale(1.25);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
-
-.column {
-	float: left;
-	width: 40.33%;
-	padding: 20px;
+.zoom div:hover img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
 }
-
-.row::after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-
-

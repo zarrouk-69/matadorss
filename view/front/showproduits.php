@@ -125,17 +125,34 @@ https://templatemo.com/tm-561-purple-buzz
             </div>
         </div>
     </nav>
+    <style>
+.center {
+  margin: 0;
+  position: absolute;
+  top: 18.4%;
+  left: 87%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
 
     <!-- Close Header -->
+    <br>
 <form action="" method="post">
+<span>Trier par : </span>
+
     <select name="Fruit">
-        <option value="1">tri nom croi</option>
-        <option value="2">tri nom desc</option>
+        <option value="1">prix croissant</option>
+        <option value="2">prix décroissant </option>
     </select>
     <input type="submit" name="submit" vlaue="Choose options">
-    <a href = "searchproduit.php" class="btn btn-primary shop-item-button">Search</a>
 
 </form>
+<br>
+<div class="center"><a href = "searchproduit.php" class="btn btn-primary shop-item-button" >Search</a>
+</div>
+
+
 
 		<section class="container">
 			<div class="row">

@@ -145,7 +145,7 @@ $(document).ready(function() {
             <div class="col-75" onsubmit="myFunction()">
         
              <form action="post-method.php" method="post">
-                        <input type="number" name = "qtepr" required ="" min="1">
+                        <input type="number" name = "qtepr" required ="" min="1" >
                         </form>
                     </div>
                     <?php
