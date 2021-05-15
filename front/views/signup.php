@@ -35,7 +35,7 @@ if(isset($_POST['forminscription'])) {
                      <html>
                         <body>
                            <div align="center">
-                              <a href="http://127.0.0.1/Tutos%20PHP/%2314%20%28Espace%20membre%29/confirmation.php?pseudo='.urlencode($pseudo).'&key='.$key.'">Confirmez votre compte !</a>
+                              <a href="http://localhost:10080/gestrecuu/front/views/verify.php?vkey=%27.urlencode($key)"">Confirmez votre compte !</a>
                            </div>
                         </body>
                      </html>
@@ -252,10 +252,10 @@ window.onclick = function(event) {
                </tr>
                <tr>
                   <td align="right">
-                     <label for="mail">Mail :</label>
+                     <label for="text">Mail :</label>
                   </td>
                   <td>
-                     <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
+                     <input type="text" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
                   </td>
                </tr>
                <tr>
@@ -263,7 +263,7 @@ window.onclick = function(event) {
                      <label for="mail2">Confirmation du mail :</label>
                   </td>
                   <td>
-                     <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
+                     <input type="text" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
                   </td>
                </tr>
                <tr>

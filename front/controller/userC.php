@@ -22,29 +22,28 @@
             }
           return $message;
         }
-        function modifierUtilisateur($Utilisateur, $id){
-            try {
-                $db = config::getConnexion();
-                $query = $db->prepare(
-                    'UPDATE utilisateur SET 
-                        nomU = :nom, 
-                        prenomU = :prenom,
-                        adresseU = :email,
-                        mdpU = :password
-                    WHERE idU = :id'
-                );
-                $query->execute([
-                    'nom' => $utilisateur->getnomU(),
-                    'prenom' => $utilisateur->getprenomU(),
-                    'email' => $utilisateur->getadresseU(),
-                    'password' => $utilisateur->getmdpU(),
-                    'id' => $id
-                ]);
-                echo $query->rowCount() . " records UPDATED successfully <br>";
-            } catch (PDOException $e) {
-                $e->getMessage();
-            }
+         public function modifierUser($User, $id) {
+            echo 'aaaaaa';
+        try {
+            $pdo = config::getConnexion();
+            $query = $pdo->prepare(
+                'UPDATE utilisateur SET nomU = :Nom,prenomU= :Prenom,adresseU = :Email,pseudo = :Pseudo,mdpU = :Mot_de_passe WHERE idU = :id'
+            );
+            $query->execute([
+                'Nom' => $User->getnomU(),
+                'Prenom' => $User->getprenomU(),
+                'Email' => $User->getadresseU(),
+                'Pseudo' => $User->getpseudo(),
+                'Mot_de_passe' => $User->getmdpU(),
+               
+                'id' => $id,
+                
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully";
+        } catch (PDOException $e) {
+            $e->getMessage();
         }
+    }
          function recuperernom($mail){
       $sql = "SELECT nomU FROM utilisateur where adresseU = '$mail' ";
       $db = config::getConnexion();
@@ -106,6 +105,19 @@
                 die('Erreur: '.$e->getMessage());
             }   
         }  
+         public function getUser($email) {
+        try {
+            $pdo = config::getConnexion();
+            $query = $pdo->prepare('SELECT * FROM utilisateur WHERE adresseU = :email '
+            );
+            $query->execute([
+                'email' => $email,
+            ]);
+            return $query->fetchAll();
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 
 	}
     ?>

@@ -6,12 +6,13 @@ class utilisateur{
 	private $adresseU;
 	private $roleU;
 	private $mdpU;
-	function __construct($idU,$nomU,$prenomU,$adresseU,$roleU,$mdpU){
-		$this->idU=$idU;
+	function __construct($nomU,$prenomU,$adresseU,$pseudo,$mdpU){
+	
 		$this->nomU=$nomU;
 		$this->prenomU=$prenomU;
 		$this->adresseU=$adresseU;
-		$this->roleU=$roleU;
+		$this->pseudo=$pseudo;
+		
 		$this->mdpU=$mdpU;
 	}
 	function getidU(){
@@ -32,6 +33,9 @@ class utilisateur{
 	function getmdpU(){
 		return $this->mdpU;
 	}
+	function getpseudo(){
+		return $this->pseudo;
+	}
 
 	function setnom($nomU){
 		$this->nomU=$nomU;
@@ -48,6 +52,7 @@ class utilisateur{
 	function setmdp($mdpU){
 		$this->mdpU=$mdpU;
 	}
+
 	
 }
 

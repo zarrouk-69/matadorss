@@ -1,9 +1,12 @@
 <?php
+session_start();
+?>
+<?php
     require_once '../controller/reclamationC.php';
 
     $reclamationC =  new reclamationC();
 
-	$reclamations = $reclamationC->afficherreclamation();
+	$reclamations = $reclamationC->afficherrec($_SESSION['idU']);
 
 	if (isset($_GET['idR'])) {
 		$reclamationC->deleterec($_GET['idR']);
@@ -90,8 +93,8 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
                
-                  <button onclick="window.location.href='signup.php';">
-     s'enregistrer
+                  <button onclick="window.location.href='deconnexion.php';">
+     deconnexion
     </button>
                             
                         </li>  
@@ -119,13 +122,13 @@ window.onclick = function(event) {
 	<a href = "searchrec.php" class="btn btn-primary shop-item-button">Search</a>
 		<section class="container">
 			<h2>gestion de reclamations</h2>
-			<a href = "addrec.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
+			<a href = "addrec.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a><br>
 			<div class="shop-items">
 				<?php
 					foreach ($reclamations as $reclamation) {
 				?>
 				<div class="shop-item">
-					<strong class="typerec"> <?= $reclamation['typeR'] ?> </strong>
+					<strong class="typerec"> <?= $reclamation['texteR'] ?> </strong>
 					<div class="reclamations">
 						<span class="shop-item-price"><?= $reclamation['dateR'] ?> </span>
 						<a type="button" class="btn btn-primary shop-item-button" href = "updaterec.php?idR=<?= $reclamation['idR'] ?>">Modifier</a>

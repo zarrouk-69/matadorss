@@ -3,25 +3,28 @@
 class reclamation
 {
 	private  $idR ;
-	private  $typeR;
 	private  $dateR;
 	private  $texteR;
-	public function __construct($typeR,$dateR,$texteR)
+	private $type;
+	private $idclient;
+	public function __construct($dateR,$texteR,$type,$idclient)
 	
 	{
 		
-		$this->typeR=$typeR;
+		$this->idclient=$idclient;
 		$this->dateR=$dateR;
 		$this->texteR=$texteR;
+		$this->type=$type;
 		
 	}
+	public function getidclient(){return $this->idclient;}
 		public function getid(){return $this->idR;}
-	public function gettype(){return $this->typeR;}
 	public function getdate(){return $this->dateR;}
 	public function gettexte(){return $this->texteR;}
-	public function settype($typeR){$this->typeR=$typeR;}
+	public function gettype(){return $this->type;}
 	public function settexte($texteR){$this->texteR=$texteR;}
 	public function setdate($dateR){$this->dateR=$dateR;}
+	public function settype($type){$this->type=$type;}
 		
 }
 ?>
