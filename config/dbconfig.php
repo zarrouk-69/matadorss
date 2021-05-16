@@ -5,6 +5,7 @@
 
     class dbconfig
     {
+        
         public $connection;
 
         public function __construct()
@@ -26,5 +27,34 @@
             $return = mysqli_real_escape_string($this->connection,$a);
             return $return;
         }
+        
+        /*
+        public function __construct()
+        {
+            $this->db_connect();
+        }
+        function db_connect () {
+            $servername = 'localhost';	
+            $username = 'root';	
+            $password = '';       
+            $dbname = 'db1';	
+            try {
+                $pdo = new PDO(
+                    "mysql:host=$servername;dbname=$dbname", 
+                    $username, 
+                    $password,
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                    ]
+                );
+                return $pdo;
+            }
+            catch(PDOException $e) {
+                echo "Connection failed: ". $e->getMessage();
+            }
+        
+        }
+        */
     }
 ?>

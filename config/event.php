@@ -168,28 +168,73 @@
                 
             }
             else
-            {
-                if(isset($_POST['ASC']))
-            {
-                    $query = "SELECT * from evenement order by ide ASC";
-                    
-                }
-                else
-                {
-                    if (isset($_POST['DSC']))
-                    {
-                        $query = "SELECT * from evenement order by ide DESC ";
-                        echo('kkkk');
-                    }
-                    else
-                    {
-                        $query = "SELECT * from evenement ";
-                    }
-                }
+            
+                if(isset($_GET['ASC_ID']))
+    {
+        
+        $query = "SELECT * from evenement order by ide ASC";
+    }
+    
+        if(isset($_GET['DESC_ID']))
+        {
+            
+            $query = "SELECT * from evenement order by ide desc";
+        }
+        if(isset($_GET['ASC_TITLE']))
+        {
+            $query = "SELECT * from evenement order by  titre asc";
+        }
+        if(isset($_GET['DESC_TITLE']))
+        {
+            $query = "SELECT * from evenement order by  titre desc";
+        }
+        if(isset($_GET['ASC_DATED']))
+        {
+            $query = "SELECT * from evenement order by  date_d asc";
+        }
+        if(isset($_GET['DESC_DATED']))
+        {
+            $query = "SELECT * from evenement order by  date_f desc";
+        }
+        if(isset($_GET['ASC_FIN']))
+        {
+            $query = "SELECT * from evenement order by  date_f asc";
+        }
+        if(isset($_GET['DESC_FIN']))
+        {
+            $query = "SELECT * from evenement order by  date_f desc";
+        }
+        if(isset($_GET['ASC_NBP']))
+        {
+            $query = "SELECT * from evenement order by  nbp asc";
+        }
+        if(isset($_GET['DESC_NBP']))
+        {
+            $query = "SELECT * from evenement order by  nbp desc";
+        }
+        if(isset($_GET['ASC_DESCP']))
+        {
+            $query = "SELECT * from evenement order by  description asc";
+        }
+        if(isset($_GET['DESC_DESCP']))
+        {
+            $query = "SELECT * from evenement order by  description desc";
+        }
+        if(isset($_GET['ASC_IMG']))
+        {
+            $query = "SELECT * from evenement order by  img asc";
+        }
+        if(isset($_GET['DESC_IMG']))
+        {
+            $query = "SELECT * from evenement order by  img desc";
+        }
+        
+        if (empty($query))
+        {
+            $query = "SELECT * from evenement ";
+        }
                 
-                
-                
-            }
+            
             
             $result = mysqli_query($db->connection,$query);
             return $result;

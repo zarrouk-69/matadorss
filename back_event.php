@@ -62,24 +62,7 @@
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="icons.html">
-                <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Icons</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">
-                <i class="ni ni-single-02 text-yellow"></i>
-                <span class="nav-link-text">Profile</span>
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link active" href="back_event.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
@@ -92,24 +75,7 @@
                 <span class="nav-link-text">tickets</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">
-                <i class="ni ni-key-25 text-info"></i>
-                <span class="nav-link-text">Login</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="register.html">
-                <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Register</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade</span>
-              </a>
-            </li>
+           
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -532,9 +498,6 @@
                             <input type="number" name="ids" placeholder="Sponsor Id" class="form-control mb-2">
                             
                             <button class="btn btn-success" name="btn_filter"> Filter </button>
-                           
-                            <button  class="btn btn-success" name="ASC"> ASC </button>
-                            <button class="btn btn-success" name="DSC"> DSC </button>
                             </form>
                             
                             
@@ -548,14 +511,108 @@
               <table class="table align-items-center table-dark table-flush">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col" class="sort" data-sort="ide">ide</th> 
-                    <th scope="col" class="sort" data-sort="title">nom evenement</th>
-                    <th scope="col" class="sort" data-sort="dated">date debut </th>
-                    <th scope="col" class="sort" data-sort="budget">date fin </th>
-                    <th scope="col" class="sort" data-sort="status">status</th>
+                  <?php if(isset($_GET['ASC_ID']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_ID">ide</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_ID">ide</a></th> 
+                    <?php
+                  }
+                  ?>
+
+
+                  <?php if(isset($_GET['DESC_TITLE']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_TITLE">nom evenement</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_TITLE">nom evenement</a></th> 
+                    <?php
+                  }
+                  ?>
+
+                  <?php if(isset($_GET['DESC_DATED']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_DATED">date debut</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_DATED">date debut</a></th> 
+                    <?php
+                  }
+                  ?>
+                   <?php if(isset($_GET['DESC_FIN']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_FIN">date fin</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_FIN">date fin</a></th> 
+                    <?php
+                  }
+                  ?>
+                  <th scope="col" class="sort" data-sort="status">status</th>
                     <th scope="col">Sponsors</th>
-                    <th scope="col" class="sort" data-sort="nbp">nbr de place</th>
-                    <th scope="col" class="sort" data-sort="description">description </th>
+                    
+                    <?php if(isset($_GET['DESC_NBP']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_NBP">nbr de place</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_NBP">nbp de place</a></th> 
+                    <?php
+                  }
+                  ?>
+
+                    <?php if(isset($_GET['DESC_DESCP']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_DESCP">description</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_DESCP">description</a></th> 
+                    <?php
+                  }
+                  ?>
+                  <?php if(isset($_GET['DESC_IMG']))
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_IMG">Img</a></th> 
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_IMG">Img</a></th> 
+                    <?php
+                  }
+                  ?>
+
+
+                  
+                    
                     <th scope="col" class="sort" data-sort="img">img </th>
                   </tr>
                 </thead>
