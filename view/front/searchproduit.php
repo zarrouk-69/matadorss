@@ -1,7 +1,7 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
-    require_once 'C:/xampp/htdocs/projet/entities/produit.php';
-    require_once 'C:/xampp/htdocs/projet/controller/panierC.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/entities/produit.php';
+    require_once 'C:/xampp/htdocs/copie/controller/panierC.php';
 
     $produitC =  new produitC();
     $panierC =  new panierC();
@@ -17,19 +17,19 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="/projet/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/projet/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/copie/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/copie/assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="/projet/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="/projet/assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/templatemo.css">
+    <link rel="stylesheet" href="/copie/assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/custom.css">
-    <link rel="stylesheet" href="/projet/assets/css/drop.css">
-    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
+    <link rel="stylesheet" href="/copie/assets/css/custom.css">
+    <link rel="stylesheet" href="/copie/assets/css/drop.css">
+    <link rel="stylesheet" href="/copie/assets/css/all.min.css">
 
 
 <!--
@@ -138,10 +138,10 @@ https://templatemo.com/tm-561-purple-buzz
 			<div class="shop-items">
 				
 				<div class="shop-item">
-					<strong class="shop-item-title"> <?= $result['nom'] ?> </strong>
-					<img src="/projet/assets/img/<?= $result['image'] ?>" class="shop-item-image" width = "200" height = "200">
+					<strong class="shop-item-title"> <?= $result['nomPr'] ?> </strong>
+					<img src="/copie/assets/img/<?= $result['imagePr'] ?>" class="shop-item-image" width = "200" height = "200">
 					<div class="shop-item-details">
-						<span class="shop-item-price"><?= $result['prix'] ?> dt.</span>
+						<span class="shop-item-price"><?= $result['prixPr'] ?> dt.</span>
 					</div>
 				</div>
 				
@@ -285,17 +285,17 @@ https://templatemo.com/tm-561-purple-buzz
 
 
     <!-- Bootstrap -->
-    <script src="/projet/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/copie/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/projet/assets/js/jquery.min.js"></script>
+    <script src="/copie/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/projet/assets/js/isotope.pkgd.js"></script>
+    <script src="/copie/assets/js/isotope.pkgd.js"></script>
     <!-- Page Script -->
    
     <!-- Templatemo -->
-    <script src="/projet/assets/js/templatemo.js"></script>
+    <script src="/copie/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/projet/assets/js/custom.js"></script>
+    <script src="/copie/assets/js/custom.js"></script>
 
 
 </body>

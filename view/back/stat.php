@@ -1,5 +1,5 @@
 <?php
-      require_once 'C:/xampp/htdocs/c/controller/produitC.php';
+      require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
 
     $produitC =  new produitC();
   
@@ -17,12 +17,12 @@ try{
                         )
                     );
 	
-    $handle = $link->prepare('select categorie as idc1,count(*) as categorie from produit group by categorie;'); 
+    $handle = $link->prepare('select categoriePr as idc1,count(*) as categoriePr from produit group by categoriePr;'); 
     $handle->execute(); 
     $result = $handle->fetchAll(\PDO::FETCH_OBJ);           
     foreach($result as $row){
     	
-        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->categorie));
+        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->categoriePr));
     }
 	$link = null;
 }

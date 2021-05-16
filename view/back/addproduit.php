@@ -1,11 +1,11 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
-    require_once 'C:/xampp/htdocs/projet//entities/produit.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie//entities/produit.php';
 
     $produitC =  new produitC();
 
-    if (isset($_POST['nom']) && isset($_POST['prix']) && isset($_POST['image'])&& isset($_POST['categorie'])&& isset($_POST['qtestock'])) {
-        $produit = new produit($_POST['nom'], (float)$_POST['prix'], $_POST['image'], $_POST['categorie'], (int)$_POST['qtestock']);
+    if (isset($_POST['nomPr']) && isset($_POST['prixPr']) && isset($_POST['imagePr'])&& isset($_POST['categoriePr'])&& isset($_POST['qtestockPr'])) {
+        $produit = new produit($_POST['nomPr'], (float)$_POST['prixPr'], $_POST['imagePr'], $_POST['categoriePr'], (int)$_POST['qtestockPr']);
         
         $produitC->addproduit($produit);
 
@@ -24,15 +24,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="/projet/assets1/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/copie/assets1/img/brand/favicon.png" type="imagePr/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="/projet/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="/projet/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/projet/assets1/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/projet/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
+          <img src="/copie/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/projet/view/back/showsponsor.php">
+              <a class="nav-link" href="/copie/view/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Icons</span>
               </a>
@@ -155,7 +155,7 @@
                         <label>Title :    </label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "nom" required ="">
+                        <input type="text" name = "nomPr" required ="">
                     </div>
                 </div>
                 <div class="row">
@@ -163,7 +163,7 @@
                         <label>Price :</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" name = "prix" required ="" min=0>
+                        <input type="number" name = "prixPr" required ="" min=0>
                     </div>
                 </div>
                 <div class="row">
@@ -171,7 +171,7 @@
                         <label>categ :</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "categorie" required ="">
+                        <input type="text" name = "categoriePr" required ="">
                     </div>
                 </div>
                 <div class="row">
@@ -179,15 +179,15 @@
                         <label>quant :</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" name = "qtestock" required ="" min=0>
+                        <input type="number" name = "qtestockPr" required ="" min=0>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>Image</label>
+                        <label>imagePr</label>
                     </div>
                     <div class="col-75">
-                        <input type = "file" name = "image" >
+                        <input type = "file" name = "imagePr" >
                     </div>
                 </div>
                 <br>
@@ -220,18 +220,18 @@ function Verif_Forms(MonForm)
   // Boucle tous les éléments du formulaire
   for (var l = 0; l < NbElements; l++)
   {
-    var Nom_Element = MonForm.elements[l].name;
-    var Nom_Lowercase = Nom_Element.toLowerCase(); 
+    var nomPr_Element = MonForm.elements[l].name;
+    var nomPr_Lowercase = nomPr_Element.toLowerCase(); 
     var Champ = MonForm.elements[l];
     // Verifie que l'element n'est pas vide si il est obligatoire
-    if (Nom_Lowercase.substring(0,1) == "o" && Champ.value == "")
+    if (nomPr_Lowercase.substring(0,1) == "o" && Champ.value == "")
     {
       alert("Le champ suivant est obligatoire : " + Champ.id );
       Champ.focus();
       return false;
     }
     // Verifie que l'element contient bien une date même si ce champ n'est pas obligatoire à remplir
-    if (Nom_Lowercase.substring(1,2) == "d")
+    if (nomPr_Lowercase.substring(1,2) == "d")
     {
       // Appel à la fonction Control_Date
       if (! Control_Date(Champ.value))
@@ -242,7 +242,7 @@ function Verif_Forms(MonForm)
       }
     }
     // Verifie que l'element ne contient que des chiffres même si ce champ n'est pas obligatoire à remplir
-    if (Nom_Lowercase.substring(1,2) == "n")
+    if (nomPr_Lowercase.substring(1,2) == "n")
     {
       if (isNaN(Champ.value))
       {
@@ -254,7 +254,7 @@ function Verif_Forms(MonForm)
     // Verifie que l'utilisateur a fait un choix dans la combobox
     // ATTENTION :
     // Implique la déclaration d'une option dans le select avec la valeur -1 **
-    if (Nom_Lowercase.substring(0,1) == "o" && Nom_Lowercase.substring(1,2) == "c" )
+    if (nomPr_Lowercase.substring(0,1) == "o" && nomPr_Lowercase.substring(1,2) == "c" )
     {
       if (Champ.value == -1)
       {
@@ -264,18 +264,18 @@ function Verif_Forms(MonForm)
       }
     }
     // Controle qu'un boutton radio a été selectionné
-    if (Nom_Lowercase.substring(0,1) == "o" && Nom_Lowercase.substring(1,2) == "r")
+    if (nomPr_Lowercase.substring(0,1) == "o" && nomPr_Lowercase.substring(1,2) == "r")
     {
       ok = false;
-      // getElementsByName([Nom_element]).length renvoie le nombre d'element du meme nom
+      // getElementsByName([nomPr_element]).length renvoie le nomPrbre d'element du meme nomPr
       // Merci bultez
-      NbRadio = document.getElementsByName(Nom_Element).length;
+      NbRadio = document.getElementsByName(nomPr_Element).length;
       for (var k = 0; k < NbRadio; k++)
       {
-        if (document.getElementsByName(Nom_Element)[k].checked == true)
+        if (document.getElementsByName(nomPr_Element)[k].checked == true)
         {
           ok = true
-          k = document.getElementsByName(Nom_Element).length;
+          k = document.getElementsByName(nomPr_Element).length;
         }
       }
       if (ok == false)
@@ -286,16 +286,16 @@ function Verif_Forms(MonForm)
       }
     }
     // Meme chose mais avec des CheckBox
-    if (Nom_Lowercase.substring(0,1) == "o" && Nom_Lowercase.substring(1,2) == "b" )
+    if (nomPr_Lowercase.substring(0,1) == "o" && nomPr_Lowercase.substring(1,2) == "b" )
     {
       ok = false;
-      NbBox = document.getElementsByName(Nom_Element).length;
+      NbBox = document.getElementsByName(nomPr_Element).length;
       for (var k = 0; k < NbBox; k++)
       {
-        if (document.getElementsByName(Nom_Element)[k].checked == true)
+        if (document.getElementsByName(nomPr_Element)[k].checked == true)
         {
           ok = true
-          k = document.getElementsByName(Nom_Element).length;
+          k = document.getElementsByName(nomPr_Element).length;
         }
       }
       if (ok == false)
@@ -324,16 +324,16 @@ function Control_Date (MaDate)
   return true;
 }
 
-// Enleve les "XY_" devant le [Nom_de_l'element]
-function Format_Nom (NomChamp)
+// Enleve les "XY_" devant le [nomPr_de_l'element]
+function Format_nomPr (nomPrChamp)
 {
   var position
-  var NomTemp = NomChamp
-  position = NomTemp.indexOf("_");
-  NomTemp = NomTemp.substr(position,NomTemp.length)
+  var nomPrTemp = nomPrChamp
+  position = nomPrTemp.indexOf("_");
+  nomPrTemp = nomPrTemp.substr(position,nomPrTemp.length)
   var reg = new RegExp("_","gi");
-  NomTemp = NomTemp.replace(reg," ");
-  return NomTemp;
+  nomPrTemp = nomPrTemp.replace(reg," ");
+  return nomPrTemp;
 }
 
 // Function qui format une date et vérifie si elle n'est pas farfelue
@@ -387,14 +387,14 @@ function formatDate(valeur)
 </script>
 <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="/projet/assets1/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/projet/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/projet/assets1/vendor/js-cookie/js.cookie.js"></script>
-  <script src="/projet/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/projet/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/copie/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/copie/assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/copie/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="/projet/assets1/js/argon.js?v=1.2.0"></script>
+  <script src="/copie/assets1/js/argon.js?v=1.2.0"></script>
 </html>

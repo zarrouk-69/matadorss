@@ -1,5 +1,5 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
 
     $produitC =  new produitC();
 
@@ -15,15 +15,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="/projet/assets1/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/copie/assets1/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="/projet/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="/projet/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/projet/assets1/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/css/argon.css?v=1.2.0" type="text/css">
 
 
 </head>
@@ -35,7 +35,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/projet/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
+          <img src="/copie/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -50,7 +50,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/projet/view/back/showsponsor.php">
+              <a class="nav-link" href="/copie/view/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Icons</span>
               </a>
@@ -169,10 +169,10 @@
 			<div class="shop-items">
 				
 				<div class="shop-item">
-					<strong class="shop-item-title"> <?= $result['nom'] ?> </strong>
-					<img src="/projet/assets/img/<?= $result['image'] ?>" class="shop-item-image">
+					<strong class="shop-item-title"> <?= $result['nomPr'] ?> </strong>
+					<img src="/copie/assets/img/<?= $result['imagePr'] ?>" class="shop-item-image">
 					<div class="shop-item-details">
-						<span class="shop-item-price"><?= $result['prix'] ?> dt.</span>
+						<span class="shop-item-price"><?= $result['prixPr'] ?> dt.</span>
 					</div>
 				</div>
 				
@@ -190,16 +190,16 @@
 </div>
 <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="/projet/assets1/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/projet/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/projet/assets1/vendor/js-cookie/js.cookie.js"></script>
-  <script src="/projet/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/projet/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/copie/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/copie/assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/copie/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="/projet/assets1/js/argon.js?v=1.2.0"></script>
+  <script src="/copie/assets1/js/argon.js?v=1.2.0"></script>
 
 </body>
 

@@ -9,8 +9,9 @@
 
 	//$produits = $produitC->afficherproduit();
     $produits2 = $produitC->afficherproduitcat();
-	$produits = $produitC->afficherproduit();
-
+    if (isset($_GET['categoriePr']))
+    {$produits = $produitC->recherchecategrie(($_GET['categoriePr']));}
+	
     $panierC =  new panierC();
 
 	$paniers = $panierC->countpanier();
@@ -182,16 +183,14 @@ a {
 
 
 </style>
-
 <div id="wrapper">
   <div id="div1">
  <a href = "showproduits.php?"><div class="a">&nbsp;&nbsp;Tous&nbsp;les&nbsp;categories</div>
- </a>
                 <?php
-  foreach ($produits2 as $produit) {
-				?>
-                                    <a href = "categorie.php?categoriePr=<?= $produit['categoriePr'] ?>">
-                                     <p  class="shop-item-title" ><?= $produit['categoriePr'] ?> </p>
+				foreach ($produits2 as $produit) {
+				?> 
+                                   <a  href = "categorie.php?categoriePr=<?= $produit['categoriePr'] ?>">
+                                    <p  class="shop-item-title" ><?= $produit['categoriePr'] ?> </p>
 
                 <?php 
 				}

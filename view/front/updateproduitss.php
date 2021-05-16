@@ -1,8 +1,8 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
-    require_once 'C:/xampp/htdocs/projet/entities/produit.php';
-    require_once 'C:/xampp/htdocs/projet/controller/panierC.php';
-    require_once 'C:/xampp/htdocs/projet/entities/panier.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/entities/produit.php';
+    require_once 'C:/xampp/htdocs/copie/controller/panierC.php';
+    require_once 'C:/xampp/htdocs/copie/entities/panier.php';
 
     $produitC =  new produitC();
     $panierC =  new panierC();
@@ -27,20 +27,20 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="/projet/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/projet/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/copie/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/copie/assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="/projet/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="/projet/assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/templatemo.css">
+    <link rel="stylesheet" href="/copie/assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/custom.css">
-    <link rel="stylesheet" href="/projet/assets/css/drop.css">
-    <link rel="stylesheet" href="/projet/assets/css/magnify.css">
-    <link rel="stylesheet" href="/projet/assets/css/all.min.css">
+    <link rel="stylesheet" href="/copie/assets/css/custom.css">
+    <link rel="stylesheet" href="/copie/assets/css/drop.css">
+    <link rel="stylesheet" href="/copie/assets/css/magnify.css">
+    <link rel="stylesheet" href="/copie/assets/css/all.min.css">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
 
 <!--
@@ -100,7 +100,7 @@ https://templatemo.com/tm-561-purple-buzz
                               </div>
                               
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Boutique</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="showproduits.php">Boutique</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">contact</a>
@@ -139,37 +139,35 @@ $(document).ready(function() {
         <form action="" method = "POST" onsubmit="myFunction()">
 		<div class="form-container">
             <form action="" method = "POST">
-            <img src="/projet/assets/img/<?= $result['image'] ?>"  width = "200" height = "200" id="image" class="zoom" data-magnify-src="/projet/assets/img/<?= $result['image'] ?>" > 
+            <img src="/copie/assets/img/<?= $result['imagePr'] ?>"  width = "200" height = "200" id="imagePr" class="zoom" data-magnify-src="/copie/assets/img/<?= $result['imagePr'] ?>" > 
 
-            <span class="shop-item-price"><?= $result['description'] ?> </span>
+            <span class="shop-item-price"><?= $result['descriptionPr'] ?> </span>
+            <br>
+            <span class="shop-item-price"><?= $result['qtestockPr'] ?> </span>
+
             <div class="col-75" onsubmit="myFunction()">
         
              <form action="post-method.php" method="post">
                         <input type="number" name = "qtepr" required ="" min="1" >
+                                              <p hidden>  <input type="number" name = "idpr" value="<?= $result['idpr']  ?>"></p>
+
                         </form>
                     </div>
-                    <?php
-                    if ( filter_has_var( INPUT_POST, 'submit' ) ) {
-                    $qtepr= 0;
-                    $h="submit";
-                    $qtepr = $_REQUEST['qtepr'];
-                    if ($qtepr>$result['qtestock'])
-                    {
-                    echo '<span style="color:#FF0000;text-align:center;">Desole la quantite de stock est inferieure a votre quantite de precomande</span>';
-                    $qtepr="";
-                    $_GET['idprec'];}
-                    else { echo '<span style="color:#008000;text-align:center;">produit ajoute au panier</span>';
-                        
+                    <input type="submit" value="ajouter" name = "submit">
 
-                    }
-                    }
-                 //if $result['qtestock']>"qtepr"
-
-            ?>
                     <div class="col-75">
                     <div class="col-3">
-                      <p hidden>  <input type="number" name = "idpr" value="<?= $result['idpr']  ?>"></p>
-                      <input type="submit" value="ajouter" name = "submit">
+
+                      <?php
+                             /*               $test = 0;
+                      $test = $_GET['qtepr'];
+                      if ($test >  $result['qtestockPr']) {
+echo"   aaa"; */
+                        ?>
+
+                      <?php
+                   //     }
+                        ?>
                       </div>
                     </div>
                   
@@ -177,7 +175,7 @@ $(document).ready(function() {
 
     <?php
         }
-    }
+    } 
         
         else {
             header('Location:showproduits.php');
@@ -323,18 +321,18 @@ echo '<iframe src="https://www.facebook.com/plugins/share_button.php?href='.$act
 
 
     <!-- Bootstrap -->
-    <script src="/projet/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/copie/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/projet/assets/js/jquery.min.js"></script>
+    <script src="/copie/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/projet/assets/js/isotope.pkgd.js"></script>
+    <script src="/copie/assets/js/isotope.pkgd.js"></script>
     <!-- Page Script -->
    
     <!-- Templatemo -->
-    <script src="/projet/assets/js/templatemo.js"></script>
+    <script src="/copie/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/projet/assets/js/custom.js"></script>
-    <script src="/projet/assets/js/jquery.magnify.js"></script>
+    <script src="/copie/assets/js/custom.js"></script>
+    <script src="/copie/assets/js/jquery.magnify.js"></script>
 
 
 

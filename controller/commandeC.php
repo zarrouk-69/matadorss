@@ -1,5 +1,5 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/config.php';
+    require_once 'C:/xampp/htdocs/copie/config.php';
     class commandeC {
         public function affichercommande() {
             try {

@@ -2,64 +2,64 @@
 	class produit 
 	{
 		private int $idpr ;
-		private string $nom;
-		private int $prix;
-		private string	$image;
-        private string $categorie;
-		private int $qtestock;
+		private string $nomPr;
+		private int $prixPr;
+		private string	$imagePr;
+        private string $categoriePr;
+		private int $qtestockPr;
 
 
-		public function __construct($nom,$prix,$image,$categorie,$qtestock)
+		public function __construct($nomPr,$prixPr,$imagePr,$categoriePr,$qtestockPr)
 		{
-			$this->nom =$nom;
-			$this->prix = $prix;
-			$this->image =$image;
-            $this->categorie =$categorie;
-            $this->qtestock =$qtestock;
+			$this->nomPr =$nomPr;
+			$this->prixPr = $prixPr;
+			$this->imagePr =$imagePr;
+            $this->categoriePr =$categoriePr;
+            $this->qtestockPr =$qtestockPr;
 
 		}
 		 public function getidpr () {
             return $this->idpr;
         }
 
-        public function getnom (){
-            return $this->nom ;
+        public function getnomPr (){
+            return $this->nomPr ;
         }
 
-        public function getImage (){
-            return $this->image ;
+        public function getimagePr (){
+            return $this->imagePr ;
         }
 
-        public function getPrix (){
-            return $this->prix ;
+        public function getprixPr (){
+            return $this->prixPr ;
         }
 
-        public function getcategorie (){
-            return $this->categorie ;
+        public function getcategoriePr (){
+            return $this->categoriePr ;
         }
 
-        public function getqtestock (){
-            return $this->qtestock ;
+        public function getqtestockPr (){
+            return $this->qtestockPr ;
         }
 
-        public function setnom ($nom){
-            $this->nom = $nom;
+        public function setnomPr ($nomPr){
+            $this->nomPr = $nomPr;
         }
 
-        public function setImage ($image){
-            $this->image = $image;
+        public function setimagePr ($imagePr){
+            $this->imagePr = $imagePr;
         }
 
-        public function setPrix ($prix){
-            $this->prix = $prix;
+        public function setprixPr ($prixPr){
+            $this->prixPr = $prixPr;
         }
 
-        public function setcategorie ($categorie){
-            $this->categorie = $categorie;
+        public function setcategoriePr ($categoriePr){
+            $this->categoriePr = $categoriePr;
         }
 
-        public function setqtestock ($qtestock){
-            $this->qtestock = $qtestock;
+        public function setqtestockPr ($qtestockPr){
+            $this->qtestockPr = $qtestockPr;
         }
 	}
 ?>

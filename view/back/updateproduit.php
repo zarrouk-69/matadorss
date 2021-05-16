@@ -1,11 +1,11 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
-    require_once 'C:/xampp/htdocs/projet//entities/produit.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/entities/produit.php';
 
     $produitC =  new produitC();
 
-    if (isset($_POST['nom']) && isset($_POST['prix']) && isset($_POST['image'])&& isset($_POST['categorie'])&& isset($_POST['qtestock'])) {
-        $produit = new produit($_POST['nom'], (float)$_POST['prix'], $_POST['image'], $_POST['categorie'], (int)$_POST['qtestock']);
+    if (isset($_POST['nomPr']) && isset($_POST['prixPr']) && isset($_POST['imagePr'])&& isset($_POST['categoriePr'])&& isset($_POST['qtestockPr'])) {
+        $produit = new produit($_POST['nomPr'], (int)$_POST['prixPr'], $_POST['imagePr'], $_POST['categoriePr'], (int)$_POST['qtestockPr']);
         
         $produitC->updateproduit($produit,$_GET['idpr']);
     }
@@ -21,15 +21,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="/projet/assets1/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/copie/assets1/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="/projet/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="/projet/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/projet/assets1/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/css/argon.css?v=1.2.0" type="text/css">
 
 </head>
 
@@ -40,7 +40,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/projet/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
+          <img src="/copie/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -55,7 +55,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/projet/view/back/showsponsor.php">
+              <a class="nav-link" href="/copie/view/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Icons</span>
               </a>
@@ -158,7 +158,7 @@
                         <label>nom : </label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "nom" value = "<?= $result['nom'] ?>">
+                        <input type="text" name = "nomPr" value = "<?= $result['nomPr'] ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -166,7 +166,7 @@
                         <label>Price:</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" min=0 name = "prix" value = "<?= $result['prix']  ?> ">
+                        <input type="number" min=0 name = "prixPr" value = "<?= $result['prixPr']  ?> ">
                     </div>
                 </div>
                 <div class="row">
@@ -174,7 +174,7 @@
                         <label>categ :</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" name = "categorie" value = "<?= $result['categorie'] ?>">
+                        <input type="text" name = "categoriePr" value = "<?= $result['categoriePr'] ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -182,15 +182,15 @@
                         <label>quant :</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" min=0 name = "qtestock" value = "<?= $result['qtestock'] ?>">
+                        <input type="number" min=0 name = "qtestockPr" value = "<?= $result['qtestockPr'] ?>">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>Image :</label>
+                        <label>image :</label>
                     </div>
                     <div class="col-75">
-                        <input type = "file" name = "image" value = "<?= $result['image'] ?>">
+                        <input type = "file" name = "imagePr" value = "<?= $result['imagePr'] ?>">
                     </div>
                 </div>
                 <br>
@@ -214,16 +214,16 @@
 <script src="../assets/js/script.js"></script>
 <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="/projet/assets1/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/projet/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/projet/assets1/vendor/js-cookie/js.cookie.js"></script>
-  <script src="/projet/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/projet/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/copie/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/copie/assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/copie/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="/projet/assets1/js/argon.js?v=1.2.0"></script>
+  <script src="/copie/assets1/js/argon.js?v=1.2.0"></script>
 
 </body>
 

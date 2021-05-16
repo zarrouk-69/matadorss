@@ -1,5 +1,5 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
 
     $produitC =  new produitC();
 
@@ -22,15 +22,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="/projet/assets1/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/copie/assets1/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="/projet/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="/projet/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/projet/assets1/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/copie/assets1/css/argon.css?v=1.2.0" type="text/css">
 
 
 </head>
@@ -42,7 +42,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/projet/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
+          <img src="/copie/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/projet/view/back/showsponsor.php">
+              <a class="nav-link" href="/copie/view/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Icons</span>
               </a>
@@ -184,19 +184,19 @@
                 <tbody>
                   <tr>
                     <th scope="row">
-                    <strong class="shop-item-title"><?= $produit['nom'] ?> </strong> 
+                    <strong class="shop-item-title"><?= $produit['nomPr'] ?> </strong> 
                       </th>
                     <td>
-                    <span class="shop-item-title"><?= $produit['qtestock'] ?> </span> 
+                    <span class="shop-item-title"><?= $produit['qtestockPr'] ?> </span> 
                     </td>
                     <td>
-                    <span class="shop-item-title"><?= $produit['categorie'] ?> </span>
+                    <span class="shop-item-title"><?= $produit['categoriePr'] ?> </span>
                     </td>
                     <td>
-                    <span class="shop-item-price"><?= $produit['prix'] ?> dt.</span>
+                    <span class="shop-item-price"><?= $produit['prixPr'] ?> dt.</span>
                     </td>
                     <td>
-                    <img src="/projet/assets/img/<?= $produit['image'] ?>" width = "50" height = "50" class="shop-item-image"> 
+                    <img src="/copie/assets/img/<?= $produit['imagePr'] ?>" width = "50" height = "50" class="shop-item-image"> 
                     </td>
                     <td>
                     <a href = "updateproduit.php?idpr=<?= $produit['idpr'] ?>" ><i  class="fas fa-edit"></i></a>
@@ -204,7 +204,7 @@
                     <td>
                     <a href = "showproduits.php?idpr=<?= $produit['idpr'] ?>" >  <i class="far fa-trash-alt"></i></a>
                     </td>
-                    <td><?php if (($produit['qtestock']) < 10)
+                    <td><?php if (($produit['qtestockPr']) < 10)
                       echo '<span style="color:#FF0000;text-align:center;">notice : quantite de produit inferieure a 10 !</span>';  ?></td>
                     
                   </tr>
@@ -225,23 +225,23 @@
 		</div>
 <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="/projet/assets1/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/projet/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/projet/assets1/vendor/js-cookie/js.cookie.js"></script>
-  <script src="/projet/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/projet/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/copie/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/copie/assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/copie/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/copie/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/projet/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/copie/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="/projet/assets1/js/argon.js?v=1.2.0"></script>
+  <script src="/copie/assets1/js/argon.js?v=1.2.0"></script>
 
 
 </body>
 
 </html>
 <?php
-      require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
+      require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
 
     $produitC =  new produitC();
   
@@ -259,12 +259,12 @@ try{
                         )
                     );
 	
-    $handle = $link->prepare('select categorie as idc1,count(*) as categorie from produit group by categorie;'); 
+    $handle = $link->prepare('select categoriePr as idc1,count(*) as categoriePr from produit group by categoriePr;'); 
     $handle->execute(); 
     $result = $handle->fetchAll(\PDO::FETCH_OBJ);           
     foreach($result as $row){
     	
-        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->categorie));
+        array_push($dataPoints, array("label"=> $row->idc1, "y"=>$row->categoriePr));
     }
 	$link = null;
 }

@@ -1,5 +1,5 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/config.php';
+    require_once 'C:/xampp/htdocs/copie/config.php';
     class produitC {
         public function afficherproduit() {
             try {
@@ -13,16 +13,17 @@
                 $e->getMessage();
             }
         }
-        public function affichercategory() {
-            $sql=mysql_query("SELECT category FROM produit");
-            if(mysql_num_rows($sql)){
-            $select= '<select name="select">';
-            while($rs=mysql_fetch_array($sql)){
-                  $select.='<option value="'.$rs['id'].'">'.'</option>';
-              }
+        public function afficherproduitcat() {
+            try {
+                $pdo = getConnexion();
+                $query = $pdo->prepare(
+                    'SELECT DISTINCT categoriePr FROM produit'
+                );
+                $query->execute();
+                return $query->fetchAll();
+            } catch (PDOException $e) {
+                $e->getMessage();
             }
-            $select.='</select>';
-            echo $select;
         }
         public function getproduitById($id) {
             try {
@@ -38,12 +39,26 @@
                 $e->getMessage();
             }
         }
+        public function recherchecategrie($categoriePr) {
+            try {
+                $pdo = getConnexion();
+                $query = $pdo->prepare(
+                    'SELECT * FROM produit WHERE categoriePr = :categoriePr'
+                );
+                $query->execute([
+                    'categoriePr' => $categoriePr
+                ]);
+                return $query->fetchAll();
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
 
         public function getproduitByTitle($name) {
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM produit WHERE nom = :name'
+                    'SELECT * FROM produit WHERE nomPr = :name'
                 );
                 $query->execute([
                     'name' => $name
@@ -58,15 +73,15 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO produit (nom, prix, image, categorie, qtestock) 
-                VALUES (:nom, :prix, :image, :categorie, :qtestock)'
+                    'INSERT INTO produit (nomPr, prixPr, imagePr, categoriePr, qtestockPr) 
+                VALUES (:nomPr, :prixPr, :imagePr, :categoriePr, :qtestockPr)'
                 );
                 $query->execute([
-                    'nom' => $produit->getnom(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'categorie' => $produit->getcategorie(),
-                    'qtestock' => $produit->getqtestock(),
+                    'nomPr' => $produit->getnomPr(),
+                    'prixPr' => $produit->getprixPr(),
+                    'imagePr' => $produit->getimagePr(),
+                    'categoriePr' => $produit->getcategoriePr(),
+                    'qtestockPr' => $produit->getqtestockPr(),
 
                 ]);
             } catch (PDOException $e) {
@@ -78,14 +93,14 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE produit SET nom = :nom, prix = :prix, image = :image, categorie = :categorie, qtestock = :qtestock WHERE idpr = :id'
+                    'UPDATE produit SET nomPr = :nomPr, prixPr = :prixPr, imagePr = :imagePr, categoriePr = :categoriePr, qtestockPr = :qtestockPr WHERE idpr = :id'
                 );
                 $query->execute([
-                    'nom' => $produit->getnom(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'categorie' => $produit->getcategorie(),
-                    'qtestock' => $produit->getqtestock(),
+                    'nomPr' => $produit->getnomPr(),
+                    'prixPr' => $produit->getprixPr(),
+                    'imagePr' => $produit->getimagePr(),
+                    'categoriePr' => $produit->getcategoriePr(),
+                    'qtestockPr' => $produit->getqtestockPr(),
                     'id' => $id
                 ]);
                 echo $query->rowCount() . " records UPDATED successfully";
@@ -112,9 +127,9 @@
                     $pdo = getConnexion();
                     $query = $pdo->prepare(
                         "SELECT * FROM tbl_customer 
-	                    WHERE nom LIKE '%".$search."%'
-	                    OR prix LIKE '%".$search."%' 
-	                    OR categorie LIKE '%".$search."%' "
+	                    WHERE nomPr LIKE '%".$search."%'
+	                    OR prixPr LIKE '%".$search."%' 
+	                    OR categoriePr LIKE '%".$search."%' "
                     );
                     $query->execute();
                     return $query->fetchAll();
@@ -129,9 +144,9 @@
                 $search = mysqli_real_escape_string($pdo, $_POST["query"]);
                 $query = $pdo->prepare(
                     "SELECT * FROM tbl_customer 
-                    WHERE nom LIKE '%".$search."%'
-                    OR prix LIKE '%".$search."%' 
-                    OR categorie LIKE '%".$search."%' "
+                    WHERE nomPr LIKE '%".$search."%'
+                    OR prixPr LIKE '%".$search."%' 
+                    OR categoriePr LIKE '%".$search."%' "
                 );
             }
             else
@@ -156,8 +171,8 @@
                 while($row = mysqli_fetch_array($result))
                 {
                     $output .= '
-                    <p  class="shop-item-title" ><?= $produit['nom'] ?> </p>
-                    <strong class="shop-item-price"><?= $produit['prix'] ?> DT</strong>
+                    <p  class="shop-item-title" ><?= $produit['nomPr'] ?> </p>
+                    <strong class="shop-item-price"><?= $produit['prixPr'] ?> DT</strong>
                     '
                     ;
                 }
@@ -168,12 +183,12 @@
                 echo 'Data Not Found';
             } */
         public function rechercherproduit($title) {            
-            $sql = "SELECT * from produit where nom=:nom"; 
+            $sql = "SELECT * from produit where nomPr=:nomPr"; 
             $db = config::getConnexion();
             try {
                 $query = $db->prepare($sql);
                 $query->execute([
-                    'titre' => $produit->getnom(),
+                    'titre' => $produit->getnomPr(),
                 ]); 
                 $result = $query->fetchAll(); 
                 return $result;
@@ -186,7 +201,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM produit order by nom ASC'
+                    'SELECT * FROM produit order by nomPr ASC'
                 );
                 $query->execute();
                 return $query->fetchAll();
@@ -199,7 +214,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM produit order by nom DESC'
+                    'SELECT * FROM produit order by nomPr DESC'
                 );
                 $query->execute();
                 return $query->fetchAll();

@@ -1,5 +1,5 @@
 <?php
-    require_once 'C:/xampp/htdocs/projet/controller/produitC.php';
+    require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
 
     $produitC =  new produitC();
 
@@ -24,18 +24,18 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="/projet/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/projet/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/copie/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/copie/assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="/projet/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="/projet/assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="/copie/assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/templatemo.css">
+    <link rel="stylesheet" href="/copie/assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/projet/assets/css/custom.css">
-    <link rel="stylesheet" href="/projet/assets/css/drop.css">
+    <link rel="stylesheet" href="/copie/assets/css/custom.css">
+    <link rel="stylesheet" href="/copie/assets/css/drop.css">
 
 <!--
     
@@ -131,14 +131,14 @@ https://templatemo.com/tm-561-purple-buzz
 					foreach ($produits as $produit) {
 				?>
                 
-					<p  class="shop-item-title" ><?= $produit['nom'] ?> </p>
+					<p  class="shop-item-title" ><?= $produit['nomPr'] ?> </p>
                     <p>
                     <a href = "updateproduitss.php?idpr=<?= $produit['idpr'] ?>">
-                    <img src="/projet/assets/img/<?= $produit['image'] ?>" width = "200" height = "200" class="shop-item-image"> 
+                    <img src="/copie/assets/img/<?= $produit['imagePr'] ?>" width = "200" height = "200" class="shop-item-image"> 
                     </a>
                     </p>
 
-						<span class="shop-item-price"><?= $produit['prix'] ?> dt.</span>
+						<span class="shop-item-price"><?= $produit['prixPr'] ?> dt.</span>
 				<?php 
 					}
 				?>
@@ -273,17 +273,17 @@ https://templatemo.com/tm-561-purple-buzz
 
 
     <!-- Bootstrap -->
-    <script src="/projet/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/copie/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/projet/assets/js/jquery.min.js"></script>
+    <script src="/copie/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/projet/assets/js/isotope.pkgd.js"></script>
+    <script src="/copie/assets/js/isotope.pkgd.js"></script>
     <!-- Page Script -->
    
     <!-- Templatemo -->
-    <script src="/projet/assets/js/templatemo.js"></script>
+    <script src="/copie/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/projet/assets/js/custom.js"></script>
+    <script src="/copie/assets/js/custom.js"></script>
 
 
 </body>
