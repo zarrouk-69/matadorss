@@ -1,5 +1,5 @@
 <?php 
-    require_once('./config/dbconfig.php'); 
+        require_once('../.././config/dbconfig.php'); 
     $db = new event();
     $db->update();
     $id = $_GET['U_ID'];
@@ -16,14 +16,14 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="../.././assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="../.././assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../.././assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="../.././assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="../.././assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -151,7 +151,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-1.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -170,7 +170,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-2.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -189,7 +189,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-3.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -208,7 +208,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-4.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -227,7 +227,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-5.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -298,7 +298,7 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="../.././assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
@@ -338,7 +338,7 @@
     </nav>
     <!-- Header -->
     <!-- Header -->
-    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(./assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../.././assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
@@ -357,12 +357,12 @@
       <div class="row">
         <div class="col-xl-4 order-xl-2">
           <div class="card card-profile">
-            <img src="./assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
+            <img src="../.././assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="./assets/img/theme/team-4.jpg" class="rounded-circle">
+                    <img src="../.././assets/img/theme/team-4.jpg" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -482,13 +482,13 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="../.././assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../.././assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../.././assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../.././assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../.././assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="./assets/js/argon.js?v=1.2.0"></script>
+  <script src="../.././assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

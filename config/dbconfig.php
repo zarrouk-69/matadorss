@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    require_once('./config/event.php');
-    require_once('./config/ticket.php');
+    require_once('event.php');
+    require_once('ticket.php');
 
     class dbconfig
     {

@@ -1,7 +1,8 @@
 <?php 
 
     
-    require_once('./config/dbconfig.php');
+    //require_once('./config/dbconfig.php');
+    require_once('dbconfig.php');
     $db = new dbconfig();
 
     class ticket extends dbconfig
@@ -182,7 +183,43 @@
             else
             {
                 
-                $query = "SELECT * from ticket ";
+        if(isset($_GET['ASC_IDT']))
+        {
+            $query = "SELECT * from ticket order by  idt asc";
+        }
+        if(isset($_GET['DESC_IDT']))
+        {
+            $query = "SELECT * from ticket order by  idt desc";
+        }
+        if(isset($_GET['ASC_DATEA']))
+        {
+            $query = "SELECT * from ticket order by  datea asc";
+        }
+        if(isset($_GET['DESC_DATEA']))
+        {
+            $query = "SELECT * from ticket order by  datea desc";
+        }
+        if(isset($_GET['ASC_IDE']))
+        {
+            $query = "SELECT * from ticket order by  ide asc";
+        }
+        if(isset($_GET['DESC_IDE']))
+        {
+            $query = "SELECT * from ticket order by  ide desc";
+        }
+        if(isset($_GET['ASC_IDP']))
+        {
+            $query = "SELECT * from ticket order by  idp asc";
+        }
+        if(isset($_GET['DESC_IDP']))
+        {
+            $query = "SELECT * from ticket order by  idp desc";
+        }
+        
+        if (empty($query))
+        {
+            $query = "SELECT * from ticket ";
+        }
                 
                 
             }

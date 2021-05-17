@@ -1,7 +1,7 @@
 <?php 
 
     
-    require_once('./config/event.php');
+require_once('../.././config/dbconfig.php');  
     $db = new event();
     
     if(isset($_GET['D_ID']))
@@ -12,7 +12,7 @@
         if($db->Delete_Record($ID))
         {
             $db->set_messsage('<div class="alert alert-danger">  Your Record Has Been Deleted </div>');
-            header("location:back_ticket.php");
+            header("location:back_event.php");
         }
         else
         {

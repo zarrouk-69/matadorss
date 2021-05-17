@@ -1,7 +1,8 @@
 <?php 
 
     
-    require_once('./config/dbconfig.php');
+    //require_once('./config/dbconfig.php');
+    require_once('../.././config/dbconfig.php');  
     $db = new dbconfig();
 
     class event extends dbconfig

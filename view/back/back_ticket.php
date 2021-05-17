@@ -3,22 +3,15 @@
 * Argon Dashboard - v1.2.0
 =========================================================
 * Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-
 * Copyright  Creative Tim (http://www.creative-tim.com)
 * Coded by www.creative-tim.com
-
-
-
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php 
     
-    require_once('./config/dbconfig.php'); 
-    $db = new event();
-    $db1 =  new ticket();
-
+    require_once('../.././config/dbconfig.php');   
+    $db = new ticket();
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,15 +23,15 @@
     <meta name="author" content="Creative Tim">
     <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
-    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <link rel="icon" href="../.././assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="../.././assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="../.././assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="../.././assets/css/argon.css?v=1.2.0" type="text/css">
   </head>
 
 <body>
@@ -48,7 +41,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="../.././assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -75,7 +68,7 @@
                 <span class="nav-link-text">tickets</span>
               </a>
             </li>
-           
+            
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -172,7 +165,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-1.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -191,7 +184,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-2.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -210,7 +203,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-3.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -229,7 +222,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-4.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -248,7 +241,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="./assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets/img/theme/team-5.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -319,7 +312,7 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="../.././assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
@@ -374,8 +367,8 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              
-              <a href="add_event.php" class="btn btn-sm btn-neutral">Add event</a>
+              <a href="#" class="btn btn-sm btn-neutral">New</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
             </div>
           </div>
         </div>
@@ -394,19 +387,20 @@
             <div class="card-header bg-transparent border-0">
              <!-- <h3 class="text-white mb-0">Dark table</h3>-->
             </div>
+            <div class="table-responsive">
             <?php $result=$db->view_record();
              $db->display_message(); 
              $db->display_message(); ?>
              <div class="container-fluid">
              <div class="row">
-             <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">total events</h5>
-                      <span class="h2 font-weight-bold mb-0"> <?php echo($db->total_events(0))?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">total tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"> <?php echo($db->total_tickets(0))?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -427,8 +421,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0"> Full  events</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_events(1))?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0"> active tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_tickets(1))?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -437,8 +431,8 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo((100/$db->total_events(0))*($db->total_events(1)))?>%</span>
-                    <span class="text-nowrap">of total events</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo((100/$db->total_tickets(0))*($db->total_tickets(1)))?>%</span>
+                    <span class="text-nowrap">of total tickets</span>
                   </p>
                 </div>
               </div>
@@ -450,8 +444,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0"> inactive events</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_events(2))?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0"> inactive tickets</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_tickets(2))?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -460,160 +454,89 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i><?php echo((100/$db->total_events(0))*($db->total_events(2)))?>%</span>
-                    <span class="text-nowrap">of total events </span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i><?php echo((100/$db->total_tickets(0))*($db->total_tickets(2)))?>%</span>
+                    <span class="text-nowrap">of total tickets</span>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0"> active events</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo($db->total_events(3))?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                        <i class="ni ni-chart-bar-32"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i><?php echo((100/$db->total_events(0))*($db->total_events(3)))?>%</span>
-                    <span class="text-nowrap">of total events </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-</div>
                             <form method="POST">
-                            <input type="number" name="ide" placeholder="ide" class="form-control mb-2">
-                            <input type="text" name="titre" placeholder="titre" class="form-control mb-2">
-                            <input type="date" name="date_d" class="form-control mb-2" >
-                            <input type="date" name="date_f" class="form-control mb-2">
-                            <input type="number" name="nbp" placeholder="nb place" class="form-control mb-2" >
-                            <input type="number" name="ids" placeholder="Sponsor Id" class="form-control mb-2">
+                            <input type="text" name="idt" placeholder="ide" class="form-control mb-2">
+                            <input type="date" name="datea" class="form-control mb-2">
+                            <input type="number" name="ide" class="form-control mb-2" >
+                            <input type="number" name="idp" class="form-control mb-2">
+                           
                             
                             <button class="btn btn-success" name="btn_filter"> Filter </button>
+                           
+                            
                             </form>
-                            
-                            
                             </div>
-            <div class="row">
-            
-            <div class="table-responsive">
-
-            
             
               <table class="table align-items-center table-dark table-flush">
                 <thead class="thead-dark">
                   <tr>
-                  <?php if(isset($_GET['ASC_ID']))
+                  <?php if(isset($_GET['ASC_IDT']))
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_ID">ide</a></th> 
+                    <th scope="col" class="sort" data-sort="idt" ><a href="back_ticket.php?DESC_IDT">idt</a></th> 
                     <?php
                   }
                   else
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_ID">ide</a></th> 
+                    <th scope="col" class="sort" data-sort="idt" ><a href="back_ticket.php?ASC_IDT">idt</a></th> 
                     <?php
                   }
                   ?>
 
-
-                  <?php if(isset($_GET['DESC_TITLE']))
+                  <?php if(isset($_GET['ASC_DATEA']))
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_TITLE">nom evenement</a></th> 
+                    <th scope="col" class="sort" data-sort="datea" ><a href="back_ticket.php?DESC_DATEA">date achat</a></th> 
                     <?php
                   }
                   else
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_TITLE">nom evenement</a></th> 
+                    <th scope="col" class="sort" data-sort="datea" ><a href="back_ticket.php?ASC_DATEA">date achat</a></th> 
                     <?php
                   }
                   ?>
-
-                  <?php if(isset($_GET['DESC_DATED']))
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_DATED">date debut</a></th> 
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_DATED">date debut</a></th> 
-                    <?php
-                  }
-                  ?>
-                   <?php if(isset($_GET['DESC_FIN']))
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_FIN">date fin</a></th> 
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_FIN">date fin</a></th> 
-                    <?php
-                  }
-                  ?>
-                  <th scope="col" class="sort" data-sort="status">status</th>
-                    <th scope="col">Sponsors</th>
                     
-                    <?php if(isset($_GET['DESC_NBP']))
+                    <?php if(isset($_GET['ASC_IDE']))
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_NBP">nbr de place</a></th> 
+                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?DESC_IDE">id evenement</a></th> 
                     <?php
                   }
                   else
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_NBP">nbp de place</a></th> 
+                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?ASC_IDE">id evenement</a></th> 
                     <?php
                   }
                   ?>
-
-                    <?php if(isset($_GET['DESC_DESCP']))
+                   
+                   <?php if(isset($_GET['ASC_IDP']))
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_DESCP">description</a></th> 
+                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?DESC_IDP">ID Pack</a></th> 
                     <?php
                   }
                   else
                   {
                     ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_DESCP">description</a></th> 
-                    <?php
-                  }
-                  ?>
-                  <?php if(isset($_GET['DESC_IMG']))
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?ASC_IMG">Img</a></th> 
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="title" ><a href="back_event.php?DESC_IMG">Img</a></th> 
+                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?ASC_IDP">ID Pack</a></th> 
                     <?php
                   }
                   ?>
 
 
-                  
                     
-                    <th scope="col" class="sort" data-sort="img">img </th>
+                    
+                    <th scope="col" class="sort" data-sort="status">status</th>
+                    
                   </tr>
                 </thead>
                 <tbody class="list">
@@ -624,89 +547,50 @@
                   <tr>
                     
                     <td class="budget">
+                    <?php echo $data['idt'] ?>
+                    </td>
+                    
+                    <td class="budget">
+                    <?php echo $data['datea'] ?>
+                    </td>
+                    <td class="budget">
                     <?php echo $data['ide'] ?>
-                    </td>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        
-                        <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="./img/<?php echo $data['img'] ?>">
-                        </a>
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm"><?php echo $data['titre'] ?></span>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="budget">
-                    <?php echo $data['date_d'] ?>
-                    </td>
-                    <td class="budget">
-                    <?php echo $data['date_f'] ?>
+                     </td>
+                     <td class="budget">
+                     <?php echo $data['idp'] ?>
                      </td>
                     <td>
                         <?php if ($data['state'] == 1)
                         {
-                            if ($db1->search_by_event($data['ide'])==$data['nbp'])
-                            {
+                            
                                 ?>
                                 <span class="badge badge-dot mr-4">
-                        <i class="bg-danger"></i>
-                        <span class="status">full</span>
+                        <i class="bg-success"></i>
+                        <span class="status">active</span>
                       </span>
+                               
                       <?php
                             }
                             else
                             {
                             ?>
                             <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">active</span>
+                        <i class="bg-danger"></i>
+                        <span class="status">inactive</span>
                       </span>
                       <?php 
                             }
-                        }
-                        else
-                        {
-                            ?>
-                             <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">inactive</span>
-                      </span>
-                      <?php
-
-                        }
-                     ?>
+                      ?>
                     </td>
-                    <td>
-                      <!--<div class="avatar-group">
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?php echo $data['ids'] ?>">
-                          <img alt="Image placeholder" src="./assets/img/theme/team-1.jpg"> 
-                          
-                        </a>
-                        
-                      </div>
-                      -->
-                      <?php echo $data['ids'] ?>
-                    </td>
-                    <td class="budget">
-                    <?php echo $db1->search_by_event($data['ide']) ?> /
-                    <?php echo $data['nbp'] ?>
-                     </td>
-                     <td class="budget">
-                     <?php echo $data['description'] ?>
-                     </td>
-                     <td class="budget">
-                     <?php echo $data['img'] ?>
-                     </td>
                     <td class="text-right">
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="edit_event.php?U_ID=<?php echo $data['ide'] ?>">edit</a>
-                          <a class="dropdown-item" href="del_event.php?D_ID=<?php echo $data['ide'] ?>">delete</a>
-                          <a class="dropdown-item"  href="act_event.php?E_ID=<?php echo $data['ide'] ?>">activate/desactivate</a>
+                          <a class="dropdown-item" href="edit_ticket.php?U_ID=<?php echo $data['idt'] ?>">edit</a>
+                          <a class="dropdown-item" href="del_ticket.php?D_ID=<?php echo $data['idt'] ?>">delete</a>
+                          <a class="dropdown-item" href="act_ticket.php?E_ID=<?php echo $data['idt'] ?>">activate/desactivate</a>
                         </div>
                       </div>
                     </td>
@@ -751,13 +635,13 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="../.././assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../.././assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../.././assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../.././assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../.././assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="../.././assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

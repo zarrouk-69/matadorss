@@ -1,6 +1,6 @@
 <?php 
     
-    require_once('./config/dbconfig.php'); 
+    require_once('../.././config/dbconfig.php'); 
     $db = new event();
 
 ?>
@@ -11,18 +11,18 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../.././assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../.././assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../.././assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="../.././assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="../.././assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel="stylesheet" href="assets/css/drop.css">
+    <link rel="stylesheet" href="../.././assets/css/custom.css">
+    <link rel="stylesheet" href="../.././assets/css/drop.css">
 
 <!--
     
@@ -120,14 +120,12 @@ https://templatemo.com/tm-561-purple-buzz
                         <a class="filter-btn nav-link btn-outline-primary active shadow rounded-pill text-light px-4 light-300" href="#" data-filter=".project">All events</a>
                     </li>
                     <li class="nav-item mx-lg-4">
-                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".graphic">this week events</a>
+                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".graphic">Full Events</a>
                     </li>
                     <li class="filter-btn nav-item mx-lg-4">
-                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".ui">next week events</a>
+                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".ui">Active events</a>
                     </li>
-                    <li class="nav-item mx-lg-4">
-                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".branding">next month events</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -152,7 +150,7 @@ https://templatemo.com/tm-561-purple-buzz
                 <!-- Start Recent Work -->
                 <div class="col-md-4 mb-3">
                     <a href="front_ticket.php?T_IDE=<?php echo $data['ide'] ?>" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="./img/<?php echo $data['img'] ?>" alt="Card image">
+                        <img class="recent-work-img card-img" src="../.././img/<?php echo $data['img'] ?>" alt="Card image">
                         <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                                 <h1 class="card-text"><?php echo $data['titre'] ?></h1>
@@ -302,11 +300,11 @@ https://templatemo.com/tm-561-purple-buzz
 
 
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../.././assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="../.././assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="assets/js/isotope.pkgd.js"></script>
+    <script src="../.././assets/js/isotope.pkgd.js"></script>
     <!-- Page Script -->
     <script>
         $(window).load(function() {
@@ -329,9 +327,9 @@ https://templatemo.com/tm-561-purple-buzz
         });
     </script>
     <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
+    <script src="../.././assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
+    <script src="../.././assets/js/custom.js"></script>
 
 </body>
 

@@ -1,7 +1,7 @@
 <?php 
 
     
-    require_once('./config/event.php');
+require_once('../.././config/dbconfig.php'); 
     $db = new event();
     
     if(isset($_GET['E_ID']))
