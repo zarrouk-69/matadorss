@@ -29,13 +29,14 @@
                 $file = $db->check($_POST['file']);
                 
 
-                if($this->insert_record($titre,$date_d,$date_f,$nbp,$ids,$desc,$file))
+                if($this->insert_record($titre,$date_d,$date_f,$nbp,$ids,$desc,$file)=='true')
                 {
                     echo '<div class="alert alert-success"> Your Record Has Been Saved :) </div>';
                 }
                 else
                 {
-                    echo '<div class="alert alert-danger"> Failed </div>';
+                    //echo '<div class="alert alert-danger"> Failed </div>';
+                  ?> <div class= "alert alert-danger"> <?php echo($this->insert_record($titre,$date_d,$date_f,$nbp,$ids,$desc,$file)) ?> </div> <?php ;
                 }
                 
                 
@@ -121,7 +122,23 @@
         function insert_record($t,$a,$b,$c,$d,$e,$f)
         {
             global $db;
-           
+            $localtime = localtime();
+           if($a > $b )
+           {
+                return 'il faut que la data de debut soit inferieur a la date  fin ';
+
+           }
+           else
+           {
+
+             if($a < $localtime )
+            {
+                 return 'il faut que la data de debut soit supperieur a la date  actuelle  ';
+ 
+            }
+            else
+            {
+
             
             $query = "insert into evenement (titre,date_d,date_f,nbp,ids,description,img) values('$t','$a','$b','$c','$d','$e','$f')";
             $result = mysqli_query($db->connection,$query);
@@ -136,6 +153,11 @@
                 return false;
                 
             }
+
+           }
+        }
+            
+            
         }
 
        // View Database Record

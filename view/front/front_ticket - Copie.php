@@ -126,7 +126,7 @@ https://templatemo.com/tm-561-purple-buzz
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="sender" name="sender" placeholder="Email">
+                            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail" placeholder="Email">
                             <label for="floatingemail light-300">Email</label>
                         </div>
                     </div><!-- End Input Email -->

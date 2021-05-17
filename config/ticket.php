@@ -1,3 +1,59 @@
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+ 
+<script>  
+
+     function sendmail(email){
+    
+			
+			//var email = $('#Sender').val();
+            //var email = document.getElementById('sender');
+            //document.write(email);
+           // email = document.getElementById('sender');
+			//var subject = "Thank you for purchasing the ticket from us ";
+      //var message = $('#Message').val();
+      
+      
+      
+			// var body = $('#body').val();
+
+			var Body='<br><h1><center> Ticket Purchased </center></h1> <br><br>  <p><h2> Thank you for purchasing the ticket from  us im sure that u wont  regret it   make sure  to print this email  to  enter  the event </p> <br> <br> <br> <img src= "https://i.ibb.co/307NQnC/thank-you-page-examples.jpg">';
+			//console.log(name, phone, email, message);
+
+			Email.send({
+                SecureToken:"057d2ee8-dd9e-4aa0-b00f-8d5d01dba748",
+				To: email,
+				From: "ksaay2000@gmail.com",
+				Subject: "[Ticket Purchased]",
+				Body: Body
+			}).then(
+				message =>{
+					//console.log (message);
+					if(message=='OK'){
+					alert('Your mail has been send. Thank you for connecting.');
+					}
+					else{
+						console.error (message);
+						alert('There is error at sending message. ')
+						
+					}
+
+				}
+			);
+
+
+
+		}
+
+
+    </script>
+ </script>
+
 <?php 
 
     
@@ -15,8 +71,32 @@
             $db1= new event();
             if(isset($_POST['btn_save']))
             {
+                $captcha_code = $_POST['captcha_code'];
+                if($_SESSION['code_confirmation'] != $captcha_code){
+                    ?>
+                    <script type="text/javascript">
+                    alert('Entered Captcha Code did not match.');
+                    
+                    <?php
+                    if(isset($_GET['T_IDE']))
+                    {
+                        ?>
+                        window.location="front_ticket.php?T_IDE=<?php echo($_GET['T_IDE']) ?>";
+                        </script>
+                        <?php
+                    }      
+                }
+              
+                   
+                   
+
+            
+                else
+                {
+
                 if(isset($_GET['T_IDE']))
-            {
+            {   
+
 
                 $ide = $_GET['T_IDE']; 
                 $idp = $db->check($_POST['idp']);
@@ -25,7 +105,16 @@
 
                 if($this->insert_record($ide,$idp))
                 {
-                    echo '<div class="alert alert-success"> Your Record Has Been Saved :) </div>';
+                    echo '<div class="alert alert-success"> Your Ticket Has Been Added :) </div>';
+                    $sender =  $db->check($_POST['sender']);
+                    ?>
+                    
+                    <script>
+                        var email = <?php echo json_encode($sender); ?>;
+                    sendmail(email);
+                    </script>
+                    <?php
+                    
                 }
                 else
                 {
@@ -39,8 +128,9 @@
                 
                 
             }
+        }
             
-            
+        
             
         }
        
