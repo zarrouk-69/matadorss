@@ -4,7 +4,7 @@
     $db->update();
     $id = $_GET['U_ID'];
     $result = $db->get_record($id);
-    $data = mysqli_fetch_assoc($result);
+    $data=$result->fetch();
 ?>
 <!DOCTYPE html>
 <html>

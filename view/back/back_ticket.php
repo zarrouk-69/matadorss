@@ -367,8 +367,8 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+              <!-- <a href="#" class="btn btn-sm btn-neutral">add ticket</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>-->
             </div>
           </div>
         </div>
@@ -461,10 +461,10 @@
               </div>
             </div>
                             <form method="POST">
-                            <input type="text" name="idt" placeholder="ide" class="form-control mb-2">
+                            <input type="text" name="idt" placeholder="idt" class="form-control mb-2">
                             <input type="date" name="datea" class="form-control mb-2">
-                            <input type="number" name="ide" class="form-control mb-2" >
-                            <input type="number" name="idp" class="form-control mb-2">
+                            <input type="number" name="ide" placeholder="ide" class="form-control mb-2" >
+                            <input type="number" name="idp" placeholder="idp" class="form-control mb-2">
                            
                             
                             <button class="btn btn-success" name="btn_filter"> Filter </button>
@@ -517,7 +517,7 @@
                     <?php
                   }
                   ?>
-                   
+                   <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?ASC_NAME">nom evenement</a></th>
                    <?php if(isset($_GET['ASC_IDP']))
                   {
                     ?>
@@ -541,7 +541,7 @@
                 </thead>
                 <tbody class="list">
                 <?php 
-                                    while($data = mysqli_fetch_assoc($result))
+                                   foreach($result as $data)
                                     {
                                 ?>
                   <tr>
@@ -557,8 +557,12 @@
                     <?php echo $data['ide'] ?>
                      </td>
                      <td class="budget">
+                     <?php echo $data['titre'] ?>
+                     </td>
+                     <td class="budget">
                      <?php echo $data['idp'] ?>
                      </td>
+                     
                     <td>
                         <?php if ($data['state'] == 1)
                         {

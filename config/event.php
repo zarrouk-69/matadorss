@@ -3,14 +3,25 @@
     
     //require_once('./config/dbconfig.php');
     require_once('../.././config/dbconfig.php');  
-    $db = new dbconfig();
+    //$db = new dbconfig();
 
-    class event extends dbconfig
+    class event extends config
     {
         // Insert Record in the Database
+        public function get_event($ide){
+        $db =config ::db_connect();
+        $sql = "SELECT * from evenement where ide = '$ide'";
+        $result = $db->prepare($sql);
+        $result->execute();
+        return $result;
+
+        }
+
+
+        
         public function Store_Record()
         {
-            global $db;
+           $db =config ::db_connect();
             
             if(isset($_POST['btn_save']))
             {
@@ -20,13 +31,13 @@
                 
                 
                 
-                $titre = $db->check($_POST['titre']);
-                $date_d = $db->check($_POST['date_d']);
-                $date_f = $db->check($_POST['date_f']);
-                $nbp = $db->check($_POST['nbp']);
-                $ids = $db->check($_POST['ids']);
-                $desc = $db->check($_POST['desc']);
-                $file = $db->check($_POST['file']);
+                $titre = $_POST['titre'];
+                $date_d = $_POST['date_d'];
+                $date_f = $_POST['date_f'];
+                $nbp = $_POST['nbp'];
+                $ids = $_POST['ids'];
+                $desc = $_POST['desc'];
+                $file = $_POST['file'];
                 
 
                 if($this->insert_record($titre,$date_d,$date_f,$nbp,$ids,$desc,$file)=='true')
@@ -46,22 +57,33 @@
         function total_events($x)
         {
             
-           global $db;
+            $db =config ::db_connect();
            $db1 = new ticket();
 
            if ($x == 0 )
            {
-           $sql = "SELECT COUNT(*) c  from evenement ";
-           $result = mysqli_query($db->connection,$sql);
-           $data = mysqli_fetch_assoc($result);
-           
-               return $data['c'];
+           $sql = "SELECT * from evenement ";
+          // $result = mysqli_query($db->connection,$sql);
+          $result = $db->prepare($sql);
+          $result->execute();
+          $count=$result->rowCount();
+          return $count;
            }
            if ($x == 1 )
            {
             $query = "SELECT * from evenement ";
-            $result1 = mysqli_query($db->connection,$query);
+            $result = $db->prepare($query);
+            $result->execute();
             $x = 0;
+            foreach($result as $data)
+            {
+                if($data['nbp']  ==$db1->search_by_event($data['ide']) )
+                {
+                    $x = $x + 1 ;
+                }
+            }
+            return $x;
+            /*
             while($data = mysqli_fetch_assoc($result1))
             {
                 if($data['nbp']  ==$db1->search_by_event($data['ide']) )
@@ -70,22 +92,25 @@
                 }
             }
             return $x;
+            */
            }
            if ($x == 2 )
            {
-           $sql = "SELECT COUNT(*) c  from evenement where state = 0";
-           $result = mysqli_query($db->connection,$sql);
-           $data = mysqli_fetch_assoc($result);
+           $sql = "SELECT *  from evenement where state = 0";
            
-               return $data['c'];
+           $result = $db->prepare($sql);
+            $result->execute();
+            $count=$result->rowCount();
+               return $count;
            }
            if ($x == 3 )
            {
-           $sql = "SELECT COUNT(*) c  from evenement where state = 1";
-           $result = mysqli_query($db->connection,$sql);
-           $data = mysqli_fetch_assoc($result);
-           
-               return $data['c'];
+           $sql = "SELECT * from evenement where state = 1";
+          
+           $result = $db->prepare($sql);
+            $result->execute();
+            $count=$result->rowCount();
+               return $count;
            }
            
            
@@ -95,14 +120,18 @@
             global $db;
             $x = 1;
             $sql = "SELECT * from evenement where ide = '$ide' ";
-            $result1 = mysqli_query($db->connection,$sql);
+           // $result1 = mysqli_query($db->connection,$sql);
+            $result1 = $db->prepare($sql);
+            $result1->execute();
             
-            $data = mysqli_fetch_assoc($result1);
-            if ($data['nbpt'] < $data['nbp'] ) 
+            //$data = mysqli_fetch_assoc($result1);
+            if ($result1['nbpt'] < $result1['nbp'] ) 
             {
                 $x = $data['nbpt'] + $x ;
                 $sql = "UPDATE evenement set nbpt='$x' where  ide = '$ide'";
-                if(mysqli_query($db->connection,$sql))
+                $result = $db->prepare($query);
+                 
+                if($result->execute())
                 {
                     return true;
                 }
@@ -121,8 +150,9 @@
       // Insert Record in the Database Using Query    
         function insert_record($t,$a,$b,$c,$d,$e,$f)
         {
-            global $db;
-            $localtime = localtime();
+           // global $db;
+            $db =config ::db_connect();
+            //$localtime = date('mm/dd/yyyy');
            if($a > $b )
            {
                 return 'il faut que la data de debut soit inferieur a la date  fin ';
@@ -131,17 +161,13 @@
            else
            {
 
-             if($a < $localtime )
-            {
-                 return 'il faut que la data de debut soit supperieur a la date  actuelle  ';
- 
-            }
-            else
-            {
-
             
             $query = "insert into evenement (titre,date_d,date_f,nbp,ids,description,img) values('$t','$a','$b','$c','$d','$e','$f')";
-            $result = mysqli_query($db->connection,$query);
+            
+            $result = $db->prepare($query);
+            $result->execute();
+         
+           
 
             if($result)
             {
@@ -154,7 +180,7 @@
                 
             }
 
-           }
+           
         }
             
             
@@ -163,17 +189,17 @@
        // View Database Record
         public function view_record()
         {
-            global $db;
+            $db =config ::db_connect();
             
                 
             if(isset($_POST['btn_filter']))
             {
-                $titre = $db->check($_POST['titre']);
-                $ide = $db->check($_POST['ide']);
-                $date_d = $db->check($_POST['date_d']);
-                $date_f = $db->check($_POST['date_f']);
-                $nbp = $db->check($_POST['nbp']);
-                $ids = $db->check($_POST['ids']);
+                $titre = $_POST['titre'];
+                $ide =   $_POST['ide'];
+                $date_d = $_POST['date_d'];
+                $date_f = $_POST['date_f'];
+                $nbp = $_POST['nbp'];
+                $ids = $_POST['ids'];
                
                 
                 if( isset($titre) || isset($ide) || isset($date_d) || isset($date_f) || isset($nbp) || isset($ids))
@@ -258,8 +284,9 @@
         }
                 
             
-            
-            $result = mysqli_query($db->connection,$query);
+        $result = $db->prepare($query);
+        $result->execute();
+            //$result = mysqli_query($db->connection,$query);
             return $result;
         }
         public function search_record($titre,$ide,$date_d,$date_f,$nbp,$ids)
@@ -324,18 +351,23 @@
         }
         public function get_nbp($ide)
         {
-            global $db;
+            $db =config ::db_connect();
             $query = "SELECT *  from evenement Where ide = '$ide'";
-            $result = mysqli_query($db->connection,$query);
-            $data = mysqli_fetch_assoc($result);
+            //$result = mysqli_query($db->connection,$query);
+            //$data = mysqli_fetch_assoc($result);
+            $result = $db->prepare($query);
+            $result->execute();
+            $data=$result->fetch();
             return $data['nbp'];
             
         }
         public function Delete_Record($ide)
         {
-            global $db;
+            $db =config ::db_connect();
             $query = "DELETE from evenement Where ide = '$ide'";
-            $result = mysqli_query($db->connection,$query);
+           // $result = mysqli_query($db->connection,$query);
+            $result = $db->prepare($query);
+            $result->execute();
             return $result;
         }
 
@@ -343,15 +375,17 @@
         // Get Particular Record
         public function get_record($ide)
         {
-            global $db;
+            $db =config ::db_connect();
             $sql = "SELECT * from evenement WHERE ide='$ide'";
-            $data = mysqli_query($db->connection,$sql);
-            return $data;
+            //$data = mysqli_query($db->connection,$sql);
+            $result = $db->prepare($sql);
+            $result->execute();
+            return $result;
 
         }
         public function update()
         {
-            global $db;
+            $db =config ::db_connect();
 
             if(isset($_POST['btn_update']))
             {
@@ -380,11 +414,13 @@
         }
         public function update_act($ide)
         {
-            global $db;
+            $db =config ::db_connect();
             $sql = "SELECT  state from  evenement  where ide='$ide'";
-            $result = mysqli_query($db->connection,$sql);
-            $data = mysqli_fetch_assoc($result);
-           
+            //$result = mysqli_query($db->connection,$sql);
+            //$data = mysqli_fetch_assoc($result);
+            $result = $db->prepare($sql);
+            $result->execute();
+            $data=$result->fetch();
             if ($data['state']== 0)
             {
                 $x = 1;
@@ -394,7 +430,9 @@
                 $x = 0;
             }
             $sql = "UPDATE evenement set state = '$x' where ide='$ide'";
-            $result = mysqli_query($db->connection,$sql);
+           // $result = mysqli_query($db->connection,$sql);
+            $result = $db->prepare($sql);
+            $result->execute();
             if($result)
             {
                 return true;
@@ -410,9 +448,11 @@
  // Update Function 2
         public function update_record($titre,$ide,$date_d,$date_f,$ids,$nbp,$desc,$file)
         {
-            global $db;
+            $db =config ::db_connect();
             $sql = "update evenement set titre='$titre' , date_d='$date_d', date_f='$date_f', ids='$ids', nbp='$nbp' , description='$desc', img='$file' where ide='$ide'";
-            $result = mysqli_query($db->connection,$sql);
+            //$result = mysqli_query($db->connection,$sql);
+            $result = $db->prepare($sql);
+            $result->execute();
             if($result)
             {
                 return true;

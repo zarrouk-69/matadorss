@@ -142,7 +142,8 @@ https://templatemo.com/tm-561-purple-buzz
             <div class="row gy-5 g-lg-5 mb-4">
             <?php $result=$db->view_record(); ?>
             <?php 
-                                    while($data = mysqli_fetch_assoc($result))
+                                   // while($data = mysqli_fetch_assoc($result))
+                                   foreach($result as $data)
                                     {
                                         if ($data['state']== 1)
                                         {

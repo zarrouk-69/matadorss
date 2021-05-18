@@ -59,14 +59,14 @@
     
     //require_once('./config/dbconfig.php');
     require_once('dbconfig.php');
-    $db = new dbconfig();
+    $db = new config();
 
-    class ticket extends dbconfig
+    class ticket extends config
     {
         // Insert Record in the Database
         public function Store_Record()
         {
-            global $db;
+            
             $db2 = new ticket();
             $db1= new event();
             if(isset($_POST['btn_save']))
@@ -99,7 +99,7 @@
 
 
                 $ide = $_GET['T_IDE']; 
-                $idp = $db->check($_POST['idp']);
+                $idp = $_POST['idp'];
                 if($db1->get_nbp($ide)- $db2->search_by_event($ide)> 0)
                 {
 
@@ -118,7 +118,7 @@
                 }
                 else
                 {
-                    echo '<div class="alert alert-danger"> Failed </div>';
+                    echo '<div class="alert alert-danger"> Failed  no more places available in the event </div>';
                 }
                 }
                 else
@@ -139,22 +139,24 @@
         function search_by_event($ide)
         {
             
-           global $db;
-           $sql = "SELECT COUNT(*) c  from ticket WHERE ide='$ide'";
-           $result = mysqli_query($db->connection,$sql);
-           $data = mysqli_fetch_assoc($result);
+            $db =config ::db_connect();
+           $sql = "SELECT *  from ticket WHERE ide='$ide'";
            
-               return $data['c'];
+           $result = $db->prepare($sql);
+           $result->execute();
+           $count=$result->rowCount();
+           
+               return $count;
            
            
         }
         public function update_act($idt)
         {
-            global $db;
+            $db =config ::db_connect();
             $sql = "SELECT  state from  ticket  where idt='$idt'";
-            $result = mysqli_query($db->connection,$sql);
-            $data = mysqli_fetch_assoc($result);
-           
+            $result = $db->prepare($sql);
+            $result->execute();
+            $data=$result->fetch();
             if ($data['state']== 0)
             {
                 $x = 1;
@@ -164,8 +166,8 @@
                 $x = 0;
             }
             $sql = "UPDATE ticket set state = '$x' where idt='$idt'";
-            $result = mysqli_query($db->connection,$sql);
-            if($result)
+            $result = $db->prepare($sql);
+            if($result->execute())
             {
                 return true;
                 
@@ -179,33 +181,35 @@
         function total_tickets($x)
         {
             
-           global $db;
+            $db =config ::db_connect();
            //$db1 = new ticket();
 
            if ($x == 0 )
            {
-           $sql = "SELECT COUNT(*) c  from ticket ";
-           $result = mysqli_query($db->connection,$sql);
-           $data = mysqli_fetch_assoc($result);
-           
-               return $data['c'];
+           $sql = "SELECT *   from ticket ";
+           $result = $db->prepare($sql);
+           $result->execute();
+           $count=$result->rowCount();
+               return $count;
            }
            if ($x == 1 )
            {
-            $query = "SELECT COUNT(*) c  from ticket where state = 1 ";
-            $result = mysqli_query($db->connection,$query);
-            $data = mysqli_fetch_assoc($result);
+            $query = "SELECT *  from ticket where state = 1 ";
+            $result = $db->prepare($query);
+            $result->execute();
+           $count=$result->rowCount();
            
-               return $data['c'];
+               return $count;
            
            }
            if ($x == 2 )
            {
-            $query = "SELECT COUNT(*) c  from ticket where state = 0 ";
-            $result = mysqli_query($db->connection,$query);
-            $data = mysqli_fetch_assoc($result);
+            $query = "SELECT * from ticket where state = 0 ";
+            $result = $db->prepare($query);
+           $result->execute();
+           $count=$result->rowCount();
            
-               return $data['c'];
+               return $count;
            
            }
            
@@ -215,16 +219,17 @@
       // Insert Record in the Database Using Query    
         function insert_record($ide,$idp)
         {
-            global $db;
+            $db =config ::db_connect();
             $db1 = new event();
             if($this->search_by_event($ide)>=0)
             
             {
             
             $query = "insert into ticket (ide,idp) values('$ide','$idp')";
-            $result = mysqli_query($db->connection,$query);
+            $result = $db->prepare($query);
+           
 
-            if($result)
+            if($result->execute())
             {
                 return true;
                 
@@ -244,17 +249,17 @@
        // View Database Record
         public function view_record()
         {
-            global $db;
+            $db =config ::db_connect();
             
                 
             if(isset($_POST['btn_filter']))
             {
-                $idt = $db->check($_POST['idt']);
-                $datea = $db->check($_POST['datea']);
-                $idp = $db->check($_POST['idp']);
-                $ide = $db->check($_POST['ide']);
-                $idu = $db->check($_POST['idu']);
-                $state = $db->check($_POST['state']);
+                $idt = $_POST['idt'];
+                $datea =$_POST['datea'];
+                $idp = $_POST['idp'];
+                $ide = $_POST['ide'];
+                $idu = $_POST['idu'];
+                $state = $_POST['state'];
                
                 
                 if( isset($idt) || isset($datea) || isset($idp) || isset($ide) || isset($idu) || isset($state))
@@ -267,6 +272,7 @@
                 {
                     
                     echo '<div class="alert alert-danger"> Failed </div>';
+                    return false;
                 }
                 
             }
@@ -275,47 +281,55 @@
                 
         if(isset($_GET['ASC_IDT']))
         {
-            $query = "SELECT * from ticket order by  idt asc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt asc";
         }
         if(isset($_GET['DESC_IDT']))
         {
-            $query = "SELECT * from ticket order by  idt desc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt desc";
         }
         if(isset($_GET['ASC_DATEA']))
         {
-            $query = "SELECT * from ticket order by  datea asc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea asc";
         }
         if(isset($_GET['DESC_DATEA']))
         {
-            $query = "SELECT * from ticket order by  datea desc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea desc";
         }
         if(isset($_GET['ASC_IDE']))
         {
-            $query = "SELECT * from ticket order by  ide asc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide asc";
         }
         if(isset($_GET['DESC_IDE']))
         {
-            $query = "SELECT * from ticket order by  ide desc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide desc";
         }
         if(isset($_GET['ASC_IDP']))
         {
-            $query = "SELECT * from ticket order by  idp asc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idp asc";
         }
         if(isset($_GET['DESC_IDP']))
         {
-            $query = "SELECT * from ticket order by  idp desc";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idp desc";
+        }
+        if(isset($_GET['ASC_TITLE']))
+        {
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre asc ";
+        }
+        if(isset($_GET['DESC_TITLE']))
+        {
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre desc";
         }
         
         if (empty($query))
         {
-            $query = "SELECT * from ticket ";
+            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
         }
                 
                 
             }
-            
-            $result = mysqli_query($db->connection,$query);
-            return $result;
+            $result = $db->prepare($query);
+             $result->execute();
+             return $result;
         }
         public function search_record($idt,$datea,$idp,$ide,$idu,$state)
         {
@@ -331,42 +345,42 @@
             {
                 if( $idt != '')
                 {
-                    $query = "SELECT * from ticket WHERE idt = '$idt'";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE idt = '$idt'";
                 }
                 else
                 {
                     if($datea != '' )
                     {
-                        $query = "SELECT * from ticket WHERE datea = '$datea'"; 
+                        $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide  WHERE datea = '$datea'"; 
                     }
                     else
                     {
                     if( $idp != '')
                 {
-                    $query = "SELECT * from ticket WHERE idp = '$idp'";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE idp = '$idp'";
                 }
                 else
                 {
                     if( $ide != '' )
                 {
-                    $query = "SELECT * from ticket WHERE ide = '$ide'";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ide = '$ide'";
                 }
                 else
                 {
                     if( $ids != '')
                 {
-                    $query = "SELECT * from ticket WHERE ids = '$ids'";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ids = '$ids'";
                 }
                 
                 else
                 {
                     if( $state != '')
                 {
-                    $query = "SELECT * from ticket WHERE state = '$state'";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE state = '$state'";
                 }
                 else
                 {
-                    $query = "SELECT * from ticket ";
+                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
                 }
                 }
                 }
@@ -379,45 +393,58 @@
         }
         public function Delete_Record($idt)
         {
-            global $db;
+            $db =config ::db_connect();
             $query = "DELETE from ticket Where idt = '$idt'";
-            $result = mysqli_query($db->connection,$query);
-            return $result;
+            //$result = mysqli_query($db->connection,$query);
+            $result = $db->prepare($query);
+           
+            return $result->execute();
         }
 
 
         // Get Particular Record
         public function get_record($idt)
         {
-            global $db;
+            $db =config ::db_connect();
             $sql = "SELECT * from ticket WHERE idt='$idt'";
-            $data = mysqli_query($db->connection,$sql);
-            return $data;
+            //$data = mysqli_query($db->connection,$sql);
+            $result = $db->prepare($sql);
+            $result->execute();
+
+            return $result;
 
         }
         public function update()
         {
-            global $db;
-            
+            $db =config ::db_connect();
+            $db1= new event();
             if(isset($_POST['btn_update']))
             {
                 
                 $IDT = $_POST['idt'];
-                $DATEA = $_POST['datea'];
+                $DATEA =$_POST['datea'];
                 $IDP = $_POST['idp'];
                 $IDE = $_POST['ide'];
-                $IDU = $_POST['idu'];
-                $STATE = $_POST['state'];
+                //$IDU = $_POST['idu'];
+                $IDU =0;
+                //$STATE = $_POST['state'];
                
-
-                if($this->update_record($IDT,$DATEA,$IDP,$IDE,$IDU,$STATE))
+                if($db1->get_nbp($IDE)- $this->search_by_event($IDE)> 0)
                 {
-                    $this->set_messsage('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
-                    header("location:back_ticket.php");
+                    if($this->update_record($IDT,$DATEA,$IDP,$IDE,$IDU))
+                    {
+                        $this->set_messsage('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
+                        
+                    }
+                    else
+                    {   
+                        $this->set_messsage('<div class="alert alert-success"> Something Wrong : )</div>');
+                    }
                 }
                 else
-                {   
-                    $this->set_messsage('<div class="alert alert-success"> Something Wrong : )</div>');
+                {
+                    $this->set_messsage('<div class="alert alert-danger"> the event is already full : )</div>');
+                    header("location:back_ticket.php");
                 }
 
                
@@ -426,12 +453,14 @@
        
 
  // Update Function 2
-        public function update_record($idt,$datea,$idp,$ide,$idu,$state)
+        public function update_record($idt,$datea,$idp,$ide,$idu)
         {
-            global $db;
-            $sql = "update ticket set  datea='$datea', idp='$idp', ide='$ide', idu='$idu' , state = '$state' where idt='$idt'";
-            $result = mysqli_query($db->connection,$sql);
-            if($result)
+            $db =config ::db_connect();
+            $sql = "update ticket set  datea='$datea', idp='$idp', ide='$ide', idu='$idu' where idt='$idt'";
+           
+            $result = $db->prepare($sql);
+            
+            if($result->execute())
             {
                 return true;
                 

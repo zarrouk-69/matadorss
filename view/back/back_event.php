@@ -618,7 +618,7 @@
                 </thead>
                 <tbody class="list">
                 <?php 
-                                    while($data = mysqli_fetch_assoc($result))
+                                    foreach($result as $data)
                                     {
                                 ?>
                   <tr>

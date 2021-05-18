@@ -1,10 +1,17 @@
 <?php 
     require_once('../.././config/dbconfig.php');  
     $db = new ticket();
+    $db1 = new event();
+    $result1=$db1->view_record();
+   
     $db->update();
     $id = $_GET['U_ID'];
     $result = $db->get_record($id);
-    $data = mysqli_fetch_assoc($result);
+
+    $data=$result->fetch();
+    
+    $result2=$db1->get_event($data['ide']);
+    $data2=$result2->fetch();
 ?>
 <!DOCTYPE html>
 <html>
@@ -470,8 +477,20 @@
                                 
                                 <input type="date" name="datea"  class="form-control mb-2" required value="<?php echo $data['datea']; ?>">
                                
-                                <input type="text" name="ide"  class="form-control mb-2" required value="<?php echo $data['ide']; ?>">
+                               
                                 <input type="text" name="idp"  class="form-control mb-2" required value="<?php echo $data['idp']; ?>">
+                                <select name="ide" id="ide">
+                                <option value="<?php echo $data2['ide']; ?>"><?php echo $data2['titre']; ?>(<?php echo $data2['ide']; ?>)</option>
+                                <?php
+                                foreach($result1 as $data1)
+                                    {
+                                      if($data2['ide']!=$data1['ide'])
+                                      {
+                                  ?>  
+                                <option value="<?php echo $data1['ide']; ?>"><?php echo $data1['titre']; ?>(<?php echo $data1['ide']; ?>) </option>
+                                
+                                <?php }} ?>
+                                </select>
                                
                         </div>
                     <div class="card-footer">
