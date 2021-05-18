@@ -34,7 +34,7 @@ if(isset($_POST['forminscription'])) {
                      <html>
                         <body>
                            <div align="center">
-                              <a href="http://localhost:10080/integration/views/front/confirmation.php?vkey=%27.urlencode($key)"">Confirmez votre compte !</a>
+                              <a href="http://localhost:10080/integration/views/front/confirmation.php?vkey=%27.urlencode($vkey)"">Confirmez votre compte !</a>
                            </div>
                         </body>
                      </html>
@@ -243,10 +243,10 @@ window.onclick = function(event) {
             <table border="0" cellpadding="10" cellspacing="10" width="500" align="center" class="tblLogin">
                <tr>
                   <td align="right">
-                     <label for="nomU">nomU :</label>
+                     <label for="nomU">nom :</label>
                   </td>
                   <td>
-                     <input type="text" placeholder="Votre nomU" id="nomU" name="nomU" value="<?php if(isset($nomU)) { echo $nomU; } ?>" />
+                     <input type="text" placeholder="Votre nom" id="nomU" name="nomU" value="<?php if(isset($nomU)) { echo $nomU; } ?>" />
                   </td>
                </tr>
                <tr>
@@ -278,14 +278,14 @@ window.onclick = function(event) {
                      <label for="mdp2">Confirmation du mot de passe :</label>
                   </td>
                   <td>
-                     <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
+                     <input type="password" placeholder="Confirmez votre mot de passe" id="mdp2" name="mdp2" />
                   </td>
                </tr>
                <tr>
                   <td></td>
                   <td align="center">
                      <br />
-                     <input type="submit" name="forminscription" value="Je m'inscris" />
+                     <input type="submit" name="forminscription" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4"value="Je m'inscris" />
                   </td>
                </tr>
             </table>
@@ -305,7 +305,7 @@ window.onclick = function(event) {
                 <div class="col-lg-3 col-12 align-left">
                     <a class="navbar-brand" href="index.html">
                         <i class='bx bx-buildings bx-sm text-light'></i>
-                        <span class="text-light h5">Purple</span> <span class="text-light h5 semi-bold-600">Buzz</span>
+                        <span class="text-light h5">Naturious</span> <span class="text-light h5 semi-bold-600"></span>
                     </a>
                     <p class="text-light my-lg-4 my-2">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -408,12 +408,12 @@ window.onclick = function(event) {
                 <div class="row pt-2">
                     <div class="col-lg-6 col-sm-12">
                         <p class="text-lg-start text-center text-light light-300">
-                            © Copyright 2021 Purple Buzz Company. All Rights Reserved.
+                            © Copyright 2021 Naturious Company. All Rights Reserved.
                         </p>
                     </div>
                     <div class="col-lg-6 col-sm-12">
                         <p class="text-lg-end text-center text-light light-300">
-                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>TemplateMo</strong></a>
+                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>naturious</strong></a>
                         </p>
                     </div>
                 </div>
