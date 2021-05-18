@@ -1,5 +1,5 @@
 <?php
-      require_once 'C:/xampp/htdocs/copie/controller/produitC.php';
+      require_once 'C:/xampp/htdocs/integration/controller/produitC.php';
 
     $produitC =  new produitC();
   
@@ -8,7 +8,7 @@ $dataPoints = array();
 try{
      // Creating a new connection.
     // Replace your-hostname, your-db, your-username, your-password according to your database
-    $link = new \PDO(   'mysql:host=localhost;dbname=projet;charset=utf8mb4', //'mysql:host=localhost;dbname=canvasjs_db;charset=utf8mb4',
+    $link = new \PDO(   'mysql:host=localhost;dbname=projetweb;charset=utf8mb4', //'mysql:host=localhost;dbname=canvasjs_db;charset=utf8mb4',
                         'root', //'root',
                         '', //'',
                         array(
