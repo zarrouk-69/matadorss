@@ -99,11 +99,11 @@
 
 
                 $ide = $_GET['T_IDE']; 
-                $idp = $_POST['idp'];
+               
                 if($db1->get_nbp($ide)- $db2->search_by_event($ide)> 0)
                 {
 
-                if($this->insert_record($ide,$idp))
+                if($this->insert_record($ide))
                 {
                     echo '<div class="alert alert-success"> Your Ticket Has Been Added :) </div>';
                     $sender =  $db->check($_POST['sender']);
@@ -217,7 +217,7 @@
            
         }
       // Insert Record in the Database Using Query    
-        function insert_record($ide,$idp)
+        function insert_record($ide)
         {
             $db =config ::db_connect();
             $db1 = new event();
@@ -225,7 +225,7 @@
             
             {
             
-            $query = "insert into ticket (ide,idp) values('$ide','$idp')";
+            $query = "insert into ticket (ide) values('$ide')";
             $result = $db->prepare($query);
            
 
@@ -256,15 +256,15 @@
             {
                 $idt = $_POST['idt'];
                 $datea =$_POST['datea'];
-                $idp = $_POST['idp'];
+               
                 $ide = $_POST['ide'];
                 $idu = $_POST['idu'];
                 $state = $_POST['state'];
                
                 
-                if( isset($idt) || isset($datea) || isset($idp) || isset($ide) || isset($idu) || isset($state))
+                if( isset($idt) || isset($datea) ||  isset($ide) || isset($idu) || isset($state))
                 {
-                    $query = $this->search_record($idt,$datea,$idp,$ide,$idu,$state);
+                    $query = $this->search_record($idt,$datea,$ide,$idu,$state);
                    
                     echo '<div class="alert alert-success"> Your Records Has Been filtred :) </div>';
                 }
@@ -281,48 +281,41 @@
                 
         if(isset($_GET['ASC_IDT']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt asc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt asc";
         }
         if(isset($_GET['DESC_IDT']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt desc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idt desc";
         }
         if(isset($_GET['ASC_DATEA']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea asc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea asc";
         }
         if(isset($_GET['DESC_DATEA']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea desc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  datea desc";
         }
         if(isset($_GET['ASC_IDE']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide asc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide asc";
         }
         if(isset($_GET['DESC_IDE']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide desc";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  ide desc";
         }
-        if(isset($_GET['ASC_IDP']))
-        {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idp asc";
-        }
-        if(isset($_GET['DESC_IDP']))
-        {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by  idp desc";
-        }
+       
         if(isset($_GET['ASC_TITLE']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre asc ";
+            $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre asc ";
         }
         if(isset($_GET['DESC_TITLE']))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre desc";
+            $query = "SELECT idt , datea , ticket.ide  , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide order by E.titre desc";
         }
         
         if (empty($query))
         {
-            $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
+            $query = "SELECT idt , datea , ticket.ide  , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
         }
                 
                 
@@ -331,60 +324,56 @@
              $result->execute();
              return $result;
         }
-        public function search_record($idt,$datea,$idp,$ide,$idu,$state)
+        public function search_record($idt,$datea,$ide,$idu,$state)
         {
             
             
             
 
-            if ( $idt != ' ' && $datea != ''  && $idp != '' &&  $ide != ''  &&  $idu != '' &&  $state != '' )
+            if ( $idt != ' ' && $datea != ''  &&   $ide != ''  &&  $idu != '' &&  $state != '' )
             {
-                $query = "SELECT * from ticket WHERE idt = '$idt' and datea= '$datea' and idp= '$idp' and ide = '$ide' and ids = '$ids' and state = '$state'";
+                $query = "SELECT * from ticket WHERE idt = '$idt' and datea= '$datea'  and ide = '$ide' and ids = '$ids' and state = '$state'";
             }
             else
             {
                 if( $idt != '')
                 {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE idt = '$idt'";
+                    $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE idt = '$idt'";
                 }
                 else
                 {
                     if($datea != '' )
                     {
-                        $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide  WHERE datea = '$datea'"; 
+                        $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide  WHERE datea = '$datea'"; 
                     }
                     else
                     {
-                    if( $idp != '')
-                {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE idp = '$idp'";
-                }
-                else
-                {
+                    
+                
                     if( $ide != '' )
                 {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ide = '$ide'";
+                    $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ide = '$ide'";
                 }
                 else
                 {
                     if( $ids != '')
                 {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ids = '$ids'";
+                    $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE ids = '$ids'";
                 }
                 
                 else
                 {
                     if( $state != '')
                 {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE state = '$state'";
+                    $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide WHERE state = '$state'";
                 }
                 else
                 {
-                    $query = "SELECT idt , datea , ticket.ide , idp , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
+                    $query = "SELECT idt , datea , ticket.ide   , evenement.titre , ticket.state   FROM ticket  INNER JOIN  evenement  on evenement.ide = ticket.ide";
                 }
                 }
                 }
-                }
+                
                 }
             }
             }
@@ -423,7 +412,7 @@
                 
                 $IDT = $_POST['idt'];
                 $DATEA =$_POST['datea'];
-                $IDP = $_POST['idp'];
+                
                 $IDE = $_POST['ide'];
                 //$IDU = $_POST['idu'];
                 $IDU =0;
@@ -431,14 +420,15 @@
                
                 if($db1->get_nbp($IDE)- $this->search_by_event($IDE)> 0)
                 {
-                    if($this->update_record($IDT,$DATEA,$IDP,$IDE,$IDU))
+                    if($this->update_record($IDT,$DATEA,$IDE,$IDU))
                     {
                         $this->set_messsage('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
-                        
+                        header("location:back_ticket.php");
                     }
                     else
                     {   
                         $this->set_messsage('<div class="alert alert-success"> Something Wrong : )</div>');
+                        header("location:back_ticket.php");
                     }
                 }
                 else
@@ -453,10 +443,10 @@
        
 
  // Update Function 2
-        public function update_record($idt,$datea,$idp,$ide,$idu)
+        public function update_record($idt,$datea,$ide,$idu)
         {
             $db =config ::db_connect();
-            $sql = "update ticket set  datea='$datea', idp='$idp', ide='$ide', idu='$idu' where idt='$idt'";
+            $sql = "update ticket set  datea='$datea', ide='$ide', idu='$idu' where idt='$idt'";
            
             $result = $db->prepare($sql);
             

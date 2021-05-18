@@ -488,7 +488,7 @@
                 </div>
               </div>
             </div>
-</div>
+        </div>
                             <form method="POST">
                             <input type="number" name="ide" placeholder="ide" class="form-control mb-2">
                             <input type="text" name="titre" placeholder="titre" class="form-control mb-2">
@@ -613,7 +613,7 @@
 
                   
                     
-                    <th scope="col" class="sort" data-sort="img">img </th>
+                    <th scope="col" class="sort" data-sort="img">actions </th>
                   </tr>
                 </thead>
                 <tbody class="list">
@@ -721,7 +721,7 @@
           </div>
         </div>
       </div>
-      <!-- Footer -->
+      <!-- Footer 
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
@@ -747,8 +747,10 @@
           </div>
         </div>
       </footer>
+      -->
     </div>
   </div>
+
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="../.././assets/vendor/jquery/dist/jquery.min.js"></script>

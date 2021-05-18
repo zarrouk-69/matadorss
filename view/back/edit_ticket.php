@@ -478,7 +478,7 @@
                                 <input type="date" name="datea"  class="form-control mb-2" required value="<?php echo $data['datea']; ?>">
                                
                                
-                                <input type="text" name="idp"  class="form-control mb-2" required value="<?php echo $data['idp']; ?>">
+                                
                                 <select name="ide" id="ide">
                                 <option value="<?php echo $data2['ide']; ?>"><?php echo $data2['titre']; ?>(<?php echo $data2['ide']; ?>)</option>
                                 <?php

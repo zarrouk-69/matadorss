@@ -464,7 +464,7 @@
                             <input type="text" name="idt" placeholder="idt" class="form-control mb-2">
                             <input type="date" name="datea" class="form-control mb-2">
                             <input type="number" name="ide" placeholder="ide" class="form-control mb-2" >
-                            <input type="number" name="idp" placeholder="idp" class="form-control mb-2">
+                            
                            
                             
                             <button class="btn btn-success" name="btn_filter"> Filter </button>
@@ -518,24 +518,13 @@
                   }
                   ?>
                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?ASC_NAME">nom evenement</a></th>
-                   <?php if(isset($_GET['ASC_IDP']))
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?DESC_IDP">ID Pack</a></th> 
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-                    <th scope="col" class="sort" data-sort="ide" ><a href="back_ticket.php?ASC_IDP">ID Pack</a></th> 
-                    <?php
-                  }
-                  ?>
+                   
 
 
                     
                     
                     <th scope="col" class="sort" data-sort="status">status</th>
+                    <th scope="col" class="sort" data-sort="status">actions</th>
                     
                   </tr>
                 </thead>
@@ -559,9 +548,7 @@
                      <td class="budget">
                      <?php echo $data['titre'] ?>
                      </td>
-                     <td class="budget">
-                     <?php echo $data['idp'] ?>
-                     </td>
+                    
                      
                     <td>
                         <?php if ($data['state'] == 1)
@@ -609,7 +596,7 @@
           </div>
         </div>
       </div>
-      <!-- Footer -->
+      <!-- Footer 
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
@@ -635,6 +622,7 @@
           </div>
         </div>
       </footer>
+      -->
     </div>
   </div>
   <!-- Argon Scripts -->

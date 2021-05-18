@@ -119,8 +119,7 @@ https://templatemo.com/tm-561-purple-buzz
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="idp" placeholder="id pack">
-                            <label for="floatingname light-300">id pack</label>
+                           
                         </div>
                     </div><!-- End Input Name -->
 
