@@ -39,7 +39,7 @@ $listtype=$c2->afficher();
 
 <body>
 
-    <a href = "searchrec.php" class="btn btn-primary shop-item-button">Search</a>
+
     <?php
         if (isset($_GET['idR'])) {
             $result = $reclamationC->getrecById($_GET['idR']);
@@ -63,7 +63,7 @@ $listtype=$c2->afficher();
                         <label>date</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "dateR" value = "<?= $result['dateR'] ?>">
+                        <input type="date" name = "dateR" value = "<?= $result['dateR'] ?>">
                     </div>
                 </div>
                 <div class="row">

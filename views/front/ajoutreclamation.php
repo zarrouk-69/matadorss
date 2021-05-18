@@ -238,7 +238,7 @@ window.onclick = function(event) {
     <td><p id="text">description : </p>
       <input type="text" name="texteR"></td>
     <td><p id="date">date : </p>
-      <input type="text" name="dateR"></td> 
+      <input type="date" name="dateR"></td> 
     </tr>
    <tr><td>  <p id="text">type : </p>
 <SELECT name="type" size="1">
@@ -247,7 +247,7 @@ window.onclick = function(event) {
   ?>
 <OPTION value="<?php echo $row['idType'] ;?>">
   <?php echo $row['libelleT'] ;?></OPTION>
-<?php } ?>
+<?php } ?> <br> <br> 
 </SELECT></td></tr>
 
   
@@ -257,7 +257,7 @@ window.onclick = function(event) {
 
 <br>
   <tr>
-    <br>
+    <br> 
         <td colspan="2"><input type="submit" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" name="s_inscrire" value="ajouter"></td>
   </tr>
 </table>

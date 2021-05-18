@@ -119,7 +119,7 @@ window.onclick = function(event) {
     </nav>
     <!-- Close Header -->
 
-	<a href = "searchrec.php" class="btn btn-primary shop-item-button">Search</a>
+	
 		<section class="container">
 			<h2>gestion de reclamations</h2>
 			<a href = "ajoutreclamation.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a><br>
