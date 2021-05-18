@@ -1,9 +1,9 @@
 <?php
-    require_once '/xampp/htdocs/hotels/config.php';
+    require_once '/xampp/htdocs/integration/config.php';
     class reservC {
         public function afficherreserv() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv '
                 );
@@ -15,7 +15,7 @@
         }
          public function afficherreservtri() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY idreserv '
                 );
@@ -27,7 +27,7 @@
         }
         public function afficherreservtritype() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY typereserv '
                 );
@@ -39,7 +39,7 @@
         }
        public function afficherreservtridesc() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY idreserv DESC'
                 );
@@ -51,7 +51,7 @@
         }
         public function afficherreservtridesctype() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY typereserv DESC'
                 );
@@ -63,7 +63,7 @@
         }
          public function afficherreservtriprix() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY prixreserv '
                 );
@@ -75,7 +75,7 @@
         }
         public function afficherreservtridescprix() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv ORDER BY prixreserv DESC'
                 );
@@ -87,7 +87,7 @@
         }
       /* public function afficherreservnom($nomh) {
             try { 
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv  WHERE nomreserv like ("%":st"%")'
                 );
@@ -99,7 +99,7 @@
         }*/
          public function afficherreservtype($tt) {
             try { 
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv  WHERE typereserv like ("%":rt"%")'
                 );
@@ -111,7 +111,7 @@
         }
         public function getreservById($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv WHERE idreserv = :id'
                 );
@@ -126,7 +126,7 @@
 
        /* public function getreservByTitle($nomh) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv WHERE nomreserv = :nomh'
                 );
@@ -140,7 +140,7 @@
         }*/
         public function getreservBytype($type) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM reserv WHERE typereserv = :type'
                 );
@@ -155,7 +155,7 @@
 
         public function addreserv($reserv) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'INSERT INTO reserv (prixreserv, typereserv, idh1, idc1, nbrjourv, accessv, nbrexcurv, idhot1, datereserv) 
                 VALUES (:prix, :type, :idh1, :idc1, :nbrjourv, :accessv, :nbrexcurv, :idhot1, :datereserv)'
@@ -178,7 +178,7 @@
 
         public function updatereserv($reserv, $id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'UPDATE reserv SET  datereserv = :datereserv WHERE idreserv = :id'
                 );
@@ -195,7 +195,7 @@
 
         public function deletereserv($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'DELETE FROM reserv WHERE idreserv = :id'
                 );

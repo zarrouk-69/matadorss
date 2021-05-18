@@ -7,7 +7,7 @@
         private  $nbrhotel;
         private  $deschotel;
 		private 	$imagehotel;	
-        private   $imagehotel1;
+        private  $imagehotel1;
         private   $imagehotel2;
         private   $imagehotel3;
         private   $imagehotel4;

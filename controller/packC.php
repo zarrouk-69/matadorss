@@ -1,9 +1,9 @@
 <?php
-    require_once '/xampp/htdocs/hotels/config.php';
+    require_once '/xampp/htdocs/integration/config.php';
     class packC {
         public function afficherpack() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack '
                 );
@@ -15,7 +15,7 @@
         }
          public function afficherpacktri() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY nompack '
                 );
@@ -27,7 +27,7 @@
         }
         public function afficherpacktritype() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY typepack '
                 );
@@ -39,7 +39,7 @@
         }
         public function afficherpacktridesc() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY nompack DESC'
                 );
@@ -51,7 +51,7 @@
         }
         public function afficherpacktridesctype() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY typepack DESC'
                 );
@@ -63,7 +63,7 @@
         }
          public function afficherpacktriprix() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY prixpack '
                 );
@@ -75,7 +75,7 @@
         }
         public function afficherpacktridescprix() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack ORDER BY prixpack DESC'
                 );
@@ -87,7 +87,7 @@
         }
        public function afficherpacknom($nomh) {
             try { 
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack  WHERE nompack like ("%":st"%")'
                 );
@@ -99,7 +99,7 @@
         }
          public function afficherpacktype($tt) {
             try { 
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack  WHERE typepack like ("%":rt"%")'
                 );
@@ -111,7 +111,7 @@
         }
         public function getpackById($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack WHERE idpack = :id'
                 );
@@ -126,7 +126,7 @@
 
         public function getpackByTitle($nomh) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack WHERE nompack = :nomh'
                 );
@@ -140,7 +140,7 @@
         }
         public function getpackBytype($type) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM pack WHERE typepack = :type'
                 );
@@ -155,7 +155,7 @@
 
         public function addpack($pack) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'INSERT INTO pack (nompack, prixpack, imagepack, typepack, descpack, idh1, nbrjour, access, nbrexcur, hotel1) 
                 VALUES (:nomh, :prix, :image,  :type, :desch, :idh1, :nbrjour, :access, :nbrexcur, :hotel1)'
@@ -179,7 +179,7 @@
 
         public function updatepack($pack, $id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'UPDATE pack SET nompack = :nomh, prixpack = :prix, imagepack = :image,  typepack = :type, descpack = :desch, idh1 = :idh1, nbrjour = :nbrjour, access = :access, nbrexcur = :nbrexcur, hotel1 = :hotel1 WHERE idpack = :id'
                 );
@@ -204,7 +204,7 @@
 
         public function deletepack($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'DELETE FROM pack WHERE idpack = :id'
                 );

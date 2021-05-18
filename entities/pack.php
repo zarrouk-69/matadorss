@@ -1,17 +1,17 @@
 <?php
 	class pack 
 	{
-		private int $idpack ;
-		private string $nompack;
-		private int $prixpack;
-        private string $typepack;
-        private string $descpack;
-		private string $imagepack;
-        private int $idh1 ;	
-        private int $nbrjour ; 
-        private string $access;   
-        private int $nbrexcur ;   
-        private string $hotel1; 
+		private  $idpack ;
+		private  $nompack;
+		private  $prixpack;
+        private  $typepack;
+        private  $descpack;
+		private  $imagepack;
+        private  $idh1 ;	
+        private  $nbrjour ; 
+        private  $access;   
+        private  $nbrexcur ;   
+        private  $hotel1; 
 		public function __construct($nompack,$prixpack,$typepack,$descpack,$imagepack,$idh1,$nbrjour,$access,$nbrexcur,$hotel1)
 		{
 			$this->nompack =$nompack;

@@ -1,5 +1,5 @@
 <?php
-    require_once 'config.php';
+    require_once '/xampp/htdocs/integration/config.php';
     class HotelC {
         public function afficherHotel() {
             try {
@@ -15,7 +15,7 @@
         }
          public function afficherHoteltri() {
             try {
-                $pdo =config:: getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM hotel ORDER BY nomhotel '
                 );
@@ -27,7 +27,7 @@
         }
         public function afficherHoteltrinbr() {
             try {
-                $pdo =config:: getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM hotel ORDER BY nbrhotel '
                 );
@@ -39,7 +39,7 @@
         }
         public function afficherHoteltridesc() {
             try {
-                $pdo =config::getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM hotel ORDER BY nomhotel DESC'
                 );
@@ -51,7 +51,7 @@
         }
         public function afficherHoteltridescnbr() {
             try {
-                $pdo =config:: getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM hotel ORDER BY nbrhotel DESC'
                 );
@@ -140,7 +140,7 @@
         }
         public function getHotelByetoile($etoile) {
             try {
-                $pdo =config:: getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM hotel WHERE nbrhotel = :etoile'
                 );
@@ -202,7 +202,7 @@
 
         public function deleteHotel($id) {
             try {
-                $pdo =config:: getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'DELETE FROM hotel WHERE idhotel = :id'
                 );

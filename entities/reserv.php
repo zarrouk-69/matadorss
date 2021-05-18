@@ -1,16 +1,16 @@
 <?php
 	class reserv 
 	{
-		private int $idreserv ;
-		private int $prixreserv;
-        private string $typereserv;
-        private int $idh1 ;	
-        private int $idc1 ;
-        private int $nbrjourv ; 
-        private string $accessv;   
-        private int $nbrexcurv ;   
-        private string $idhot1;  
-        private string $datereserv;
+		private  $idreserv ;
+		private  $prixreserv;
+        private  $typereserv;
+        private  $idh1 ;	
+        private  $idc1 ;
+        private  $nbrjourv ; 
+        private  $accessv;   
+        private  $nbrexcurv ;   
+        private  $idhot1;  
+        private  $datereserv;
 		public function __construct($prixreserv,$typereserv,$idh1,$idc1,$nbrjourv,$accessv,$nbrexcurv,$idhot1,$datereserv)
 		{
 
