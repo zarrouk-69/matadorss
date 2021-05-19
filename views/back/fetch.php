@@ -31,6 +31,8 @@ if(mysqli_num_rows($result) > 0)
      <th>quantite </th>
      <th>date</th>
      <th>prix totale</th>
+     <th>id user</th>
+
     </tr>
  ';
  while($row = mysqli_fetch_array($result))
@@ -41,6 +43,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["qtePrec"].'</td>
     <td>'.$row["datePrec"].'</td>
     <td>'.$row["prixTotalprec"].'</td>
+    <td>'.$row["idc"].'</td>
 
 
  

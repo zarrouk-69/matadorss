@@ -5,15 +5,20 @@
 		private  $qtePrec;
 		private  $prixTotalprec;
         private  $datePrec;
+        private  $idc;
 
-		public function __construct($prixTotalprec,$qtePrec,$datePrec)
+		public function __construct($prixTotalprec,$qtePrec,$datePrec,$idc)
 		{
 			$this->qtePrec = $qtePrec;
 			$this->prixTotalprec =$prixTotalprec;
             $this->datePrec =$datePrec;
+            $this->idc =$idc;
 		}
 		 public function getidPrec () {
             return $this->idPrec;
+        }
+        public function getidc () {
+            return $this->idc;
         }
 
         public function getqtePrec (){
@@ -31,6 +36,10 @@
         public function setqtePrec ($qtePrec){
             $this->qtePrec = $qtePrec;
         }
+        public function setidc ($idc){
+            $this->idc = $idc;
+        }
+
 
         public function setprixTotalprec ($prixTotalprec){
             $this->prixTotalprec = $prixTotalprec;

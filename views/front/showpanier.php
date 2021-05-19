@@ -3,6 +3,7 @@
     require_once 'C:/xampp/htdocs/integration/controller/panierC.php';
     require_once 'C:/xampp/htdocs/integration/controller/commandeC.php';
     require_once 'C:/xampp/htdocs/integration/entities/commande.php';
+    session_start();
 
     $produitC =  new produitC();
 
@@ -44,7 +45,7 @@
 
                }
 
-        $commande = new commande($_POST['prixtot'],(int)$_POST['q2'], $_POST['datePrec']);
+        $commande = new commande($_POST['prixtot'],(int)$_POST['q2'], $_POST['datePrec'] ,$_POST['idc']);
         $commandeC->addcommande($commande);
             }
 
@@ -216,6 +217,8 @@ https://templatemo.com/tm-561-purple-buzz
                     </div>
                     <div class="col-75">
                     <p hidden> <input type="text"  name = "prixtot" value="<?= $prixTotal ?>" required="" ></p>
+                    <p hidden> <input type="text"  name = "idc" value="<?= $_SESSION['idU'] ?>" required="" ></p>
+
                     </div>
                 </div>
                 <div class="row">

@@ -6,7 +6,7 @@ require_once 'C:/xampp/htdocs/integration/controller/hotelC.php';
 
     $reservC =  new reservC();
    $hotelC =  new hotelC();
-
+ session_start();
     if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1'])  && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv']) && isset($_POST['datereserv'])) {
         $result11 = $hotelC->getHotelById($_POST['idh1']);
             if ($result11 !== false) {
@@ -181,12 +181,12 @@ chart.render();
        
 		<div class="form-container">
             <form action="" method = "POST" onsubmit="myFunction77()">
-                  <div class="row">
+                  <div hidden class="row">
                     <div class="col-25">
                         <label>client</label>
                     </div>
-                    <div class="col-75">
-                        <input type="number" name = "idc1" min="0" required="" >
+                    <div  class="col-75">
+                        <input type="number" value="<?= $_SESSION['idU'] ?>" name = "idc1" min="0" required="" >
                     </div>
                 </div>
               

@@ -213,11 +213,15 @@ span.psw {
 
 
                         </li>
+                         <div class="dropdown">
+                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Pack</a>
+                                <div class="dropdown-content">
+                                  <a href="showpack.php">Pack</a>
+                                  <a href="showhotel.php">hotel</a>
+                                </div>
+                              </div>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Pack</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Boutique</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="showproduits.php">Boutique</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">contact</a>

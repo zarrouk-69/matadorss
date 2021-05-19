@@ -3,7 +3,7 @@
     class commandeC {
         public function affichercommande() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM commande'
                 );
@@ -15,7 +15,7 @@
         }
         public function countcommande() {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT COUNT(*) FROM commande
                     '
@@ -28,7 +28,7 @@
         }
         public function updatecoommande($commande, $id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'UPDATE commande SET prixTotalprec = :prixTotalprec WHERE idPrec = :id'
                 );
@@ -44,7 +44,7 @@
 
         public function getcommandeById($id) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
                     'SELECT * FROM commande WHERE idPrec = :id'
                 );
@@ -60,15 +60,16 @@
 
         public function addcommande($commande) {
             try {
-                $pdo = getConnexion();
+                $pdo = config::getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO commande ( qtePrec , datePrec, prixTotalprec) 
-                VALUES (:qtePrec , :datePrec, :prixTotalprec)'
+                    'INSERT INTO commande ( qtePrec , datePrec, prixTotalprec,idc) 
+                VALUES (:qtePrec , :datePrec, :prixTotalprec,:idc)'
                 );
                 $query->execute([
                     'qtePrec' => $commande->getqtePrec(),
                     'datePrec' => $commande->getdatePrec(),
                     'prixTotalprec' => $commande->getprixTotalprec(),
+                    'idc' => $commande->getidc(),
                     
                 ]);
             } catch (PDOException $e) {

@@ -9,6 +9,8 @@ require_once 'C:/xampp/htdocs/integration/controller/packC.php';
     $reservC =  new reservC();
      $packC =  new packC();
    $hotelC =  new hotelC();
+   session_start();
+
     if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1']) && isset($_POST['idc1']) && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv']) && isset($_POST['datereserv'])) {
           $result11 = $hotelC->getHotelById($_POST['idh1']);
             if ($result11 !== false) {
@@ -129,7 +131,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <label>client</label>
                     </div>
                     <div  class="col-75">
-                        <input type="number" value = ""name = "idc1" min="0" required="" >
+                        <input type="number" value = "<?= $_SESSION['idU'] ?>"name = "idc1" min="0" required="" >
                     </div>
                 </div>
               
