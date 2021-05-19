@@ -1,5 +1,6 @@
 <?php
-    require_once 'C:/xampp/htdocs/ateleir8/config.php';
+    require_once 'C:/xampp/htdocs/integration/config.php';
+    
     class badgeC {
         public function afficherBadge() {
             try {
