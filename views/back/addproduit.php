@@ -174,7 +174,13 @@
                         <label>categ :</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name = "categoriePr" required ="">
+                        <select name="categoriePr" id="categoriePr">
+    <option value="">veuillez choisir </option>
+    <option value="t shirt">t shirt</option>
+    <option value="porte cle">porte cle</option>
+    <option value="map">map</option>
+
+</select>
                     </div>
                 </div>
                 <div class="row">

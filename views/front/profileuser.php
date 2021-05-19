@@ -177,6 +177,7 @@ span.psw {
 
 <body>
 <!-- Header -->
+     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
@@ -197,18 +198,20 @@ span.psw {
                             <!-- Nav -->
                              
 
-                            <div class="dropdown">
-                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Animaux</a>
+                             <div class="dropdown">
+                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="showAlbums3.php">Animaux</a>
                                 <div class="dropdown-content">
-                                  <a href="contact.html">Animaux</a>
-                                  <a href="contact.php">Site</a>
+                                  <a href="showAlbums3.php">Animaux</a>
+                                  <a href="showAlbums1.php">Site</a>
+                                  <a href="adddon.php">Don</a>
+
                                 </div>
                               </div>
                         
     
                       
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.html">Evenement</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="front_event.php">Evenement</a>
                             <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -230,7 +233,7 @@ span.psw {
                 </div>
                
                   <button onclick="window.location.href='deconnexion.php';">
-     deconnexion
+     se deconnecter
     </button>
                             
                         </li>  
@@ -254,7 +257,6 @@ window.onclick = function(event) {
         </div>
     </nav>
     <!-- Close Header -->
-
 
 <section class="form_1 pt-120 pb-120">
 

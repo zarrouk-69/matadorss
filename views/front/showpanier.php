@@ -87,12 +87,12 @@ https://templatemo.com/tm-561-purple-buzz
 
 
 <body>
- <!-- Header -->
- <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+  <!-- Header -->
+     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
                 <i class='bx bx-buildings bx-sm text-dark'></i>
-                <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span>
+                <span class="text-dark h4">Naturious</span> <span class="text-primary h4">reserve</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -102,36 +102,37 @@ https://templatemo.com/tm-561-purple-buzz
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Aceuil</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Accueill</a>
                         </li>
                        
                             <!-- Nav -->
                              
-             
-                            <div class="dropdown">
-                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Animaux</a>
+
+                             <div class="dropdown">
+                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="showAlbums3.php">Animaux</a>
                                 <div class="dropdown-content">
-                                  <a href="contact.html">Animaux</a>
-                                  <a href="contact.php">Site</a>
+                                  <a href="showAlbums3.php">Animaux</a>
+                                  <a href="showAlbums1.php">Site</a>
+                                  <a href="adddon.php">Don</a>
+
                                 </div>
                               </div>
                         
     
-                              <div class="dropdown">
-                                <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Evenement</a>
-                                <div class="dropdown-content">
-                                  <a href="contact.html">Ticket</a>
-                                  <a href="contact.php">Evenement</a>
-                                </div>
-                              </div>
-                              <div class="dropdown">
+                      
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="front_event.php">Evenement</a>
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+                        </li>
+                         <div class="dropdown">
                                 <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Pack</a>
                                 <div class="dropdown-content">
-                                  <a href="contact.html">Pack</a>
-                                  <a href="contact.php">Hotel</a>
+                                  <a href="showpack.php">Pack</a>
+                                  <a href="showhotel.php">hotel</a>
                                 </div>
                               </div>
-                              
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="showproduits.php">Boutique</a>
                         </li>
@@ -140,6 +141,8 @@ https://templatemo.com/tm-561-purple-buzz
                         </li>
                     </ul>
                 </div>
+               
+    <!-- Close Header -->
                 <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
                     <a class="nav-link" href="login.php"><i class='bx bx-user-circle bx-sm text-primary'></i></a>

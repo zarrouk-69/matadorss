@@ -8,7 +8,11 @@
 
 	if (isset($_GET['idR'])) {
 		$reclamationC->deleterec($_GET['idR']);
-		header('Location:showrec.php');
+		
+      echo "<script>
+alert('suppression avec succes');
+window.location.href='showrec.php';
+</script>";
 	}
 
 ?>
