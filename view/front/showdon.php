@@ -1,35 +1,16 @@
 <?php
-    require_once 'C:/xampp/htdocs/ateleir8/controller/donC.php';
-     require_once 'C:/xampp/htdocs/ateleir8/controller/badgeC.php';
-    require_once 'C:/xampp/htdocs/ateleir8/entities/don.php';
-
+    require_once 'C:/xampp/htdocs/integration/controller/donC.php';
 
     $donC =  new donC();
-     $badgeC =  new badgeC();
 
-    if ( isset($_POST['montantdon']) && isset($_POST['naturedon'])  ) {
-        if($_POST['montantdon']<=1000)
-        { $result11 = $badgeC->getBadgeById('5');
-        
-        }
-       elseif($_POST['montantdon']<=3000)
-        {
-             $result11 = $badgeC->getBadgeById('3');
-         
-        }
-        elseif($_POST['montantdon']<=5000)
-        {
-             $result11 = $badgeC->getBadgeById('4');
-          
-        }
-        $don = new don( (int)$_POST['montantdon'], $_POST['naturedon'],$result11['logim']);
-      
-        $donC->addDon($don);
- header('Location:showdon.php');
-       
-    }
+	$dons = $donC->afficherDon();
+
+	if (isset($_GET['iddon'])) {
+		$donC->deleteDon($_GET['iddon']);
+		header('Location:showdon.php');
+	}
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,21 +18,19 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="/ateleir8/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/ateleir8/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/integration/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/integration/assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="/ateleir8/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/integration/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="/ateleir8/assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="/integration/assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="/ateleir8/assets/css/templatemo.css">
+    <link rel="stylesheet" href="/integration/assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/ateleir8/assets/css/custom.css">
-    <link rel="stylesheet" href="/ateleir8/assets/css/drop.css">
-<style >
-    #km126{width: 10em};
-</style>
+    <link rel="stylesheet" href="/integration/assets/css/custom.css">
+    <link rel="stylesheet" href="/integration/assets/css/drop.css">
+
 <!--
     
 TemplateMo 561 Purple Buzz
@@ -62,7 +41,7 @@ https://templatemo.com/tm-561-purple-buzz
 </head>
 
 <body>
-	 <!-- Header -->
+	<!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
@@ -124,7 +103,7 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </nav>
     <!-- Close Header -->
-     <!-- Start Banner Hero -->
+<!-- Start Banner Hero -->
     <div class="banner-wrapper bg-light">
         <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
 
@@ -200,54 +179,52 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </div>
     <!-- End Banner Hero -->
-    
-	<section class="container">
-		<h2>Faire don</h2>
-        <a href = "showdon.php" class="btn btn-primary shop-item-button">All dons</a>
-		<div class="form-container">
-            <form action=""  method = "POST" onsubmit="mail()">
-                 
-                <div class="row">
-                    <div class="col-25">                
-                        <label>Montant: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="int" name = "montantdon"  required="">
-                    </div>
-                </div>
-            
-                <div class="row">
-                    <div class="col-25">
-                        <label>Nature de Paiment:</label>
-                    </div>
-                    <div class="col-75">
-                        
-                        <select name="naturedon" >
-                            <option value="espece">espece </option>
-                            <option value="check">check </option>
-                            <option value="carte bancaire">carte bancaire </option>
-                            
-                        </select>
-                    </div>
-                </div>
-                
-                <br>
-                <div class="row">
+	
+		<section class="container">
+			<h2>Tables des Dons</h2>
+			<a href = "adddon.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
+			
+			<div class="shop-items">
+				<?php
+					foreach ($dons as $don) {
+				?>
+				<div class="shop-item">
+					
+					<table>
+						<tr>
+							<th>montant </th>
+                            <hr>
+							<th>badge</th>
+                            <hr>
+							<th>nature</th>
 
-                    <input  type="submit"  id="km126" value="Submit"  name = "submit">
+						</tr>
+						<tr>
 
-                </div>
-            </form>
-            <script >
-                function mail()
-                {
+					<td><strong class="shop-item-title"> <?= $don['montantdon'] ?> Dt</strong></td>
+					<td><a><img src="/integration/assets/img/<?= $don['dateD'] ?>" alt="Cinque Terre" width="100" height="100"></a></td>
+					<div class="shop-item">
 
+						<td><span class="shop-item-title"><?= $don['naturedon'] ?> </span></td>
+						
+						<hr>
+						</tr>
+					
+					 </table>	
+					
+						<a type="button" class="btn btn-primary shop-item-button" href = "updatedon.php?iddon=<?= $don['iddon'] ?>">Modifier</a>
+						<a type="button" class="btn btn-primary shop-item-button" href = "showdon.php?iddon=<?= $don['iddon'] ?>">Supprimer</a>
+	
+				    </div>
+				
+			</div>
+				<?php 
+					}
+				?>
+			</div>
 
-    alert("vous allez recevoir un email !");
-}
-</script>
-		</div>
-	</section>
+		</section>
+
 	<footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
@@ -371,16 +348,14 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
 
     </footer>
-    <!-- End Footer -->
-    <script src="/ateleir8//ateleir8/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/integration/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/ateleir8//ateleir8/assets/js/jquery.min.js"></script>
+    <script src="/integration/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/ateleir8//ateleir8/assets/js/isotope.pkgd.js"></script>
-     <script src="/ateleir8//ateleir8/assets/js/templatemo.js"></script>
+    <script src="/integration/assets/js/isotope.pkgd.js"></script>
+    <script src="/integration/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/ateleir8//ateleir8/assets/js/custom.js"></script>
-
+    <script src="/integration/assets/js/custom.js"></script>
 </body>
 
 </html>

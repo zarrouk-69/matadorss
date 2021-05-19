@@ -1,13 +1,44 @@
 <?php
-    require_once 'C:/xampp/htdocs/integration/controller/badgeC.php';
+    require_once 'C:/xampp/htdocs/integration/controller/donC.php';
+     require_once 'C:/xampp/htdocs/integration/controller/badgeC.php';
+    require_once 'C:/xampp/htdocs/integration/entities/don.php';
 
-    $badgeC =  new badgeC();
+session_start();
+    $donC =  new donC();
+     $badgeC =  new badgeC();
 
-	$badges = $badgeC->afficherBadge();
-
-	
-
+    if ( isset($_POST['montantdon']) && isset($_POST['naturedon'])&&isset($_POST['idclient']) ) {
+         $test1 = $donC->getdonByIdclient($_POST['idclient']);
+        if(($_POST['montantdon']+$test1['montantdon'])<=1000)
+        { $result11 = $badgeC->getBadgeById('5');
+        
+        }
+       elseif(($_POST['montantdon']+$test1['montantdon'])<=3000)
+        {
+             $result11 = $badgeC->getBadgeById('3');
+         
+        }
+        elseif(($_POST['montantdon']+$test1['montantdon'])<=5000)
+        {
+             $result11 = $badgeC->getBadgeById('4');
+          
+        }
+         $don = new don( (int)$_POST['montantdon'], $_POST['naturedon'],$result11['logim'],$_POST['idclient']);
+        $test = $donC->getdonByIdclient($_POST['idclient']);
+        if ($test!==false) {
+            $donC->addDon1($don,$_POST['idclient']);
+        }
+        else 
+        {
+            $donC->addDon1($don,$_POST['idclient']);
+      }
+       
+ header('Location:/integration/view/back/envoyer_des_mails.php');
+       
+    
+        }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +58,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/integration/assets/css/custom.css">
     <link rel="stylesheet" href="/integration/assets/css/drop.css">
-
+<style >
+    #km126{width: 10em};
+</style>
 <!--
     
 TemplateMo 561 Purple Buzz
@@ -38,7 +71,7 @@ https://templatemo.com/tm-561-purple-buzz
 </head>
 
 <body>
-	<!-- Header -->
+	 <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="index.html">
@@ -100,7 +133,7 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </nav>
     <!-- Close Header -->
-<!-- Start Banner Hero -->
+     <!-- Start Banner Hero -->
     <div class="banner-wrapper bg-light">
         <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
 
@@ -176,48 +209,55 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </div>
     <!-- End Banner Hero -->
-	
-		<section class="container">
-			<h2>Tables des Dons</h2>
-			<a href = "addbadge.php" class="btn btn-primary shop-item-button" href = "#">Ajouter</a>
-			
-			<div class="shop-items">
-				<?php
-					foreach ($badges as $badge) {
-				?>
-				<div class="shop-item">
-					
-					<table>
-						<tr>
-							<th>montant</th>
-							<th>date</th>
-							
-						</tr>
-						<tr>
+    
+	<section class="container">
+		<h2>Faire don</h2>
+        <a href = "showdon.php" class="btn btn-primary shop-item-button">All dons</a>
+		<div class="form-container">
+            <form action=""  method = "POST" onsubmit="mail()">
+                 
+                <div class="row">
+                    <div class="col-25">                
+                        <label>Montant: </label>
+                    </div>
+                    <div class="col-75">
+                        <input type="int" name = "montantdon"  required="">
 
-					<td><strong class="shop-item-title"> <?= $badge['niveau'] ?> </strong></td>
-					<td><span class="shop-item-title"> <?= $badge['logim'] ?> </span></td>
-					<div class="shop-item">
+                    </div>
+                </div>
+              <p > <input type="text"  name = "idclient" value="<?= $_SESSION['idU'] ?>" required="" ></p>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Nature de Paiment:</label>
+                    </div>
+                    <div class="col-75">
+                        
+                        <select name="naturedon" >
+                            <option value="espece">espece </option>
+                            <option value="check">check </option>
+                            <option value="carte bancaire">carte bancaire </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                
+                <br>
+                <div class="row">
 
-						</div>
-                    </tr>
-						
-						
-					
-					 </table>	
-					
-						
-	
-				    </div>
-				
-			</div>
-				<?php 
-					}
-				?>
-			</div>
+                    <input  type="submit"  id="km126" value="Submit"  name = "submit">
 
-		</section>
+                </div>
+            </form>
+            <script >
+                function mail()
+                {
 
+
+    alert("vous allez recevoir un email !");
+}
+</script>
+		</div>
+	</section>
 	<footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
@@ -341,14 +381,16 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
 
     </footer>
-<script src="/integration/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- End Footer -->
+    <script src="/integration//integration/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/integration/assets/js/jquery.min.js"></script>
+    <script src="/integration//integration/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/integration/assets/js/isotope.pkgd.js"></script>
-    <script src="/integration/assets/js/templatemo.js"></script>
+    <script src="/integration//integration/assets/js/isotope.pkgd.js"></script>
+     <script src="/integration//integration/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/integration/assets/js/custom.js"></script>
+    <script src="/integration//integration/assets/js/custom.js"></script>
+
 </body>
 
 </html>

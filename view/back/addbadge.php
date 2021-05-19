@@ -1,6 +1,6 @@
 <?php
-    require_once 'C:/xampp/htdocs/ateleir8/controller/badgeC.php';
-    require_once 'C:/xampp/htdocs/ateleir8/entities/badge.php';
+    require_once 'C:/xampp/htdocs/integration/controller/badgeC.php';
+    require_once 'C:/xampp/htdocs/integration/entities/badge.php';
 
 
     $badgeC =  new badgeC();
@@ -21,18 +21,18 @@
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="/ateleir8/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/ateleir8/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/integration/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/integration/assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="/ateleir8/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/integration/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="/ateleir8/assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="/integration/assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="/ateleir8/assets/css/templatemo.css">
+    <link rel="stylesheet" href="/integration/assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/ateleir8/assets/css/custom.css">
-    <link rel="stylesheet" href="/ateleir8/assets/css/drop.css">
+    <link rel="stylesheet" href="/integration/assets/css/custom.css">
+    <link rel="stylesheet" href="/integration/assets/css/drop.css">
 <style >
     #km126{width: 10em};
 </style>
@@ -350,14 +350,14 @@ https://templatemo.com/tm-561-purple-buzz
 
     </footer>
     <!-- End Footer -->
-    <script src="/ateleir8//ateleir8/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/integration//integration/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="/ateleir8//ateleir8/assets/js/jquery.min.js"></script>
+    <script src="/integration//integration/assets/js/jquery.min.js"></script>
     <!-- Isotope -->
-    <script src="/ateleir8//ateleir8/assets/js/isotope.pkgd.js"></script>
-     <script src="/ateleir8//ateleir8/assets/js/templatemo.js"></script>
+    <script src="/integration//integration/assets/js/isotope.pkgd.js"></script>
+     <script src="/integration//integration/assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="/ateleir8//ateleir8/assets/js/custom.js"></script>
+    <script src="/integration//integration/assets/js/custom.js"></script>
 
 </body>
 

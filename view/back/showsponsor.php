@@ -1,5 +1,5 @@
 <?php
-   require_once 'C:/xampp/htdocs/ateleir8/controller/sponsorC.php';
+   require_once 'C:/xampp/htdocs/integration/controller/sponsorC.php';
 
     $sponsorC =  new sponsorC();
 
@@ -21,15 +21,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="/ateleir8/assets1/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/integration/assets1/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="/ateleir8/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="/ateleir8/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/integration/assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/integration/assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/ateleir8/assets1/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/integration/assets1/css/argon.css?v=1.2.0" type="text/css">
 	<style>
 .dropbtn {
   background-color: #4CAF50;
@@ -84,7 +84,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="/ateleir8/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
+          <img src="/integration/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -93,19 +93,19 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="/argon-dashboard-master/index.html">
+              <a class="nav-link active" href="/integration/view/back/index.html">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ateleir8/view/back/showsponsor.php">
+              <a class="nav-link" href="/integration/view/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Sponsors</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ateleir8/view/back/stat.php">
+              <a class="nav-link" href="/integration/view/back/stat.php">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Statistiques</span>
               </a>
@@ -117,9 +117,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/tables.html">
+              <a class="nav-link" href="/integration/view/back/showdon.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Tables</span>
+                <span class="nav-link-text">Don</span>
               </a>
             </li>
             <li class="nav-item">
@@ -198,7 +198,7 @@
 				
 				<div  class="shop-item">
 					<div class="dropdown">
-					<a  ><img src="/ateleir8/assets/img//<?= $sponsor['logoS'] ?>" width="400" height="200"> </a>
+					<a  ><img src="/integration/assets/img//<?= $sponsor['logoS'] ?>" width="400" height="200"> </a>
 					<div class="dropdown-content">
 						<strong class="shop-item-title">Nom: <?= $sponsor['nomS'] ?></strong>
 						<span class="shop-item-title">Numero: <?= $sponsor['numtlph'] ?> </span>
@@ -255,16 +255,16 @@ function myFunction() {
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="/ateleir8/assets1/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/ateleir8/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/ateleir8/assets1/vendor/js-cookie/js.cookie.js"></script>
-  <script src="/ateleir8/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="/ateleir8/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/integration/assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/integration/assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/integration/assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/integration/assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/integration/assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="/ateleir8/assets1/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/ateleir8/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="/integration/assets1/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/integration/assets1/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="/ateleir8/assets1/js/argon.js?v=1.2.0"></script>
+  <script src="/integration/assets1/js/argon.js?v=1.2.0"></script>
 
 
 </body>
