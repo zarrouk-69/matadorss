@@ -7,7 +7,7 @@
 
 	if (isset($_GET['iddon'])) {
 		$donC->deleteDon($_GET['iddon']);
-		header('Location:showdon.php');
+		//header('Location:envoyer_des_mails.php');
 	}
 
 ?>
@@ -47,7 +47,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="/integration/view/back/index.html">
+              <a class="nav-link active" href="/integration/views/back/index.html">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/integration/view/back/showdon.php">
+              <a class="nav-link" href="/integration/views/back/showdon.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Don</span>
               </a>

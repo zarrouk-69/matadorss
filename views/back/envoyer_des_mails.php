@@ -24,8 +24,8 @@ $message.='
 ini_set('smtp_port','25');
 ini_set('SMTP','smtp.topnet.tn');
 //mail("primfxtuto@gmail.com", "Salut tout le monde !", $message, $header);
- mail("oumaimakarmandi1@gmail.com","Cher client !", $message, $header); 
-header('Location:/integration/view/front/showdon.php');
+ mail("naturiousreserve@gmail.com","Cher client !", $message, $header); 
+header('Location:/integration/views/front/showdon.php');
 ?>
 
 <form action="" method = "POST" onsubmit="myFunction77()">

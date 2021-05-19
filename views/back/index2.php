@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/integration/view/back/showsponsor.php">
+              <a class="nav-link" href="/integration/views/back/showsponsor.php">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Icons</span>
               </a>

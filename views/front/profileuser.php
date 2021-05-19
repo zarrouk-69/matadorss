@@ -16,6 +16,10 @@ if(isset($_POST['sign_out']))
     $_SESSION['idU'] = 0;
     header('Location:index.html');
 }
+if (isset($_GET['idU'])) {
+    $UserC->supprimerUtilisateur($_GET['idU']);
+    header('Location:index.html');
+  }
 foreach ($User as $user) {
     $id = $user['idU'];
 
@@ -286,7 +290,7 @@ window.onclick = function(event) {
             
             <div >
                 <input type="submit" value="modifier mon profil " name="submit" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4">
-                   <input type="submit" value="supprimer mon profil" name="submit" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4">
+                   <a type="button" class="btn btn-primary shop-item-button" href = "profileuser.php?idU=<?= $user['idU'] ?>">supprimer</a>
                     <input type="button" value="faire une réclamation" name="submit" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" onclick="window.location.href='ajoutreclamation.php';">
                       <input type="button" value="mes reclamations" name="submit" class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" onclick="window.location.href='showrec.php';">
             </div>

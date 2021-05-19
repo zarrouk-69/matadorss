@@ -25,7 +25,7 @@
         $don = new don( (int)$_POST['montantdon'], $_POST['naturedon'],$result11['logim']);
       
         $donC->addDon($don);
- header('Location:/integration/view/back/envoyer_des_mails.php');
+ header('Location:/integration/views/back/envoyer_des_mails.php');
        
     }
 ?>
