@@ -1,8 +1,10 @@
 <?php 
 
     
-   require_once('C:\xampp\htdocs\integration\controller\event.php');
-require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+   //require_once('C:\xampp\htdocs\integration\controller\event.php');
+//require_once('C:\xampp\htdocs\integration\controller\ticket.php');
+require_once('../.././controller/ticket.php');  
+require_once('../.././controller/event.php');  
     require_once('../.././config.php'); 
     $db = new event();
     

@@ -42,7 +42,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../.././assets1/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="/integration/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -51,66 +51,96 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="showAlbums4.php">
+              <a class="nav-link active" href="examples/dashboard.html">
                 <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Animaux</span>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="showrec.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion reclamations </span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showrec.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion types de reclamation</span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="afficherUtilisateurs.php">
+                <i class="ni ni-single-02 text-yellow"></i>
+                <span class="nav-link-text">gestion utilisateurs</span>
+            </a></li>
+             <li class="nav-item">
+              <a class="nav-link" href="showproduits.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">produit</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="index2.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des précommandes</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showsponsor.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des sponsors</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="showdon.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des dons</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="back_event.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion evenements</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="back_ticket.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion ticket</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="showAlbums4.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des animaux </span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="showAlbums2.php">
-                <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Sites</span>
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des sites </span>
               </a>
             </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="examples/login.html">
-                <i class="ni ni-key-25 text-info"></i>
-                <span class="nav-link-text">Login</span>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showpack.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">pack</span>
               </a>
             </li>
-            
-            
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showhotel.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">hotels</span>
+              </a>
+            </li>
           </ul>
           <!-- Divider -->
-          <hr class="my-3">
-          <!-- Heading -->
-          <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Documentation</span>
-          </h6>
+          
           <!-- Navigation -->
-          <ul class="navbar-nav mb-md-3">
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Getting started</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
-                <i class="ni ni-palette"></i>
-                <span class="nav-link-text">Foundation</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
-                <i class="ni ni-ui-04"></i>
-                <span class="nav-link-text">Components</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
-                <i class="ni ni-chart-pie-35"></i>
-                <span class="nav-link-text">Plugins</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active active-pro" href="examples/upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade to PRO</span>
-              </a>
-            </li>
-          </ul>
+         
         </div>
       </div>
     </div>

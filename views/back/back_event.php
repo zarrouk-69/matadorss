@@ -14,11 +14,16 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php 
-      require_once('C:\xampp\htdocs\integration\controller\event.php');
-require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+      //require_once('C:\xampp\htdocs\integration\controller\event.php');
+//require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+require_once('../.././controller/ticket.php');  
+require_once('../.././controller/event.php');  
     require_once('../.././config.php');  
     $db = new event();
     $db1 =  new ticket();
+    require_once('../.././controller/sponsorC.php');  
+
+    $sponsorC =  new sponsorC();
 
 ?>
 <!DOCTYPE html>
@@ -31,15 +36,15 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
     <meta name="author" content="Creative Tim">
     <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
-    <link rel="icon" href="../.././assets11/img/brand/favicon.png" type="image/png">
+    <link rel="icon" href="../.././assets1/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="../.././assets11/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="../.././assets11/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="../.././assets1/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="../.././assets1/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../.././assets11/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="../.././assets1/css/argon.css?v=1.2.0" type="text/css">
   </head>
 
 <body>
@@ -49,7 +54,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../.././assets11/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="/integration/assets1/img/brand/logo.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -58,69 +63,101 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">
+              <a class="nav-link active" href="examples/dashboard.html">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
-            
             <li class="nav-item">
-              <a class="nav-link active" href="back_event.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">events</span>
+              <a class="nav-link" href="showrec.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion reclamations </span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showtype.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion types de reclamation</span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="afficherUtilisateurs.php">
+                <i class="ni ni-single-02 text-yellow"></i>
+                <span class="nav-link-text">gestion utilisateurs</span>
+            </a></li>
+             <li class="nav-item">
+              <a class="nav-link" href="showproduits.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">produit</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="index2.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des précommandes</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showsponsor.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des sponsors</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="back_ticket.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">tickets</span>
+              <a class="nav-link" href="showdon.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des dons</span>
               </a>
             </li>
-           
+             <li class="nav-item">
+              <a class="nav-link" href="back_event.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion evenements</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="back_ticket.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion ticket</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="showAlbums4.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des animaux </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="showAlbums2.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">gestion des sites </span>
+              </a>
+            </li>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showpack.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">pack</span>
+              </a>
+            </li>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="showhotel.php">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">hotels</span>
+              </a>
+            </li>
           </ul>
           <!-- Divider -->
-          <hr class="my-3">
-          <!-- Heading -->
-          <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Documentation</span>
-          </h6>
+          
           <!-- Navigation -->
-          <ul class="navbar-nav mb-md-3">
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Getting started</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
-                <i class="ni ni-palette"></i>
-                <span class="nav-link-text">Foundation</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
-                <i class="ni ni-ui-04"></i>
-                <span class="nav-link-text">Components</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
-                <i class="ni ni-chart-pie-35"></i>
-                <span class="nav-link-text">Plugins</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active active-pro" href="upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade to PRO</span>
-              </a>
-            </li>
-          </ul>
+         
         </div>
       </div>
     </div>
   </nav>
+  <!-- Main content -->
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
@@ -173,7 +210,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../.././assets11/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets1/img/theme/team-1.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -192,7 +229,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../.././assets11/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets1/img/theme/team-2.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -211,7 +248,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../.././assets11/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets1/img/theme/team-3.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -230,7 +267,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../.././assets11/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets1/img/theme/team-4.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -249,7 +286,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../.././assets11/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../.././assets1/img/theme/team-5.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -320,7 +357,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../.././assets11/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="../.././assets1/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
@@ -570,6 +607,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                   <th scope="col" class="sort" data-sort="status">status</th>
                     <th scope="col">Sponsors</th>
                     
+                    
                     <?php if(isset($_GET['DESC_NBP']))
                   {
                     ?>
@@ -620,7 +658,7 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                 <tbody class="list">
                 <?php 
                                     foreach($result as $data)
-                                    {
+                                    { $sponsorR = $sponsorC->getSponsorById($data['ids']);
                                 ?>
                   <tr>
                     
@@ -679,15 +717,15 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                      ?>
                     </td>
                     <td>
-                      <!--<div class="avatar-group">
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?php echo $data['ids'] ?>">
-                          <img alt="Image placeholder" src="./assets11/img/theme/team-1.jpg"> 
+                      <div class="avatar-group">
+                      <a href="#" data-toggle="tooltip" data-original-title="<?php echo $sponsorR['nomS'] ?>">
+                          <img width="100" height="80" alt="Image placeholder" src="../.././assets/img/<?php echo $sponsorR['logoS'] ?>"> 
                           
                         </a>
                         
                       </div>
-                      -->
-                      <?php echo $data['ids'] ?>
+                      
+                     
                     </td>
                     <td class="budget">
                     <?php echo $db1->search_by_event($data['ide']) ?> /
@@ -754,13 +792,13 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../.././assets11/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../.././assets11/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../.././assets11/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../.././assets11/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../.././assets11/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="../.././assets1/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../.././assets1/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../.././assets1/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../.././assets1/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../.././assets1/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../.././assets11/js/argon.js?v=1.2.0"></script>
+  <script src="../.././assets1/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

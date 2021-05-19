@@ -373,7 +373,7 @@ require_once 'C:/xampp/htdocs/integration/controller/siteS.php';
         <div class="card" style="width: 18rem;">
 				
 					<label>Nom du site: </label>  <strong class="shop-item-title"> <?= $result['nomS'] ?> </strong>
-					<img class="card-img-top" src="../.././assets1/img/<?= $result['imageS'] ?>" class="shop-item-image">
+					<img class="card-img-top" src="../.././assets/img/<?= $result['imageS'] ?>" class="shop-item-image">
           </div>
 					<div class="card-body">
 						<label><strong>Description: </strong></label><span class="shop-item-price"><?= $result['descS'] ?></span>

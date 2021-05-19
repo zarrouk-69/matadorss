@@ -1,7 +1,11 @@
 <?php 
     
-    require_once('C:\xampp\htdocs\integration\controller\event.php');
-require_once('C:\xampp\htdocs\integration\controller\ticket.php');
+   // require_once('C:\xampp\htdocs\integration\controller\event.php');
+//require_once('C:\xampp\htdocs\integration\controller\ticket.php');
+require_once('../.././controller/ticket.php');  
+require_once('../.././controller/event.php');  
+    require_once('../.././config.php');
+    
     $db = new event();
 
 ?>
@@ -113,7 +117,7 @@ https://templatemo.com/tm-561-purple-buzz
                 </div>
                 
         </div>
-
+ <!--
         <div class="service-tag py-5 bg-secondary">
             <div class="col-md-12">
                 <ul class="nav d-flex justify-content-center">
@@ -130,7 +134,7 @@ https://templatemo.com/tm-561-purple-buzz
                 </ul>
             </div>
         </div>
-
+-->
     </section>
 
     <!-- End Service -->

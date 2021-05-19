@@ -1,6 +1,10 @@
 <?php 
-     require_once('C:\xampp\htdocs\integration\controller\event.php');
-require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+   //  require_once('C:\xampp\htdocs\integration\controller\event.php');
+//require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+require_once('../.././controller/ticket.php');  
+require_once('../.././controller/event.php');  
+require_once('../.././controller/sponsorC.php');  
+    require_once('../.././config.php');
     $db = new event();
     $db1 = new ticket();
     $id = $_GET['T_IDE'];
@@ -10,6 +14,8 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
     if(!isset($_SESSION)){
         session_start();
     }
+    $sponsorR = new sponsorC();
+    $sponsorR = $sponsorR->getSponsorById($data['ids']);
     
 ?>
 
@@ -17,6 +23,47 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
 <html lang="en">
 
 <head>
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: inline;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>		
     <title>Purple Buzz - Contact Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,6 +150,10 @@ https://templatemo.com/tm-561-purple-buzz
     </section>
     <!-- End Banner Hero -->
 
+    <!-- Start Banner Hero -->
+    
+    <!-- End Banner Hero -->
+
 
     <!-- Start Contact -->
     <section class="container py-5">
@@ -149,6 +200,7 @@ https://templatemo.com/tm-561-purple-buzz
 		</script>
 		</div>
 	</div>
+
                     
     <div class="control-group">
     <label class="control-label" for="inputEmail">Captcha Confirmation</label>
@@ -168,6 +220,21 @@ https://templatemo.com/tm-561-purple-buzz
         </div>
     </section>
     <!-- End Contact -->
+    <center>
+    <section class="bg-light">
+    <div  class="shop-item">
+					<div class="dropdown">
+					<a><img src="../.././assets/img//<?= $sponsorR['logoS'] ?>" width="400" height="200"> </a>
+					<div class="dropdown-content">
+						<strong class="shop-item-title">Nom: <?= $sponsorR['nomS'] ?></strong>
+						<span class="shop-item-title">Numero: <?= $sponsorR['numtlph'] ?> </span>
+						<span class="shop-item-title">Date Debut: <?= $sponsorR['dateD'] ?> </span>
+						<span class="shop-item-title">Date Fin : <?= $sponsorR['dateF'] ?> </span>
+						<span class="shop-item-title">Description: <?= $sponsorR['descr'] ?> </span>
+					</div>
+				</div>
+    </section>
+    </center>
 
 
     <!-- Start Footer -->

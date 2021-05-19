@@ -1,5 +1,6 @@
 <?php
-    require_once 'C:/xampp/htdocs/integration/config.php';
+    //require_once 'C:/xampp/htdocs/integration/config.php';
+    require_once('../.././config.php'); 
     class sponsorC {
         public function afficherSponsor() {
             try {
@@ -13,6 +14,7 @@
                 $e->getMessage();
             }
         }
+        
 
         public function getSponsorById($id) {
             try {
@@ -115,6 +117,7 @@
                 $e->getMessage();
             }
         }
+        
          public function trierSponsor() {            
             $sql = "SELECT * from sponsor order by  nomS  "; 
             $db = config::getConnexion();

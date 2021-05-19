@@ -1,12 +1,20 @@
 <?php 
-          require_once('C:\xampp\htdocs\integration\controller\event.php');
-require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+         // require_once('C:\xampp\htdocs\integration\controller\event.php');
+//require_once('C:\xampp\htdocs\integration\controller\ticket.php'); 
+require_once('../.././controller/ticket.php');  
+require_once('../.././controller/event.php'); 
+require_once('../.././controller/sponsorC.php');
     require_once('../.././config.php');
     $db = new event();
     $db->update();
     $id = $_GET['U_ID'];
     $result = $db->get_record($id);
     $data=$result->fetch();
+    $sponsorC =  new sponsorC();
+    $sponsorR = new sponsorC();
+    $sponsorR = $sponsorR->getSponsorById($data['ids']);
+    
+	  $sponsors = $sponsorC->afficherSponsor();
 ?>
 <!DOCTYPE html>
 <html>
@@ -439,7 +447,18 @@ require_once('C:\xampp\htdocs\integration\controller\ticket.php');
                                 <input type="date" name="date_d"  class="form-control mb-2" required value="<?php echo $data['date_d']; ?>">
                                 <input type="date" name="date_f"  class="form-control mb-2" required value="<?php echo $data['date_f']; ?>">
                                 <input type="text" name="nbp"  class="form-control mb-2" required value="<?php echo $data['nbp']; ?>">
-                                <input type="text" name="ids"  class="form-control mb-2" required value="<?php echo $data['ids']; ?>">
+                                <select name="ids" id="ids">
+                                <option value="<?php echo $sponsorR['idS']; ?>"><?php echo $sponsorR['nomS']; ?>(<?php echo $sponsorR['idS']; ?>)</option>
+                                <?php
+                                foreach($sponsors as $sponsors1)
+                                    {
+                                      if($sponsors1['idS']!=$sponsorR['idS'])
+                                      {
+                                  ?>  
+                                <option value="<?php echo $sponsors1['idS']; ?>"><?php echo $sponsors1['nomS']; ?>(<?php echo $sponsors1['idS']; ?>) </option>
+                                
+                                <?php }} ?>
+                                </select>
                                 <input type="text" name="desc"  class="form-control mb-2" required value="<?php echo $data['description']; ?>">
                                 <input type="file" name="file"  class="form-control mb-2" required value="<?php echo $data['img']; ?>">
                         </div>
