@@ -222,6 +222,21 @@
                 $e->getMessage();
             }
         }
+        public function getlast() {
+            try {
+                $pdo = config::getConnexion();
+                $query = $pdo->prepare(
+                    'SELECT * 
+                         FROM reserv 
+                     ORDER BY idreserv DESC 
+                        LIMIT 1'
+                );
+                $query->execute();
+                return $query->fetch();
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
         
     }
     ?>

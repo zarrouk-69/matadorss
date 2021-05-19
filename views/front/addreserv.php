@@ -7,14 +7,17 @@ require_once 'C:/xampp/htdocs/integration/controller/hotelC.php';
     $reservC =  new reservC();
    $hotelC =  new hotelC();
 
-    if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1']) && isset($_POST['idc1']) && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv']) && isset($_POST['datereserv'])) {
+    if (isset($_POST['prixreserv'])  && isset($_POST['typereserv']) && isset($_POST['idh1'])  && isset($_POST['nbrjourv']) && isset($_POST['accessv']) && isset($_POST['nbrexcurv']) && isset($_POST['datereserv'])) {
         $result11 = $hotelC->getHotelById($_POST['idh1']);
             if ($result11 !== false) {
         $reserv = new reserv((int)$_POST['prixreserv'], $_POST['typereserv'], (int)$_POST['idh1'], (int)$_POST['idc1'], (int)$_POST['nbrjourv'], $_POST['accessv'], (int)$_POST['nbrexcurv'],$result11['nomhotel'],  $_POST['datereserv']);
         
         $reservC->addreserv($reserv);
 
-        header('Location:showpack.php');
+        $testlast=$reservC->getlast();
+
+$lol=$testlast['idreserv'];
+        header("Location:/integration/sendmail/envoyer_des_mails.php/?id=$lol");
     }}
 ?>
 <?php

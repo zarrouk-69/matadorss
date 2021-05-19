@@ -15,8 +15,10 @@ require_once 'C:/xampp/htdocs/integration/controller/packC.php';
         $reserv = new reserv((int)$_POST['prixreserv'], $_POST['typereserv'], (int)$_POST['idh1'], (int)$_POST['idc1'], (int)$_POST['nbrjourv'], $_POST['accessv'], (int)$_POST['nbrexcurv'],$result11['nomhotel'],  $_POST['datereserv']);
         
         $reservC->addreserv($reserv);
+        $testlast=$reservC->getlast();
 
-        header('Location:showpack.php');
+$lol=$testlast['idreserv'];
+        header("Location:/integration/sendmail/envoyer_des_mails.php/?id=$lol");
     }}
 ?>
 
@@ -127,7 +129,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <label>client</label>
                     </div>
                     <div  class="col-75">
-                        <input type="number" value = "25"name = "idc1" min="0" required="" >
+                        <input type="number" value = ""name = "idc1" min="0" required="" >
                     </div>
                 </div>
               
