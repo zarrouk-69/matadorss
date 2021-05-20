@@ -10,7 +10,9 @@ session_start();
 
 	if (isset($_GET['idR'])) {
 		$reclamationC->deleterec($_GET['idR']);
-		header('Location:showrec.php');
+		echo "<script>
+alert('supprimé avec succés');
+</script>";
 	}
 
 ?>

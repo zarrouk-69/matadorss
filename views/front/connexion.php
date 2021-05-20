@@ -268,7 +268,7 @@ window.onclick = function(event) {
  <section class="service-wrapper py-3">
 <div class="container-fluid pb-3">
 
-<form name="frmUser" action="connexion.php"  method = "post" >
+<form name="frmUser" action="connexion.php"  method = "post" onSubmit="return Verification()">
     <h2 class="h2 text-center col-12 py-5 semi-bold-600" d>authentification</h2>
      <div class="message">
 
@@ -279,7 +279,7 @@ window.onclick = function(event) {
                 <label for="adresseU">ADRESSE:</label>
             </td>
             <td>
-    <input type="text" placeholder="Email" name="adresseU" required  >
+    <input type="text" placeholder="Email" name="adresseU" required="" >
 </td>
 </tr>
   <tr class="tablerow">
@@ -455,5 +455,6 @@ window.onclick = function(event) {
     <script src="/integration/assets/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="/integration/assets/js/custom.js"></script>
+     <script language="javascript" type="text/javascript" src="/integration/views/front/controle.js"></script>
 </body>
 </html>

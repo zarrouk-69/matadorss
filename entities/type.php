@@ -2,8 +2,8 @@
 	class type{
 		private $idType;
 		private $libelleT;
-		function __construct($idType, $libelleT){
-			$this->idType = $idType;
+		function __construct($libelleT){
+			//$this->idType = $idType;
 			$this->libelleT = $libelleT;
 		}
 		function getidType(){

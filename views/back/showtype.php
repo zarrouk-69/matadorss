@@ -7,7 +7,12 @@
 
   if (isset($_GET['idType'])) {
     $typeC->supprimertype($_GET['idType']);
-    header('Location:showtype.php');
+      echo "<script>
+alert('suppression avec succes');
+window.location.href='showtype.php';
+</script>";
+       
+   
   }
 
 ?>
@@ -153,6 +158,7 @@
       <h2>gestion de types </h2><br>
       <div class="shop-items">
         <a href = "searchrec.php" class="btn btn-primary shop-item-button" >Search</a>
+
         <div class="table-responsive">
  <table  align = 'center'class=table-dark>
         <thead class="thead-dark">
@@ -171,6 +177,7 @@
           foreach ($types as $type) {
         ?>
         <tr>
+             <br>   
           <td class="text-right"><?PHP echo $type['idType']; ?></td>
           <td><?PHP echo $type['libelleT']; ?></td>
         

@@ -8,8 +8,11 @@
         $reclamation = new reclamation($_POST['typeR'], $_POST['dateR'], $_POST['texteR']);
         
         $reclamationC->addreclamation($reclamation);
-
-        header('Location:showrec.php');
+echo "<script>
+alert('ajout avec succes');
+window.location.href='showrec.php';
+</script>";
+     
     }
 ?>
 

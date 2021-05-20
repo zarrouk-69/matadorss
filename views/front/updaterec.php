@@ -11,6 +11,10 @@ $listtype=$c2->afficher();
         $reclamation = new reclamation( $_POST['dateR'], $_POST['texteR'],$_POST['type'],$_SESSION['idU']);
         
         $reclamationC->updaterec($reclamation,$_GET['idR']);
+        echo "<script>
+alert('modification avec succes');
+
+</script>";
     }
 ?>
 

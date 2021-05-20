@@ -10,22 +10,26 @@ $type = null;
 // create an instance of the controller
 $typeC = new typeC();
 if (
-    isset($_POST["idType"]) &&
+    //isset($_POST["idType"]) &&
  
     isset($_POST["libelleT"])
 ) {
     if (
-        !empty($_POST["idType"]) &&
+        //!empty($_POST["idType"]) &&
        
         !empty($_POST["libelleT"])
     ) {
         $type = new type(
-            $_POST['idType'],
+            //$_POST['idType'],
           
             $_POST['libelleT']
         );
         $typeC->ajoutertype($type);
-        header('Location:showtype.php');
+        echo "<script>
+alert('ajout avec succes');
+window.location.href='showtype.php';
+</script>";
+       
     }
     else
         $error = "Missing information";
@@ -182,12 +186,7 @@ if (
         <tr>
             <td rowspan='2' colspan='1'>type</td>
             <td>
-                <label for="idType">id:
-                </label>
-            </td>
-            <td><input type="text" name="idType" id="idType" maxlength="20" required=""></td>
-        </tr>
-        <tr>
+                     <tr>
             <td>
                 <label for="libelleT">libellé:
                 </label>

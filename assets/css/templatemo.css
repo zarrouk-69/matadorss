@@ -204,7 +204,7 @@ p, a {font-weight: 400;}
 }
 /* About */
 #work_banner {
-  background-image: url('./../img/banner-bg-02.jpg');
+  background-image: url('/integration/assets/img/banner-bg-02.jpeg');
   background-position: center center; background-size: cover;
   height: 100%;
   width: 100%;
